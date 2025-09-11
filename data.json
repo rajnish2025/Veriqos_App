@@ -1,0 +1,241 @@
+{
+    "categories": [
+        {
+            "name": "Digital Onboarding Suite",
+            "value": "onboarding",
+            "size": 12,
+            "content": [
+                {
+                    "apiName": "Driving License Basic API"
+                },
+                {
+                    "apiName": "Driving License Advance API"
+                },
+                {
+                    "apiName": "Aadhaar-PAN Link Status API"
+                },
+                {
+                    "apiName": "PAN Identity Match API"
+                },
+                {
+                    "apiName": "PAN Number Verification API"
+                },
+                {
+                    "apiName": "PAN Identity Match API"
+                },
+                {
+                    "apiName": "PAN Comprehensive Verification API"
+                },
+                {
+                    "apiName": "PAN Complete Profile API"
+                },
+                {
+                    "apiName": "PAN Demographic Data Fetch API"
+                },
+                {
+                    "apiName": "PAN Demographic Advance API"
+                },
+                {
+                    "apiName": "PAN to Father’s Name Lookup API"
+                },
+                {
+                    "apiName": "PAN to Name & DOB Lookup API"
+                },
+                {
+                    "apiName": "Digilocker API"
+                },
+                {
+                    "apiName": "OKYC API"
+                },
+                {
+                    "apiName": "Passport Verification API"
+                },
+                {
+                    "apiName": "Address Geocoding API"
+                },
+                {
+                    "apiName": "Reverse Geocoding API"
+                },
+                {
+                    "apiName": "Electricity Bill Verification API"
+                },
+                {
+                    "apiName": "LPG Verification (Mobile) API"
+                },
+                {
+                    "apiName": "Face Match (with Mask Detection) API"
+                },
+                {
+                    "apiName": "Signature Match API"
+                },
+                {
+                    "apiName": "Face Extraction API"
+                },
+                {
+                    "apiName": "Signature Extraction API"
+                }
+            ]
+        },
+        {
+            "name": "Global Verification Suite",
+            "value": "global",
+            "size": 12,
+            "content": [
+                {
+                    "apiName": "Global Bank Account Verification API"
+                },
+                {
+                    "apiName": "Global Bank Transaction Fetch API"
+                }
+            ]
+        },
+        {
+            "name": "Risk, Fraud, and AML",
+            "value": "risk & fraud",
+            "size": 12,
+            "content": [
+                {
+                    "apiName": "IP Risk Analysis API"
+                },
+                {
+                    "apiName": "Geo-Fencing Validation API"
+                },
+                {
+                    "apiName": "PAN to CIN Mapping API"
+                },
+                {
+                    "apiName": "Forgery Detection Advanced API"
+                }
+            ]
+        },
+        {
+            "name": "Business & Entity Verification",
+            "value": "business & entity",
+            "size": 12,
+            "content": [
+                {
+                    "apiName": "Company CIN Lookup API"
+                },
+                {
+                    "apiName": "CIN Lookup Advanced API"
+                },
+                {
+                    "apiName": "PAN to CIN Mapping API"
+                },
+                {
+                    "apiName": "Company Search by CIN API"
+                },
+                {
+                    "apiName": "GSTIN by Company Name API"
+                },
+                {
+                    "apiName": "Udyog Aadhaar Fetch API"
+                },
+                {
+                    "apiName": "PAN to GSTIN Mapping API"
+                },
+                {
+                    "apiName": "PAN to Udyam Mapping API"
+                },
+                {
+                    "apiName": "ICSI Data Fetch API"
+                },
+                {
+                    "apiName": "TIN Fetch API"
+                },
+                {
+                    "apiName": "TAN Verification API"
+                },
+                {
+                    "apiName": "206AB Check API"
+                },
+                {
+                    "apiName": "UDIN Verification API"
+                },
+                {
+                    "apiName": "Drug License Check API"
+                }
+            ]
+        },
+        {
+            "name": "Financial Accounts Verification",
+            "value": "financial accounts",
+            "size": 12,
+            "content": [
+                {
+                    "apiName": "Bank Verification (Penny Drop) API"
+                },
+                {
+                    "apiName": "Bank Verification (Penny Less) API"
+                },
+                {
+                    "apiName": "IP Risk Analysis API"
+                }
+            ]
+        },
+        {
+            "name": "Vehicle & Asset Verification",
+            "value": "vehical and verification",
+            "size": 12,
+            "content": [
+                {
+                    "apiName": "Vehicle & Asset Verification"
+                },
+                {
+                    "apiName": "Vehicle RC Advanced APIs (V1, V2, V3)"
+                },
+                {
+                    "apiName": "Chassis to RC Mapping API"
+                },
+                {
+                    "apiName": "RC to FASTag Details API"
+                }
+            ]
+        },
+        {
+            "name": "Contact & Communication Verification",
+            "value": "contact and communiction",
+            "size": 12,
+            "content": [
+                {
+                    "apiName": "Telco Lookup Basic API"
+                },
+                {
+                    "apiName": "Telco Lookup Advanced API"
+                },
+                {
+                    "apiName": "Telco OTP Verification API"
+                }
+            ]
+        },
+        {
+            "name": "Lending & Underwriting Automation",
+            "value": "lending & underwriting",
+            "size": 12,
+            "content": [
+                {
+                    "apiName": "Employment Verification Advanced API"
+                },
+                {
+                    "apiName": "UAN by Mobile API"
+                },
+                {
+                    "apiName": "PAN to CIN Mapping API"
+                }
+            ]
+        },
+        {
+            "name": "Consent & Digital Signature",
+            "value": "consent & digital",
+            "size": 12,
+            "content": [
+                {
+                    "apiName": "Aadhaar eSign (OTP/Biometric)"
+                },
+                {
+                    "apiName": "Standard eSign API"
+                }
+            ]
+        }
+    ]
+}

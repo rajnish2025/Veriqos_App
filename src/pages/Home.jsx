@@ -1,0 +1,73 @@
+import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import React, { useEffect, useState } from "react";
+import jsonData from "../../data.json";
+import { Link } from "react-router-dom";
+
+const tabs = jsonData.categories;
+
+const Home = () => {
+  //   const [currentState, setCurrentState] = useState(
+  //     localStorage.getItem("production")
+  //   );
+  //   console.log(localStorage.getItem("production"));
+  //   useEffect(() => {
+  //     setCurrentState(currentState);
+  //     console.log(currentState);
+  //   }, localStorage.getItem("production"));
+
+  const [production, setProduction] = useState(false);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("production");
+    if (stored !== null) {
+      setProduction(stored === "true");
+    }
+  }, []);
+  return (
+    <div className="w-full flex flex-col justify-center mt-10 box-border">
+      <div className="w-[90%] mx-auto border-b-1 pb-6">
+        <h2 className="text-3xl font-bold mb-2">Veriqos API Sandbox</h2>
+        <p className="text-lg">
+          Welcome to the Veriqos API Sandbox. This is your space to try out our
+          APIs, see how they work, and test integrations in a safe environment.
+        </p>
+      </div>
+      <div className="w-[90%] flex flex-wrap gap-2 mt-10 mx-auto h-full">
+        <Tabs defaultValue="explore" className="flex-row">
+          <TabsList className="bg-background flex-col rounded-none border-l p-0 pr-5 h-[60vh] border-r border-r-gray-400">
+            {tabs.map((tab) => (
+              <TabsTrigger
+                key={tab.value}
+                value={tab.value}
+                className="h-[10vh] bg-background data-[state=active]:border-primary dark:data-[state=active]:border-primary w-full justify-start rounded-none border-0 border-l-2 border-transparent data-[state=active]:shadow-none"
+              >
+                {tab.name}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+
+          {tabs.map((tab) => (
+            <TabsContent
+              key={tab.value}
+              value={tab.value}
+              className="flex flex-wrap gap-3 items-start justify-start pl-10 max-h-fit"
+            >
+              {production}
+              {tab.content.map((item) => (
+                <Link to={!production ? "/sandbox" : "/devApi/test/m5gr84i9"}>
+                  <Card className="w-60 h-[10vh] text-center max-w-sm shadow-lg border-1 border-[#c8dddc] bg-[#fff] hover:scale-[1.03] transition-transform duration-200">
+                    <CardContent className="pt-5">{item.apiName}</CardContent>
+                  </Card>
+                </Link>
+              ))}
+            </TabsContent>
+          ))}
+        </Tabs>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
+// bg-gradient-to-br from-[#00548D] to-[#00BAAB]
