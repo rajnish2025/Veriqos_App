@@ -55,7 +55,7 @@ function App() {
           }
         />
         <Route
-          path="/devApi/test/:id"
+          path="/devApi/test/:catId/:id"
           element={
             <>
               <Navbar />

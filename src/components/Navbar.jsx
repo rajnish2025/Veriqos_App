@@ -61,9 +61,9 @@ const Navbar = () => {
           <Link to="/veriqos/api/docs" className="hover:underline">
             Docs
           </Link>
-          <Link to="/devdocs" className="hover:underline">
+          {/* <Link to="/devdocs" className="hover:underline">
             DevDocs
-          </Link>
+          </Link> */}
           <Link to="/support" className="hover:underline">
             Support
           </Link>
@@ -118,12 +118,12 @@ const Navbar = () => {
           >
             Docs
           </Link>
-          <Link
+          {/* <Link
             to="/devdocs"
             className="text-white hover:text-blue-200 font-medium transition"
           >
             DevDocs
-          </Link>
+          </Link> */}
           <Link
             to="/support"
             className="text-white hover:text-blue-200 font-medium transition"

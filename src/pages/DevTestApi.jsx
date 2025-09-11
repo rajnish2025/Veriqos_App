@@ -2,7 +2,8 @@ import CodeBlocks from "@/components/CodeBlock";
 import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import jsonApiData from "../../data.json";
 
 const CodeBlock = ({ code, language = "json", backgound = "bg-gray-900" }) => (
   <pre
@@ -15,16 +16,19 @@ const CodeBlock = ({ code, language = "json", backgound = "bg-gray-900" }) => (
 );
 
 const DevTestApi = () => {
-  const location = useLocation();
-  const rowData = location.state?.rowData || location.state || {};
+  const { catId, id } = useParams();
+  console.log(catId, id);
+  const rowData = jsonApiData.categories
+    .filter((category) => category.catId === catId)[0]
+    .content.filter((api) => api.id === id);
   const [jsonResponse, setJsonResponse] = useState(null);
   const { register, handleSubmit } = useForm();
-  console.log(rowData);
+  console.log(rowData[0]);
   const [response, setResponse] = useState(null);
 
   const onSubmit = async (data) => {
-    const result = await axios.post(rowData.url, data, {
-      headers: rowData.headers,
+    const result = await axios.post(rowData[0].url, data, {
+      headers: rowData[0].headers,
     });
     setJsonResponse(result.data);
     setResponse(
@@ -34,7 +38,7 @@ const DevTestApi = () => {
     );
   };
 
-  const body = rowData.body || {
+  const body = rowData[0].body || {
     vehicleNumber: "string",
     ownerName: "string",
     registrationDate: "date",
@@ -42,7 +46,7 @@ const DevTestApi = () => {
   };
 
   const curlUrl =
-    rowData.code?.Curl ||
+    rowData[0].code[0]?.Curl ||
     `curl -X POST https://api.example.com/test -d '${JSON.stringify(body)}'`;
 
   const handleCopy = (text) => {
@@ -182,14 +186,14 @@ const DevTestApi = () => {
         <div className="flex col-span-2 flex-col gap-6 sm:gap-8">
           <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-xl p-4 sm:p-6 w-full">
             <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-[#00538C] to-[#00859D] bg-clip-text text-transparent">
-              {rowData.label || "API Details"}
+              {rowData[0].label || "API Details"}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-1 gap-4 sm:gap-6">
               <form
                 className="mt-4 flex flex-col gap-6"
                 onSubmit={handleSubmit(onSubmit)}
               >
-                {Object.entries(rowData.body).map(([key, value]) => (
+                {Object.entries(rowData[0].body).map(([key, value]) => (
                   <div key={key} className="flex flex-col">
                     <label
                       htmlFor={key}

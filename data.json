@@ -3,6 +3,7 @@
         {
             "name": "Digital Onboarding Suite",
             "value": "onboarding",
+            "catId": "cat83xjd1v",
             "size": 12,
             "content": [
                 {
@@ -79,6 +80,7 @@
         {
             "name": "Global Verification Suite",
             "value": "global",
+            "catId": "cat57lkw3x",
             "size": 12,
             "content": [
                 {
@@ -92,6 +94,7 @@
         {
             "name": "Risk, Fraud, and AML",
             "value": "risk & fraud",
+            "catId": "cat19qas7d",
             "size": 12,
             "content": [
                 {
@@ -111,6 +114,7 @@
         {
             "name": "Business & Entity Verification",
             "value": "business & entity",
+            "catId": "cat22vbn8c",
             "size": 12,
             "content": [
                 {
@@ -160,6 +164,7 @@
         {
             "name": "Financial Accounts Verification",
             "value": "financial accounts",
+            "catId": "cat63hyt2m",
             "size": 12,
             "content": [
                 {
@@ -176,13 +181,30 @@
         {
             "name": "Vehicle & Asset Verification",
             "value": "vehical and verification",
+            "catId": "cat63as34d",
             "size": 12,
             "content": [
                 {
                     "apiName": "Vehicle & Asset Verification"
                 },
                 {
-                    "apiName": "Vehicle RC Advanced APIs (V1, V2, V3)"
+                    "apiName": "Vehicle RC Advanced APIs (V1, V2, V3)",
+                    "id": "m5gr84i9",
+                    "label": "Vehicle RC V2 API",
+                    "url": "/api/rc/v2",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "e2WtaEJasQ5Maae3QpngD8IadCWFzhE28XeZ9bmB"
+                    },
+                    "body": {
+                        "vehicle_number": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/rc/v2' \\\n--header 'x-api-key: <api-key>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"vehicle_number\": \"vehicle_number_value\"}'"
+                        }
+                    ]
                 },
                 {
                     "apiName": "Chassis to RC Mapping API"
@@ -195,6 +217,7 @@
         {
             "name": "Contact & Communication Verification",
             "value": "contact and communiction",
+            "catId": "cat4zrkm9e",
             "size": 12,
             "content": [
                 {
@@ -211,6 +234,7 @@
         {
             "name": "Lending & Underwriting Automation",
             "value": "lending & underwriting",
+            "catId": "cat8plw37q",
             "size": 12,
             "content": [
                 {
@@ -227,6 +251,7 @@
         {
             "name": "Consent & Digital Signature",
             "value": "consent & digital",
+            "catId": "cat91fdx0z",
             "size": 12,
             "content": [
                 {
