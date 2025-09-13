@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import React, { act, useEffect, useState } from "react";
+import React, { act, useEffect, useRef, useState } from "react";
 import { FaBook, FaCode, FaLink } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -16,7 +16,7 @@ const ApiDocsHero = () => (
   <div className="bg-gradient-to-r from-[#024888] to-[#00BAAB] text-white rounded-xl p-6 mb-5 shadow flex flex-col md:flex-row items-center justify-between">
     <div>
       <h1 className="text-4xl font-bold mb-2 flex items-center gap-3">
-        <FaBook className="inline-block mb-1" /> Veriqos API Documentation
+        <FaBook className="inline-block mb-1" /> Developer API Documentation
       </h1>
       <p className="text-lg mb-3 max-w-full">
         Integrate your applications with Veriqos using our secure and robust
@@ -226,7 +226,7 @@ const tabs = [
   },
 ];
 
-const ApiDocs = () => {
+const DevDocs = () => {
   const [searchResult, setSearchResult] = useState([]);
   const [search, setSearch] = useState("");
   const fuseOptions = {
@@ -246,6 +246,37 @@ const ApiDocs = () => {
     console.log(res2);
     setSearchResult(res2);
   };
+
+  const scrollRef = useRef(null);
+  const isDown = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+
+  const handleMouseDown = (e) => {
+    isDown.current = true;
+    scrollRef.current.classList.add("cursor-grabbing");
+    startX.current = e.pageX - scrollRef.current.offsetLeft;
+    scrollLeft.current = scrollRef.current.scrollLeft;
+  };
+
+  const handleMouseLeave = () => {
+    isDown.current = false;
+    scrollRef.current.classList.remove("cursor-grabbing");
+  };
+
+  const handleMouseUp = () => {
+    isDown.current = false;
+    scrollRef.current.classList.remove("cursor-grabbing");
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDown.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX.current) * 1.2; // scroll speed
+    scrollRef.current.scrollLeft = scrollLeft.current - walk;
+  };
+
   return (
     <div className="md:px-5 py-5 relative top-12">
       <ApiDocsHero />
@@ -253,7 +284,7 @@ const ApiDocs = () => {
         <Input
           type="search"
           placeholder="Search APIs details..."
-          className="mb-5 py-7 lg:rounded-4xl rounded-2xl border-1 border-teal-600  focus:shadow-teal-700"
+          className="mb-5 py-7 lg:rounded-4xl rounded-2xl"
           onChange={handleSearchResult}
         />
       </div>
@@ -265,33 +296,36 @@ const ApiDocs = () => {
             </p>
           ) : null}
 
-          <Tabs defaultValue={tabs[0].value} className="max-w-full w-full">
+          <Tabs defaultValue={tabs[0].value} className="w-full">
             {searchResult.length === 0 && search.length === 0 ? (
               <TabsList
-                className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 
-    gap-2 p-0 bg-background border-b rounded-none h-fit"
+                ref={scrollRef}
+                onMouseDown={handleMouseDown}
+                onMouseLeave={handleMouseLeave}
+                onMouseUp={handleMouseUp}
+                onMouseMove={handleMouseMove}
+                className="w-full flex gap-1 p-0 bg-background justify-start border-b rounded-none 
+        overflow-x-auto no-scrollbar scroll-smooth cursor-grab select-none"
               >
                 {tabs.map((tab) => (
                   <TabsTrigger
                     key={tab.value}
                     value={tab.value}
-                    className="rounded-md text-center bg-background py-2 px-1 gap-2 
-        data-[state=active]:shadow-sm border border-transparent 
-        data-[state=active]:border-[#00B8AA] 
-        data-[state=active]:bg-gradient-to-br from-[#f3fffd] to-[#f8fcff] min-w-fit"
+                    className="shrink-0 rounded-none bg-background h-full 
+            data-[state=active]:shadow-none border border-transparent border-b-[#00B8AA] border-r-[#00B8AA] 
+            data-[state=active]:border-[#00B8AA] data-[state=active]:border-b-background -mb-[2px] rounded-t 
+            data-[state=active]:bg-gradient-to-br from-[#f3fffd] to-[#f8fcff] data-[state=active]:border-l-0"
                   >
                     <code className="text-[14px] font-sans">{tab.name}</code>
                   </TabsTrigger>
                 ))}
               </TabsList>
-            ) : (
-              ""
-            )}
+            ) : null}
             {tabs.map((tab) => (
               <TabsContent key={tab.value} value={tab.value} className="w-full">
                 <div
                   className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 
-                  border rounded-md mt-7 p-5 mx-auto overflow-y-auto h-[54vh]"
+            border rounded-md mt-7 p-5 mx-auto overflow-y-auto h-[54vh]"
                 >
                   {searchResult.length === 0 && search.length === 0
                     ? tab.content.map((item, idx) => (
@@ -356,7 +390,7 @@ const ApiDocs = () => {
                         <Card
                           key={idx}
                           className="w-full shadow-lg border-0 bg-gradient-to-br 
-                          from-[#f3fffd] to-[#f8fcff] hover:scale-[1.03] transition-transform duration-200 md:h-[240px] sm:h-[270px]"
+                    from-[#f3fffd] to-[#f8fcff] hover:scale-[1.03] transition-transform duration-200 md:h-[240px] sm:h-[270px]"
                         >
                           <CardHeader className="pb-2">
                             <CardTitle className="text-xl font-bold text-[#00B8AA]">
@@ -421,4 +455,4 @@ const ApiDocs = () => {
   );
 };
 
-export default ApiDocs;
+export default DevDocs;

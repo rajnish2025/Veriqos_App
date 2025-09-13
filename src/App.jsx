@@ -9,6 +9,7 @@ import Support from "./pages/Support";
 import DocSubscribe from "./pages/DocSubscribe";
 import DevTestApi from "./pages/DevTestApi";
 import Home from "./pages/Home";
+import DevDocs from "./pages/DevDocs";
 
 function App() {
   return (
@@ -24,11 +25,11 @@ function App() {
           }
         />
         <Route
-          path="/devdocs"
+          path="/sandbox/:catId/:id"
           element={
             <>
               <Navbar />
-              <ApisList />
+              <DashBoard />
             </>
           }
         />
@@ -43,6 +44,15 @@ function App() {
             ) : (
               <DocSubscribe />
             )
+          }
+        />
+        <Route
+          path="/devdocs"
+          element={
+            <>
+              <Navbar />
+              <DevDocs />{" "}
+            </>
           }
         />
         <Route

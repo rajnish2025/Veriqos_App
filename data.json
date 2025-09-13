@@ -13,10 +13,10 @@
                     "apiName": "Driving License Advance API"
                 },
                 {
-                    "apiName": "Aadhaar-PAN Link Status API"
+                    "apiName": "Voter ID API"
                 },
                 {
-                    "apiName": "PAN Identity Match API"
+                    "apiName": "Aadhaar-PAN Link Status API"
                 },
                 {
                     "apiName": "PAN Number Verification API"
@@ -88,6 +88,26 @@
                 },
                 {
                     "apiName": "Global Bank Transaction Fetch API"
+                },
+                {
+                    "apiName": "Challan Detials API",
+                    "id": "bhqecj4p",
+                    "label": "Challan API",
+                    "url": "/api/rc/challan-details",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "0iFX0CHjYL6gm3zZ7eeyd89LYBOPrUHq6QiqvpEv"
+                    },
+                    "body": {
+                        "vehicle_number": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/rc/fastag-details' \\\n--header 'x-api-key: <api-key>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n    \"vehicle_number\": \"UP53EB7078\"\n    }'",
+                            "JavaScript": "import axios from \"axios\";\n  const response = await axios.post(\"https://dev-api.innowave.solutions/rc/fastag-details\",\n    {vehicle_number: \"vehicle_number_value\",},\n    {headers: {\"x-api-key\": \"<api-key>\",\"Content-Type\": \"application/json\",},\n  }\n);"
+                        }
+                    ]
                 }
             ]
         },
@@ -104,7 +124,7 @@
                     "apiName": "Geo-Fencing Validation API"
                 },
                 {
-                    "apiName": "PAN to CIN Mapping API"
+                    "apiName": "Document Classification API"
                 },
                 {
                     "apiName": "Forgery Detection Advanced API"
@@ -118,10 +138,10 @@
             "size": 12,
             "content": [
                 {
-                    "apiName": "Company CIN Lookup API"
+                    "apiName": "CIN Number Lookup V1 API"
                 },
                 {
-                    "apiName": "CIN Lookup Advanced API"
+                    "apiName": "CIN Lookup Lookup V2 API"
                 },
                 {
                     "apiName": "PAN to CIN Mapping API"
@@ -172,9 +192,6 @@
                 },
                 {
                     "apiName": "Bank Verification (Penny Less) API"
-                },
-                {
-                    "apiName": "IP Risk Analysis API"
                 }
             ]
         },
@@ -185,17 +202,23 @@
             "size": 12,
             "content": [
                 {
-                    "apiName": "Vehicle & Asset Verification"
+                    "apiName": "Vehicle RC Lookup"
                 },
                 {
-                    "apiName": "Vehicle RC Advanced APIs (V1, V2, V3)",
+                    "apiName": "Vehicle RC Advanced"
+                },
+                {
+                    "apiName": "Vehicle RC Advanced V3"
+                },
+                {
+                    "apiName": "Vehicle RC Advanced V2",
                     "id": "m5gr84i9",
                     "label": "Vehicle RC V2 API",
                     "url": "/api/rc/v2",
                     "method": "POST",
                     "headers": {
                         "Content-Type": "application/json",
-                        "x-api-key": "e2WtaEJasQ5Maae3QpngD8IadCWFzhE28XeZ9bmB"
+                        "x-api-key": "<api_key>"
                     },
                     "body": {
                         "vehicle_number": "text"
@@ -207,10 +230,39 @@
                     ]
                 },
                 {
-                    "apiName": "Chassis to RC Mapping API"
+                    "apiName": "Chassis RC Lite (v1) API"
                 },
                 {
-                    "apiName": "RC to FASTag Details API"
+                    "apiName": "RC to FASTag Details"
+                },
+                {
+                    "apiName": "Chassis to RC Advance V2"
+                },
+                {
+                    "apiName": "Chassis RC Lite (v2) API"
+                },
+                {
+                    "apiName": "Chassis to RC Advance V1"
+                },
+                {
+                    "apiName": "Fastag Details API",
+                    "id": "3u1reuv4",
+                    "label": "Fastag API",
+                    "url": "/api/rc/fastag-details",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<api_key>"
+                    },
+                    "body": {
+                        "vehicle_number": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/rc/fastag-details' \\\n--header 'x-api-key: <api-key>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n    \"vehicle_number\": \"vehicale_number_value\"\n    }'",
+                            "JavaScript": "import axios from \"axios\";\n  const response = await axios.post(\"https://dev-api.innowave.solutions/rc/fastag-details\",\n    {vehicle_number: \"vehicle_number_value\",},\n    {headers: {\"x-api-key\": \"<api-key>\",\"Content-Type\": \"application/json\",},\n  }\n);"
+                        }
+                    ]
                 }
             ]
         },
@@ -221,10 +273,10 @@
             "size": 12,
             "content": [
                 {
-                    "apiName": "Telco Lookup Basic API"
+                    "apiName": "Lookup Basics API (Telecom API)"
                 },
                 {
-                    "apiName": "Telco Lookup Advanced API"
+                    "apiName": "Telco lookup (Advance) API"
                 },
                 {
                     "apiName": "Telco OTP Verification API"
@@ -244,7 +296,10 @@
                     "apiName": "UAN by Mobile API"
                 },
                 {
-                    "apiName": "PAN to CIN Mapping API"
+                    "apiName": "PAN by Mobile API"
+                },
+                {
+                    "apiName": "Aadhaar OCR API"
                 }
             ]
         },

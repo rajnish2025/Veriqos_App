@@ -1,14 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Select from "react-select";
 import axios from "axios";
 import CodeBlocks from "../components/CodeBlock";
+import { useLocation, useParams } from "react-router-dom";
+import jsonApiData from "../../data.json";
 
 const DashBoard = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [response, setResponse] = useState(null);
   const [downloadResponse, setDownloadResponse] = useState(null);
   const { register, handleSubmit, reset } = useForm();
+  const [apiTestData, setApiTestData] = useState(null);
+  const location = useLocation();
+  const params = useParams();
 
   const marketingAPIs = [
     {
@@ -132,6 +137,17 @@ const DashBoard = () => {
     reset();
     setSelectedOption(option);
   };
+  useEffect(() => {
+    if (params.hasOwnProperty("id") && params.hasOwnProperty("id")) {
+      const { catId, id } = params;
+      const apiData = jsonApiData.categories
+        .filter((category) => category.catId === catId)[0]
+        .content.filter((api) => api.id === id);
+      // console.log(apiData[0]);
+      console.log(apiData[0].code[0]);
+      setApiTestData(apiData[0]);
+    }
+  }, []);
 
   const onSubmit = async (data) => {
     const result = await axios.post(selectedOption.url, data, {
@@ -144,58 +160,6 @@ const DashBoard = () => {
         : result.data
     );
   };
-
-  // const renderTable = (data, level = 0) => {
-  //     if (typeof data !== 'object' || data === null) {
-  //         return <span className="text-gray-800">{String(data)}</span>;
-  //     }
-
-  //     if (Array.isArray(data)) {
-  //         return (
-  //             <div className={`overflow-x-auto ml-${level * 2}`}>
-  //                 <table className="min-w-full border border-slate-200 rounded-lg shadow-sm bg-gradient-to-br from-white to-slate-50">
-  //                     <tbody>
-  //                         {data.map((item, idx) => (
-  //                             <tr key={idx} className="even:bg-slate-50 odd:bg-white">
-  //                                 <td className="border px-4 py-3 text-sm">{renderTable(item, level + 1)}</td>
-  //                             </tr>
-  //                         ))}
-  //                     </tbody>
-  //                 </table>
-  //             </div>
-  //         );
-  //     }
-
-  //     return (
-  //         <div className={`overflow-x-auto ml-${level * 2}`}>
-  //             <table className="min-w-full border border-slate-200 rounded-lg shadow-md bg-gradient-to-br from-white to-slate-50 gap-5">
-  //                 <tbody>
-  //                     {Object.entries(data).map(([key, value], idx) => (
-  //                         <>
-  //                             <tr
-  //                                 className={`transition hover:bg-blue-50 ${idx % 2 === 0 ? "bg-slate-50" : "bg-white"}`}
-  //                                 >
-  //                                 <th
-  //                                     className={`border px-4 py-3 text-left align-top font-bold text-blue-700 whitespace-nowrap ${level === 0 ? "bg-blue-100" : "bg-slate-100"}`}
-  //                                     style={{ minWidth: 120 }}
-  //                                     >
-  //                                     {key.split('_').join(' ').toUpperCase()}
-  //                                 </th>
-  //                             </tr>
-  //                             <tr
-  //                                 className={`transition hover:bg-blue-50 ${idx % 2 === 0 ? "bg-slate-50" : "bg-white"}`}
-  //                                 >
-  //                                 <td className="border px-4 py-3 text-gray-900 align-top">
-  //                                     {renderTable(value, level + 1)}
-  //                                 </td>
-  //                             </tr>
-  //                         </>
-  //                     ))}
-  //                 </tbody>
-  //             </table>
-  //         </div>
-  //     );
-  // };
 
   const renderTable = (data, level = 0) => {
     // Handle primitives & null
@@ -284,12 +248,11 @@ const DashBoard = () => {
   };
 
   return (
-    <>
-      <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-white to-blue-100 px-4 py-10">
-        <div className="max-w-7xl mx-auto flex flex-col gap-10">
-          {/* API Interaction Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-8 gap-16">
-            {/* Left Block: Selector & Form */}
+    <div className="min-h-full px-4 py-10 relative top-40">
+      <div className="max-w-7xl mx-auto flex flex-col gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-8 gap-16">
+          {/* this block is for when user directly open sandbox from. */}
+          {location.pathname === "/sandbox" ? (
             <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-xl p-6 transition hover:shadow-2xl">
               <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-[#00538C] to-[#00859D] bg-clip-text text-transparent">
                 Select & Test API
@@ -338,113 +301,155 @@ const DashBoard = () => {
                 </form>
               )}
             </div>
-
-            {/* Right Block: CodeBlock */}
+          ) : (
+            /* this block is for when user open sandbox from dashboard. */
             <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-xl p-6 transition hover:shadow-2xl">
-              <div className="flex justify-between items-center">
-                <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-[#00538C] to-[#00859D] bg-clip-text text-transparent">
-                  cURL Preview
-                </h2>
-                <span>
-                  <button
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-[#00538C] to-[#00859D] text-white font-semibold shadow hover:from-[#00859D] hover:to-[#00538C] transition-all duration-200 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    onClick={() => {
-                      if (downloadResponse) {
-                        const json = JSON.stringify(downloadResponse, null, 2);
-                        console.log(downloadResponse);
-                        const blob = new Blob([json], {
-                          type: "application/json",
-                        });
-                        const url = URL.createObjectURL(blob);
-                        const link = document.createElement("a");
-                        link.href = url;
-                        link.download = "response.json";
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                        URL.revokeObjectURL(url);
-                      }
-                    }}
-                    disabled={!response}
-                    title={
-                      response ? "Download JSON" : "No response to download"
-                    }
-                  >
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 4v12m0 0l-4-4m4 4l4-4m-8 8h12"
+              <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-[#00538C] to-[#00859D] bg-clip-text text-transparent">
+                {apiTestData && apiTestData.apiName}
+              </h2>
+              {apiTestData && apiTestData.body && (
+                <form
+                  className="mt-4 flex flex-col gap-6"
+                  onSubmit={handleSubmit(onSubmit)}
+                >
+                  {Object.entries(apiTestData.body).map(([key, value]) => (
+                    <div key={key} className="flex flex-col">
+                      <label
+                        htmlFor={key}
+                        className="mb-1 text-sm font-semibold text-gray-700"
+                      >
+                        {key.split("_").join(" ").toUpperCase()}
+                      </label>
+                      <input
+                        type={value}
+                        name={key}
+                        id={key}
+                        {...register(key)}
+                        className="block w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-300 transition"
                       />
-                    </svg>
-                    Download JSON
+                    </div>
+                  ))}
+                  <button
+                    type="submit"
+                    className="mt-2 px-6 py-3 bg-gradient-to-r from-[#00538C] to-[#00859D] text-white font-semibold rounded-xl shadow-md hover:from-[#00859D] hover:to-[#00538C] transition w-full md:w-auto"
+                  >
+                    🚀 Send Request
                   </button>
-                </span>
-              </div>
-              <div className="mt-6">
-                <CodeBlocks
-                  code={selectedOption?.code ? selectedOption.code : {}}
-                  language={"bash"}
-                />
-              </div>
+                </form>
+              )}
+            </div>
+          )}
+
+          {/* Right Block: CodeBlock */}
+          <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-xl p-6 transition hover:shadow-2xl">
+            <div className="flex justify-between items-center">
+              <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-[#00538C] to-[#00859D] bg-clip-text text-transparent">
+                cURL Preview
+              </h2>
+              <span>
+                <button
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-[#00538C] to-[#00859D] text-white font-semibold shadow hover:from-[#00859D] hover:to-[#00538C] transition-all duration-200 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  onClick={() => {
+                    if (downloadResponse) {
+                      const json = JSON.stringify(downloadResponse, null, 2);
+                      console.log(downloadResponse);
+                      const blob = new Blob([json], {
+                        type: "application/json",
+                      });
+                      const url = URL.createObjectURL(blob);
+                      const link = document.createElement("a");
+                      link.href = url;
+                      link.download = "response.json";
+                      document.body.appendChild(link);
+                      link.click();
+                      document.body.removeChild(link);
+                      URL.revokeObjectURL(url);
+                    }
+                  }}
+                  disabled={!response}
+                  title={response ? "Download JSON" : "No response to download"}
+                >
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 4v12m0 0l-4-4m4 4l4-4m-8 8h12"
+                    />
+                  </svg>
+                  Download JSON
+                </button>
+              </span>
+            </div>
+            <div className="mt-6">
+              <CodeBlocks
+                code={
+                  selectedOption?.code
+                    ? selectedOption.code
+                    : params.hasOwnProperty("catId") &&
+                      params.hasOwnProperty("id")
+                    ? apiTestData && apiTestData.code[0]
+                    : ""
+                }
+                language={"bash"}
+              />
             </div>
           </div>
+        </div>
 
-          {/* Response Section */}
-          {response ? (
-            <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl p-6 transition hover:shadow-2xl">
-              <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-[#024688] to-[#03BEAC] bg-clip-text text-transparent">
-                Response
-              </h2>
-              <div className="border-2 border-gray-200 rounded-xl min-h-[250px] w-full p-4 bg-white overflow-x-auto shadow-inner">
-                {response ? (
-                  renderTable(
-                    Object.fromEntries(
-                      Object.entries(response).filter(
-                        ([key]) =>
-                          key !== "message" &&
-                          key !== "responseId" &&
-                          key !== "status" &&
-                          key !== "response_id"
-                      )
+        {/* Response Section */}
+        {response ? (
+          <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl p-6 transition hover:shadow-2xl">
+            <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-[#024688] to-[#03BEAC] bg-clip-text text-transparent">
+              Response
+            </h2>
+            <div className="border-2 border-gray-200 rounded-xl min-h-[250px] w-full p-4 bg-white overflow-x-auto shadow-inner">
+              {response ? (
+                renderTable(
+                  Object.fromEntries(
+                    Object.entries(response).filter(
+                      ([key]) =>
+                        key !== "message" &&
+                        key !== "responseId" &&
+                        key !== "status" &&
+                        key !== "response_id"
                     )
                   )
-                ) : (
-                  <span className="text-gray-500 italic">
-                    Response data will appear here...
-                  </span>
-                )}
-              </div>
+                )
+              ) : (
+                <span className="text-gray-500 italic">
+                  Response data will appear here...
+                </span>
+              )}
             </div>
-          ) : (
-            ""
-          )}
-        </div>
-        {/* Marketing Section */}
-        <section className="max-w-7xl mx-auto mt-24">
-          <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-[#024688] to-[#006C95] bg-clip-text text-transparent">
-            Explore Our APIs
-          </h2>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {marketingAPIs.map((api, idx) => (
-              <div
-                key={idx}
-                className={`p-6 rounded-2xl shadow-md bg-gradient-to-br ${api.gradient} text-white hover:scale-[1.02] transition`}
-              >
-                <h3 className="text-xl font-semibold mb-2">{api.title}</h3>
-                <p className="text-sm opacity-90">{api.desc}</p>
-              </div>
-            ))}
           </div>
-        </section>
+        ) : (
+          ""
+        )}
       </div>
-    </>
+
+      <section className="max-w-7xl mx-auto mt-24">
+        <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-[#024688] to-[#006C95] bg-clip-text text-transparent">
+          Explore Our APIs
+        </h2>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {marketingAPIs.map((api, idx) => (
+            <div
+              key={idx}
+              className={`p-6 rounded-2xl shadow-md bg-gradient-to-br ${api.gradient} text-white hover:scale-[1.02] transition`}
+            >
+              <h3 className="text-xl font-semibold mb-2">{api.title}</h3>
+              <p className="text-sm opacity-90">{api.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
   );
 };
 

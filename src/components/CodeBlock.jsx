@@ -24,14 +24,14 @@
 import { useEffect, useState } from "react";
 import { CodeTabs } from "./ui/shadcn-io/code-tabs";
 const CODES = {
-  Curl: `{
+  Curl: `
   curl --location 'https://dev-api.innowave.solutions/rc/v2' \n\
---header 'x-api-key: 0iFX0CHjYL6gm3zZ7eeyd89LYBOPrUHq6QiqvpEv' \n\
+--header 'x-api-key: <api_key>' \n\
 --header 'Content-Type: application/json' \n\
 --data '{
     "vehicle_number": "UP53EB7078"
     }'
-}`,
+`,
   JavaScript: `{
   import axios from "axios";
   const response = await axios.post("https://dev-api.innowave.solutions/rc/fastag-details",
@@ -45,7 +45,9 @@ export default function CodeBlocks({ code, language }) {
   const [mycode, setMycode] = useState(code);
   useEffect(() => {
     setMycode(code);
-  }, [code]);
+  }, [mycode]);
   console.log(code);
-  return <CodeTabs lang="json" codes={code} themes={{ dark: "github-dark" }} />;
+  return (
+    <CodeTabs lang="json" codes={CODES} themes={{ dark: "github-dark" }} />
+  );
 }

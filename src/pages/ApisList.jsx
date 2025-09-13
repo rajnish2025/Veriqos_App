@@ -28,39 +28,6 @@ import {
 } from "@/components/ui/table";
 import { Link } from "react-router-dom";
 
-// ✅ keep only serializable row data
-// const data = [
-//   {
-//     id: "m5gr84i9",
-//     apiName: "Fastage API",
-//     method: "GET",
-//     price: "$0.01 per request",
-//   },
-//   {
-//     id: "3u1reuv4",
-//     apiName: "Vehical RC V2 API",
-//     method: "POST",
-//     price: "$0.01 per request",
-//   },
-//   {
-//     id: "derv1ws0",
-//     apiName: "Challan API",
-//     method: "GET",
-//     price: "$0.01 per request",
-//   },
-//   {
-//     id: "5kma53ae",
-//     apiName: "Addhar API",
-//     method: "POST",
-//     price: "$0.01 per request",
-//   },
-//   {
-//     id: "bhqecj4p",
-//     apiName: "PAN API",
-//     method: "GET",
-//     price: "$0.01 per request",
-//   },
-// ];
 const data = [
   {
     id: "m5gr84i9",

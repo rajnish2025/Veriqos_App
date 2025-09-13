@@ -1,8 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import jsonData from "../../data.json";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const tabs = jsonData.categories;
 
@@ -24,7 +24,7 @@ const Home = () => {
   };
 
   return (
-    <div className="w-full flex flex-col justify-center mt-10 box-border">
+    <div className="w-full flex flex-col justify-center mt-10 box-border relative top-40">
       <div className="w-[90%] mx-auto border-b-1 pb-6">
         <h2 className="text-3xl font-bold mb-2">Veriqos API Sandbox</h2>
         <p className="text-lg">
@@ -56,13 +56,13 @@ const Home = () => {
                 <Link
                   onClick={(event) =>
                     handRedirectMode(event, {
-                      sandboxUrl: "/sandbox",
+                      sandboxUrl: `/sandbox/${tab.catId}/${item.id}`,
                       testUlr: `/devApi/test/${tab.catId}/${item.id}`,
                     })
                   }
                   key={idx}
                 >
-                  <Card className="w-60 h-[10vh] text-center max-w-sm shadow-lg border-1 border-[#c8dddc] bg-[#fff] hover:scale-[1.03] transition-transform duration-200">
+                  <Card className="lg:w-60 sm:w-44 h-[10vh] text-center max-w-sm shadow-lg border-1 border-[#c8dddc] bg-[#fff] hover:scale-[1.03] transition-transform duration-200 flex justify-center items-center">
                     <CardContent className="pt-5">{item.apiName}</CardContent>
                   </Card>
                 </Link>

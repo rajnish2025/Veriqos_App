@@ -1,4 +1,3 @@
-import CodeBlocks from "@/components/CodeBlock";
 import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -102,7 +101,7 @@ const DevTestApi = () => {
       <div
         className={`ml-${
           level * 2
-        } my-3 overflow-x-auto border border-slate-200 rounded-xl shadow-md bg-gradient-to-br from-white to-slate-50`}
+        } my-3 overflow-x-auto border border-slate-200 rounded-xl shadow-md bg-gradient-to-br from-white to-slate-50 `}
       >
         <table className="min-w-full text-sm md:text-base">
           {entries.map(([key, value], idx) => (
@@ -181,7 +180,7 @@ const DevTestApi = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-white to-blue-100 px-2 py-6 sm:px-4 sm:py-10">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-white to-blue-100 px-2 py-6 sm:px-4 sm:py-10 relative top-36">
       <div className="w-full max-w-[90%] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10">
         <div className="flex col-span-2 flex-col gap-6 sm:gap-8">
           <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-xl p-4 sm:p-6 w-full">
