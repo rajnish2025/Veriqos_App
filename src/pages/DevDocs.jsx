@@ -11,6 +11,7 @@ import React, { act, useEffect, useRef, useState } from "react";
 import { FaBook, FaCode, FaLink } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import apiJsonData from "../../data.json";
 
 const ApiDocsHero = () => (
   <div className="bg-gradient-to-r from-[#024888] to-[#00BAAB] text-white rounded-xl p-6 mb-5 shadow flex flex-col md:flex-row items-center justify-between">
@@ -24,7 +25,7 @@ const ApiDocsHero = () => (
         to help you start working with our APIs as quickly as possible.
       </p>
       <Link
-        to="/devdocs"
+        to="/"
         className="inline-flex items-center px-5 py-2 bg-white text-[#00819C] font-semibold rounded shadow hover:bg-blue-50 transition"
       >
         <FaLink className="mr-2" /> Jump to Endpoints
@@ -36,210 +37,215 @@ const ApiDocsHero = () => (
   </div>
 );
 
-const tabs = [
-  {
-    name: "Digital Onboarding",
-    value: "onboarding",
-    content: [
-      {
-        title: "User Registration",
-        description: "Register a new user with KYC verification.",
-        method: "POST",
-        endpoint: "/api/v1/onboarding/register",
-        auth: "API Key",
-      },
-      {
-        title: "Document Upload",
-        description: "Upload identity documents details for onboarding.",
-        method: "POST",
-        endpoint: "/api/v1/onboarding/upload",
-        auth: "API Key",
-      },
-      {
-        title: "Document Upload",
-        description: "Upload identity documents details for onboarding.",
-        method: "POST",
-        endpoint: "/api/v1/onboarding/upload",
-        auth: "API Key",
-      },
-      {
-        title: "Document Upload",
-        description: "Upload identity documents details for onboarding.",
-        method: "POST",
-        endpoint: "/api/v1/onboarding/upload",
-        auth: "API Key",
-      },
-      {
-        title: "Document Upload",
-        description: "Upload identity documents details for onboarding.",
-        method: "POST",
-        endpoint: "/api/v1/onboarding/upload",
-        auth: "API Key",
-      },
-      {
-        title: "Document Upload",
-        description: "Upload identity documents details for onboarding.",
-        method: "POST",
-        endpoint: "/api/v1/onboarding/upload",
-        auth: "API Key",
-      },
-      {
-        title: "Document Upload",
-        description: "Upload identity documents details for onboarding.",
-        method: "POST",
-        endpoint: "/api/v1/onboarding/upload",
-        auth: "API Key",
-      },
-      {
-        title: "Document Upload",
-        description: "Upload identity documents details for onboarding.",
-        method: "POST",
-        endpoint: "/api/v1/onboarding/upload",
-        auth: "API Key",
-      },
-      {
-        title: "Document Upload",
-        description: "Upload identity documents details for onboarding.",
-        method: "POST",
-        endpoint: "/api/v1/onboarding/upload",
-        auth: "API Key",
-      },
-      {
-        title: "Document Upload",
-        description: "Upload identity documents details for onboarding.",
-        method: "POST",
-        endpoint: "/api/v1/onboarding/upload",
-        auth: "API Key",
-      },
-      {
-        title: "Document Upload",
-        description: "Upload identity documents details for onboarding.",
-        method: "POST",
-        endpoint: "/api/v1/onboarding/upload",
-        auth: "API Key",
-      },
-    ],
-  },
-  {
-    name: "Risk, Fraud & AML",
-    value: "risk",
-    content: [
-      {
-        title: "Fraud Check",
-        description: "Check user against fraud databases.",
-        method: "GET",
-        endpoint: "/api/v1/risk/fraud-check",
-        auth: "API Key",
-      },
-    ],
-  },
-  {
-    name: "Global Verification",
-    value: "global",
-    content: [
-      {
-        title: "Passport Verification",
-        description: "Verify passport details globally.",
-        method: "POST",
-        endpoint: "/api/v1/global/passport",
-        auth: "API Key",
-      },
-    ],
-  },
-  {
-    name: "Vehical & Asset",
-    value: "vehical",
-    content: [
-      {
-        title: "Vehical RC V2",
-        description: "vehical Detaisl generation.",
-        method: "POST",
-        endpoint: "/api/v1/vehical/verification",
-        auth: "API Key",
-      },
-    ],
-  },
-  {
-    name: "Fincancial Accounts Verification",
-    value: "fincancial",
-    content: [
-      {
-        title: "Vehical RC V2",
-        description: "vehical Detaisl generation.",
-        method: "POST",
-        endpoint: "/api/v1/vehical/verification",
-        auth: "API Key",
-      },
-    ],
-  },
-  {
-    name: "Consent & digital signature",
-    value: "consent",
-    content: [
-      {
-        title: "Vehical RC V2",
-        description: "vehical Detaisl generation.",
-        method: "POST",
-        endpoint: "/api/v1/vehical/verification",
-        auth: "API Key",
-      },
-    ],
-  },
-  {
-    name: "Business & Entity Verification",
-    value: "business",
-    content: [
-      {
-        title: "Vehical RC V2",
-        description: "vehical Detaisl generation.",
-        method: "POST",
-        endpoint: "/api/v1/vehical/verification",
-        auth: "API Key",
-      },
-    ],
-  },
-  {
-    name: "Contact & Communication",
-    value: "contact",
-    content: [
-      {
-        title: "Vehical RC V2",
-        description: "vehical Detaisl generation.",
-        method: "POST",
-        endpoint: "/api/v1/vehical/verification",
-        auth: "API Key",
-      },
-    ],
-  },
-  {
-    name: "Lending & Underwriting",
-    value: "lending",
-    content: [
-      {
-        title: "Vehical RC V2",
-        description: "vehical Detaisl generation.",
-        method: "POST",
-        endpoint: "/api/v1/vehical/verification",
-        auth: "API Key",
-      },
-    ],
-  },
-];
-
+// const tabs = [
+//   {
+//     name: "Digital Onboarding",
+//     value: "onboarding",
+//     content: [
+//       {
+//         title: "User Registration",
+//         description: "Register a new user with KYC verification.",
+//         method: "POST",
+//         endpoint: "/api/v1/onboarding/register",
+//         auth: "API Key",
+//       },
+//       {
+//         title: "Document Upload",
+//         description: "Upload identity documents details for onboarding.",
+//         method: "POST",
+//         endpoint: "/api/v1/onboarding/upload",
+//         auth: "API Key",
+//       },
+//       {
+//         title: "Document Upload",
+//         description: "Upload identity documents details for onboarding.",
+//         method: "POST",
+//         endpoint: "/api/v1/onboarding/upload",
+//         auth: "API Key",
+//       },
+//       {
+//         title: "Document Upload",
+//         description: "Upload identity documents details for onboarding.",
+//         method: "POST",
+//         endpoint: "/api/v1/onboarding/upload",
+//         auth: "API Key",
+//       },
+//       {
+//         title: "Document Upload",
+//         description: "Upload identity documents details for onboarding.",
+//         method: "POST",
+//         endpoint: "/api/v1/onboarding/upload",
+//         auth: "API Key",
+//       },
+//       {
+//         title: "Document Upload",
+//         description: "Upload identity documents details for onboarding.",
+//         method: "POST",
+//         endpoint: "/api/v1/onboarding/upload",
+//         auth: "API Key",
+//       },
+//       {
+//         title: "Document Upload",
+//         description: "Upload identity documents details for onboarding.",
+//         method: "POST",
+//         endpoint: "/api/v1/onboarding/upload",
+//         auth: "API Key",
+//       },
+//       {
+//         title: "Document Upload",
+//         description: "Upload identity documents details for onboarding.",
+//         method: "POST",
+//         endpoint: "/api/v1/onboarding/upload",
+//         auth: "API Key",
+//       },
+//       {
+//         title: "Document Upload",
+//         description: "Upload identity documents details for onboarding.",
+//         method: "POST",
+//         endpoint: "/api/v1/onboarding/upload",
+//         auth: "API Key",
+//       },
+//       {
+//         title: "Document Upload",
+//         description: "Upload identity documents details for onboarding.",
+//         method: "POST",
+//         endpoint: "/api/v1/onboarding/upload",
+//         auth: "API Key",
+//       },
+//       {
+//         title: "Document Upload",
+//         description: "Upload identity documents details for onboarding.",
+//         method: "POST",
+//         endpoint: "/api/v1/onboarding/upload",
+//         auth: "API Key",
+//       },
+//     ],
+//   },
+//   {
+//     name: "Risk, Fraud & AML",
+//     value: "risk",
+//     content: [
+//       {
+//         title: "Fraud Check",
+//         description: "Check user against fraud databases.",
+//         method: "GET",
+//         endpoint: "/api/v1/risk/fraud-check",
+//         auth: "API Key",
+//       },
+//     ],
+//   },
+//   {
+//     name: "Global Verification",
+//     value: "global",
+//     content: [
+//       {
+//         title: "Passport Verification",
+//         description: "Verify passport details globally.",
+//         method: "POST",
+//         endpoint: "/api/v1/global/passport",
+//         auth: "API Key",
+//       },
+//     ],
+//   },
+//   {
+//     name: "Vehical & Asset",
+//     value: "vehical",
+//     content: [
+//       {
+//         title: "Vehical RC V2",
+//         description: "vehical Detaisl generation.",
+//         method: "POST",
+//         endpoint: "/api/v1/vehical/verification",
+//         auth: "API Key",
+//       },
+//     ],
+//   },
+//   {
+//     name: "Fincancial Accounts Verification",
+//     value: "fincancial",
+//     content: [
+//       {
+//         title: "Vehical RC V2",
+//         description: "vehical Detaisl generation.",
+//         method: "POST",
+//         endpoint: "/api/v1/vehical/verification",
+//         auth: "API Key",
+//       },
+//     ],
+//   },
+//   {
+//     name: "Consent & digital signature",
+//     value: "consent",
+//     content: [
+//       {
+//         title: "Vehical RC V2",
+//         description: "vehical Detaisl generation.",
+//         method: "POST",
+//         endpoint: "/api/v1/vehical/verification",
+//         auth: "API Key",
+//       },
+//     ],
+//   },
+//   {
+//     name: "Business & Entity Verification",
+//     value: "business",
+//     content: [
+//       {
+//         title: "Vehical RC V2",
+//         description: "vehical Detaisl generation.",
+//         method: "POST",
+//         endpoint: "/api/v1/vehical/verification",
+//         auth: "API Key",
+//       },
+//     ],
+//   },
+//   {
+//     name: "Contact & Communication",
+//     value: "contact",
+//     content: [
+//       {
+//         title: "Vehical RC V2",
+//         description: "vehical Detaisl generation.",
+//         method: "POST",
+//         endpoint: "/api/v1/vehical/verification",
+//         auth: "API Key",
+//       },
+//     ],
+//   },
+//   {
+//     name: "Lending & Underwriting",
+//     value: "lending",
+//     content: [
+//       {
+//         title: "Vehical RC V2",
+//         description: "vehical Detaisl generation.",
+//         method: "POST",
+//         endpoint: "/api/v1/vehical/verification",
+//         auth: "API Key",
+//       },
+//     ],
+//   },
+// ];
+const tabss = apiJsonData.categories;
 const DevDocs = () => {
   const [searchResult, setSearchResult] = useState([]);
   const [search, setSearch] = useState("");
   const fuseOptions = {
     includeScore: true,
     threshold: 0.3,
-    keys: ["title", "description", "method", "endpoint"],
+    // keys: ["title", "description", "method", "endpoint"],
+    keys: ["apiName", "overview", "label", "url", "method"],
   };
   const handleSearchResult = (e) => {
     setSearch(e.target.value);
-    const apidocsList = tabs.reduce(
+    const apidocsList = tabss.reduce(
       (prev, tabcontent) => [...prev, ...tabcontent.content],
       []
     );
+    // const apidocsList = tabs.reduce(
+    //   (prev, tabcontent) => [...prev, ...tabcontent.content],
+    //   []
+    // );
     const fuse2 = new Fuse(apidocsList, fuseOptions);
     const res2 = fuse2.search(e.target.value);
     console.log(apidocsList);
@@ -296,7 +302,7 @@ const DevDocs = () => {
             </p>
           ) : null}
 
-          <Tabs defaultValue={tabs[0].value} className="w-full">
+          <Tabs defaultValue={tabss[0].value} className="w-full">
             {searchResult.length === 0 && search.length === 0 ? (
               <TabsList
                 ref={scrollRef}
@@ -307,7 +313,7 @@ const DevDocs = () => {
                 className="w-full flex gap-1 p-0 bg-background justify-start border-b rounded-none 
         overflow-x-auto no-scrollbar scroll-smooth cursor-grab select-none"
               >
-                {tabs.map((tab) => (
+                {tabss.map((tab) => (
                   <TabsTrigger
                     key={tab.value}
                     value={tab.value}
@@ -321,24 +327,25 @@ const DevDocs = () => {
                 ))}
               </TabsList>
             ) : null}
-            {tabs.map((tab) => (
+            {tabss.map((tab) => (
               <TabsContent key={tab.value} value={tab.value} className="w-full">
                 <div
                   className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 
-            border rounded-md mt-7 p-5 mx-auto overflow-y-auto h-[54vh]"
+            border rounded-md mt-7 p-5 mx-auto overflow-y-auto max-h-[54vh]"
                 >
                   {searchResult.length === 0 && search.length === 0
                     ? tab.content.map((item, idx) => (
                         <Card
                           key={idx}
-                          className="w-full shadow-lg border-0 bg-gradient-to-br from-[#f3fffd] to-[#f8fcff] hover:scale-[1.03] transition-transform duration-200 h-auto min-h-[270px] max-h-[250px] sm:min-h-[270px] md:min-h-[250px] lg:min-h-[240px]"
+                          className="w-full shadow-lg border-0 bg-gradient-to-br from-[#f3fffd] to-[#f8fcff] hover:scale-[1.03] transition-transform duration-200 h-auto flex flex-col justify-between"
                         >
+                          {console.log(item)}
                           <CardHeader className="pb-2">
                             <CardTitle className="text-xl font-bold text-[#00B8AA]">
-                              {item.title}
+                              {item.apiName}
                             </CardTitle>
                             <CardDescription className="text-gray-600 mt-1">
-                              {item.description}
+                              {item.overview}
                             </CardDescription>
                           </CardHeader>
                           <CardContent className="py-2">
@@ -352,13 +359,13 @@ const DevDocs = () => {
                               <li>
                                 Endpoint:{" "}
                                 <span className="font-mono text-xs text-[#00859D]">
-                                  {item.endpoint}
+                                  {item.url}
                                 </span>
                               </li>
                               <li>
                                 Auth:{" "}
                                 <span className="font-semibold text-green-600">
-                                  {item.auth}
+                                  {/* {item.auth} */ "API Key"}
                                 </span>
                               </li>
                             </ul>
@@ -390,14 +397,14 @@ const DevDocs = () => {
                         <Card
                           key={idx}
                           className="w-full shadow-lg border-0 bg-gradient-to-br 
-                    from-[#f3fffd] to-[#f8fcff] hover:scale-[1.03] transition-transform duration-200 md:h-[240px] sm:h-[270px]"
+                    from-[#f3fffd] to-[#f8fcff] hover:scale-[1.03] transition-transform duration-200 md:h-[300px] sm:h-[270px] flex flex-col justify-between"
                         >
                           <CardHeader className="pb-2">
                             <CardTitle className="text-xl font-bold text-[#00B8AA]">
-                              {item.title}
+                              {item.apiName}
                             </CardTitle>
                             <CardDescription className="text-gray-600 mt-1">
-                              {item.description}
+                              {item.overview}
                             </CardDescription>
                           </CardHeader>
                           <CardContent className="py-2">
@@ -411,13 +418,13 @@ const DevDocs = () => {
                               <li>
                                 Endpoint:{" "}
                                 <span className="font-mono text-xs text-[#00859D]">
-                                  {item.endpoint}
+                                  {item.url}
                                 </span>
                               </li>
                               <li>
                                 Auth:{" "}
                                 <span className="font-semibold text-green-600">
-                                  {item.auth}
+                                  {/* {item.auth} */ "API Key"}
                                 </span>
                               </li>
                             </ul>

@@ -10,43 +10,329 @@
                     "apiName": "Driving License Basic API"
                 },
                 {
-                    "apiName": "Driving License Advance API"
+                    "apiName": "Driving License Advance API",
+                    "id": "dladvanceapi1010",
+                    "label": "DL Advance API",
+                    "url": "/api/dl/advance",
+                    "overview": "The DL Advance API retrieves driving license details using DL number and DOB. It provides personal info, address, validity, vehicle class, and supports KYC and compliance checks.",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<api_key>"
+                    },
+                    "body": {
+                        "dl_number": "text",
+                        "dob": "date"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/dl/advance' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"dl_number\": \"<DLNumber>\",\n  \"dob\": \"<DOB>\"\n}'",
+                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/dl/advance\",\n  {\n    dl_number: \"<DLNumber>\",\n    dob: \"<DOB>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
+                        }
+                    ]
                 },
                 {
-                    "apiName": "Voter ID API"
+                    "apiName": "Voter ID API",
+                    "id": "voteridapi8822",
+                    "label": "Voter ID API",
+                    "url": "/api/voterid/v1",
+                    "overview": "The Voter ID API verifies and fetches voter details using the voter ID number. It provides personal info, constituency, booth, and location data for identity verification and compliance.",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<api_key>"
+                    },
+                    "body": {
+                        "voter_id": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/voterid/v1' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"voter_id\": \"<VoterID>\"\n}'",
+                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/voterid/v1\",\n  {\n    voter_id: \"<VoterID>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
+                        }
+                    ]
                 },
                 {
                     "apiName": "Aadhaar-PAN Link Status API"
                 },
                 {
-                    "apiName": "PAN Number Verification API"
+                    "apiName": "PAN Number Verification API",
+                    "id": "panverificationapi5566",
+                    "label": "PAN Verification API",
+                    "url": "/api/pan/pan-verification",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<api_key>"
+                    },
+                    "body": {
+                        "panNumber": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan/pan-verification' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"<PanNumber>\"}'",
+                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/pan/pan-verification\",\n  {\n    panNumber: \"<PanNumber>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
+                        }
+                    ]
                 },
                 {
-                    "apiName": "PAN Identity Match API"
+                    "apiName": "PAN Identity Match API",
+                    "id": "identitymatchapi5678",
+                    "label": "Identity Match API",
+                    "url": "/api/pan/identity-match",
+                    "overview": "Fetch identity details including name, email, phone, gender, DOB, Aadhaar linkage, and address.",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<api_key>"
+                    },
+                    "body": {
+                        "panNumber": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan/identity-match' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"<PanNumber>\"}'",
+                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/pan/identity-match\",\n  {\n    panNumber: \"<PanNumber>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
+                        }
+                    ]
                 },
                 {
-                    "apiName": "PAN Comprehensive Verification API"
+                    "apiName": "PAN Advance v2",
+                    "id": "panadvancev2api9012",
+                    "label": "PAN Advance v2",
+                    "url": "/api/pan/panadvance-v2",
+                    "overview": "Fetches additional attributes: Father name, Aadhaar linkage, masked Aadhaar, DOB, gender.",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<api_key>"
+                    },
+                    "body": {
+                        "panNumber": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan/panadvance-v2' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"<PanNumber>\"}'",
+                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/pan/panadvance-v2\",\n  {\n    panNumber: \"<PanNumber>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
+                        }
+                    ]
                 },
                 {
-                    "apiName": "PAN Complete Profile API"
+                    "apiName": "PAN Comprehensive Verification API",
+                    "id": "pancomprehensiveapi7890",
+                    "label": "PAN Comprehensive Verification API",
+                    "url": "/api/pan/comprehensive-verification",
+                    "overview": "This API fetches comprehensive details of a PAN holder, including identity, address, Aadhaar linkage, and father's name. It is useful for KYC, onboarding, and identity verification processes.",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<api_key>"
+                    },
+                    "body": {
+                        "panNumber": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan/comprehensive-verification' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"<PanNumber>\"}'",
+                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/pan/comprehensive-verification\",\n  {\n    panNumber: \"<PanNumber>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
+                        }
+                    ]
                 },
                 {
-                    "apiName": "PAN Demographic Data Fetch API"
+                    "apiName": "PAN Complete Profile API",
+                    "id": "completeprofileapi9988",
+                    "label": "Complete Profile",
+                    "url": "/api/pan/complete-profile",
+                    "overview": "Pulls a full profile including name, DOB, father name, Aadhaar link, address, contact details.",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<api_key>"
+                    },
+                    "body": {
+                        "panNumber": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan/complete-profile' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"<PanNumber>\"}'",
+                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/pan/complete-profile\",\n  {\n    panNumber: \"<PanNumber>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
+                        }
+                    ]
                 },
                 {
-                    "apiName": "PAN Demographic Advance API"
+                    "apiName": "PAN Demographic Data Fetch API",
+                    "id": "demographicdatafetchapi3456",
+                    "label": "Demographic Data Fetch",
+                    "url": "/api/pan/demographic-data-fetch",
+                    "overview": "This API retrieves demographic information linked to a PAN, such as address, state, and pincode. It supports KYC, identity verification, and customer onboarding processes.",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<api_key>"
+                    },
+                    "body": {
+                        "panNumber": "text",
+                        "pan_holder_name": "text",
+                        "dob": "date"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan/demographic-data-fetch' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"panNumber\": \"<PanNumber>\",\n  \"pan_holder_name\": \"<PanHolderName>\",\n  \"dob\": \"<DOB>\"\n}'",
+                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/pan/demographic-data-fetch\",\n  {\n    panNumber: \"<PanNumber>\",\n    pan_holder_name: \"<PanHolderName>\",\n    dob: \"<DOB>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
+                        }
+                    ]
                 },
                 {
-                    "apiName": "PAN to Father’s Name Lookup API"
+                    "apiName": "PAN Validate",
+                    "id": "panvalidateapi4321",
+                    "label": "PAN Validate",
+                    "url": "/api/pan/validate",
+                    "overview": "Quick check if a PAN is valid, invalid, or inactive.",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<api_key>"
+                    },
+                    "body": {
+                        "panNumber": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan/validate' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"<PanNumber>\"}'",
+                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/pan/validate\",\n  {\n    panNumber: \"<PanNumber>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
+                        }
+                    ]
                 },
                 {
-                    "apiName": "PAN to Name & DOB Lookup API"
+                    "apiName": "PAN Demographic Advance API",
+                    "id": "demographicadvanceapi7891",
+                    "label": "Demographic Advance",
+                    "url": "/api/pan/demographic-advance",
+                    "overview": "This API provides extended demographic information linked to a PAN, including multiple addresses if available. It is useful for thorough identity checks, KYC, and compliance workflows.",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<api_key>"
+                    },
+                    "body": {
+                        "panNumber": "text",
+                        "date_of_birth": "date",
+                        "panHolder_name": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan/demographic-advance' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"panNumber\": \"<PanNumber>\",\n  \"date_of_birth\": \"<DOB>\",\n  \"panHolder_name\": \"<PanHolderName>\"\n}'",
+                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/pan/demographic-advance\",\n  {\n    panNumber: \"<PanNumber>\",\n    date_of_birth: \"<DOB>\",\n    panHolder_name: \"<PanHolderName>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
+                        }
+                    ]
+                },
+                {
+                    "apiName": "PAN to Father’s Name Lookup API",
+                    "id": "fathernamelookupapi8765",
+                    "label": "Father Name Lookup",
+                    "url": "/api/pan/father-name-lookup",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<api_key>"
+                    },
+                    "body": {
+                        "panNumber": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan/father-name-lookup' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"<PanNumber>\"}'",
+                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/pan/father-name-lookup\",\n  {\n    panNumber: \"<PanNumber>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
+                        }
+                    ]
+                },
+                {
+                    "apiName": "PAN to Name & DOB Lookup API",
+                    "id": "namedoblookupapi6543",
+                    "label": "Name & DOB Lookup",
+                    "url": "/api/pan/name-and-dob-lookup",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<api_key>"
+                    },
+                    "body": {
+                        "panNumber": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan/name-and-dob-lookup' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"<PanNumber>\"}'",
+                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/pan/name-and-dob-lookup\",\n  {\n    panNumber: \"<PanNumber>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
+                        }
+                    ]
+                },
+                {
+                    "apiName": "PAN to Account Linkage API",
+                    "id": "panaccountlinkagev1",
+                    "label": "PAN to Account Linkage",
+                    "url": "/api/pan-account-linkage/v1",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<apikey>"
+                    },
+                    "body": {
+                        "bank_account_number": "text",
+                        "ifsc_code": "text",
+                        "panNumber": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan-account-linkage/v1' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"bank_account_number\": \"12345670098765\",\n  \"ifsc_code\": \"AZXS0MQASW\",\n  \"pan_number\": \"ABCPD1234E\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/pan-account-linkage/v1', {\n  bank_account_number: '12345670098765',\n  ifsc_code: 'AZXS0MQASW',\n  pan_number: 'ABCPD1234E'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                        }
+                    ]
                 },
                 {
                     "apiName": "Digilocker API"
                 },
                 {
                     "apiName": "OKYC API"
+                },
+                {
+                    "apiName": "Occupation API ",
+                    "id": "bhqecj4p",
+                    "label": "Occupation API",
+                    "url": "/api/pan/occupation-status",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "e2WtaEJasQ5Maae3QpngD8IadCWFzhE28XeZ9bmB"
+                    },
+                    "body": {
+                        "panNumber": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan/occupation-status' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"<PanNumber>\"}'",
+                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/pan/occupation-status\",\n  {\n    panNumber: \"<PanNumber>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
+                        }
+                    ]
+                },
+                {
+                    "apiName": "PAN Supreme v1",
+                    "id": "panv1api1234",
+                    "label": "PAN Supreme v1",
+                    "url": "/api/pan/panv1",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<api_key>"
+                    },
+                    "body": {
+                        "panNumber": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan/panv1' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"<PanNumber>\"}'",
+                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/pan/panv1\",\n  {\n    panNumber: \"<PanNumber>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
+                        }
+                    ]
                 },
                 {
                     "apiName": "Passport Verification API"
@@ -61,7 +347,25 @@
                     "apiName": "Electricity Bill Verification API"
                 },
                 {
-                    "apiName": "LPG Verification (Mobile) API"
+                    "apiName": "LPG Verification (Mobile) API",
+                    "id": "lpgverificationmobile001",
+                    "label": "LPG Verification by Mobile Number",
+                    "url": "/api/mobile-number/LPG-verification",
+                    "method": "POST",
+                    "headers": {
+                        "Authorization": "application/json",
+                        "x-api-key": "<apikey>",
+                        "Content-Type": "application/json"
+                    },
+                    "body": {
+                        "mobile_number": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/mobile-number/LPG-verification' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"mobile_number\": \"9977XXXXXX\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/mobile-number/LPG-verification', {\n  mobile_number: '9977XXXXXX'\n}, {\n  headers: {\n    'Authorization': 'application/json',\n    'x-api-key': '<apikey>',\n    'Content-Type': 'application/json'\n  }\n});"
+                        }
+                    ]
                 },
                 {
                     "apiName": "Face Match (with Mask Detection) API"
@@ -97,15 +401,15 @@
                     "method": "POST",
                     "headers": {
                         "Content-Type": "application/json",
-                        "x-api-key": "0iFX0CHjYL6gm3zZ7eeyd89LYBOPrUHq6QiqvpEv"
+                        "x-api-key": "<apikey>"
                     },
                     "body": {
                         "vehicle_number": "text"
                     },
                     "code": [
                         {
-                            "Curl": "curl --location 'https://dev-api.innowave.solutions/rc/fastag-details' \\\n--header 'x-api-key: <api-key>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n    \"vehicle_number\": \"UP53EB7078\"\n    }'",
-                            "JavaScript": "import axios from \"axios\";\n  const response = await axios.post(\"https://dev-api.innowave.solutions/rc/fastag-details\",\n    {vehicle_number: \"vehicle_number_value\",},\n    {headers: {\"x-api-key\": \"<api-key>\",\"Content-Type\": \"application/json\",},\n  }\n);"
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/rc/challan-details' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n    \"vehicle_number\": \"vehicle_number_value\"\n}'",
+                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/rc/challan-details\",\n  {\n    vehicle_number: \"vehicle_number_value\",\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\",\n    },\n  }\n);"
                         }
                     ]
                 }
@@ -138,13 +442,64 @@
             "size": 12,
             "content": [
                 {
-                    "apiName": "CIN Number Lookup V1 API"
+                    "apiName": "Company CIN Lookup V1 API",
+                    "id": "companycinlookupv1001",
+                    "label": "Company CIN Lookup V1",
+                    "url": "/api/company-cin-lookup/v1",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<apikey>"
+                    },
+                    "body": {
+                        "cin_number": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/company-cin-lookup/v1' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"cin_number\": \"U32100UP2022PTC123456\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/company-cin-lookup/v1', {\n  cin_number: 'U32100UP2022PTC123456'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                        }
+                    ]
                 },
                 {
-                    "apiName": "CIN Lookup Lookup V2 API"
+                    "apiName": "CIN Lookup Advance V2 API",
+                    "id": "cinlookupv2001",
+                    "label": "CIN Lookup Advanced API",
+                    "url": "/api/cin-lookup-advanced",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<apikey>"
+                    },
+                    "body": {
+                        "cin_number": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/cin-lookup-advanced' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"cin_number\": \"U32100UP2022PTC1234\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/cin-lookup-advanced', {\n  cin_number: 'U32100UP2022PTC1234'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                        }
+                    ]
                 },
                 {
-                    "apiName": "PAN to CIN Mapping API"
+                    "apiName": "PAN to CIN Mapping API",
+                    "id": "pantocin_v1",
+                    "label": "PAN to CIN Lookup",
+                    "url": "/api/pantocin/v1",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<apikey>"
+                    },
+                    "body": {
+                        "panNumber": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pantocin/v1' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"pan_number\": \"ABCPD1234D\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/pantocin/v1', {\n  pan_number: 'ABCPD1234D'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                        }
+                    ]
                 },
                 {
                     "apiName": "Company Search by CIN API"
@@ -159,7 +514,25 @@
                     "apiName": "PAN to GSTIN Mapping API"
                 },
                 {
-                    "apiName": "PAN to Udyam Mapping API"
+                    "apiName": "PAN to Udyam Mapping API",
+                    "id": "pantoudyam001",
+                    "label": "PAN to Udyam",
+                    "url": "/api/pantoudyam/check",
+                    "method": "POST",
+                    "headers": {
+                        "Authorization": "application/json",
+                        "x-api-key": "<apikey>",
+                        "Content-Type": "application/json"
+                    },
+                    "body": {
+                        "pan_number": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pantoudyam/check' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"pan_number\": \"ABCPD1234E\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/pantoudyam/check', {\n  pan_number: 'ABCPD1234E'\n}, {\n  headers: {\n    'Authorization': 'application/json',\n    'x-api-key': '<apikey>',\n    'Content-Type': 'application/json'\n  }\n});"
+                        }
+                    ]
                 },
                 {
                     "apiName": "ICSI Data Fetch API"
@@ -171,10 +544,45 @@
                     "apiName": "TAN Verification API"
                 },
                 {
-                    "apiName": "206AB Check API"
+                    "apiName": "206AB Check API",
+                    "id": "check206abapi2233",
+                    "label": "206AB Check",
+                    "url": "/api/pan/206ab-check",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<api_key>"
+                    },
+                    "body": {
+                        "pan_Number": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan/206ab-check' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"<PanNumber>\"}'",
+                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/pan/206ab-check\",\n  {\n    panNumber: \"<PanNumber>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
+                        }
+                    ]
                 },
                 {
-                    "apiName": "UDIN Verification API"
+                    "apiName": "UDIN Verification API",
+                    "id": "udin_verification_v1",
+                    "label": "UDIN Verification",
+                    "url": "/api/udin/verification",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<apikey>"
+                    },
+                    "body": {
+                        "udin_number": "text",
+                        "company_name": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/udin/verification' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"udin_number\": \"24123456AAAAAA1234\",\n  \"company_name\": \"ABC Private Limited\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/udin/verification', {\n  udin_number: '24123456AAAAAA1234',\n  company_name: 'ABC Private Limited'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                        }
+                    ]
                 },
                 {
                     "apiName": "Drug License Check API"
@@ -188,10 +596,48 @@
             "size": 12,
             "content": [
                 {
-                    "apiName": "Bank Verification (Penny Drop) API"
+                    "apiName": "Bank Account Verification (penny Drop) API",
+                    "id": "pennydrop_bank_account_verification",
+                    "label": "Bank Account Verification",
+                    "url": "/api/pennydrop/bank-account-verification",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<apikey>"
+                    },
+                    "body": {
+                        "account_number": "text",
+                        "IFSC_code": "text",
+                        "account_holder_name": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pennydrop/bank-account-verification' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"account_number\": \"308317961234\",\n  \"IFSC_code\":\"FDRL1234567\",\n  \"account_holder_name\":\"RAM KUMAR\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/pennydrop/bank-account-verification', {\n  account_number: '308317961234',\n  IFSC_code: 'FDRL1234567',\n  account_holder_name: 'RAM KUMAR'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                        }
+                    ]
                 },
                 {
-                    "apiName": "Bank Verification (Penny Less) API"
+                    "apiName": "Bank Account Verification (penny Less) API",
+                    "id": "pennyless_bank_account_verification",
+                    "label": "Bank Account Verification",
+                    "url": "/api/pennyless/bank-account-verification",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<apikey>"
+                    },
+                    "body": {
+                        "account_number": "text",
+                        "IFSC_code": "text",
+                        "account_holder_Name": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pennyless/bank-account-verification' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"account_number\": \"1254212536521351\",\n  \"IFSC_code\":\"FDRL0001001\",\n  \"account_holder_Name\":\"RAM\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/pennyless/bank-account-verification', {\n  account_number: '1254212536521351',\n  IFSC_code: 'FDRL0001001',\n  account_holder_Name: 'RAM'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                        }
+                    ]
                 }
             ]
         },
@@ -205,10 +651,65 @@
                     "apiName": "Vehicle RC Lookup"
                 },
                 {
-                    "apiName": "Vehicle RC Advanced"
+                    "apiName": "Vehicle RC Advanced(/rc/vehicle-advanced) API",
+                    "id": "rc_vehicle_advanced",
+                    "label": "RC Verification",
+                    "url": "/api/rc/vehicle-advanced",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<apikey>"
+                    },
+                    "body": {
+                        "vehicle_number": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/rc/vehicle-advanced' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"vehicle_number\": \"DL3SFF1234\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/rc/vehicle-advanced', {\n  vehicle_number: 'DL3SFF1234'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                        }
+                    ]
                 },
                 {
-                    "apiName": "Vehicle RC Advanced V3"
+                    "apiName": "Vehicle RC Advanced V3",
+                    "id": "vehicle_rc_advanced_v3",
+                    "label": "RC Verification",
+                    "url": "/api/rc/vehicle-advanced/v3",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<apikey>"
+                    },
+                    "body": {
+                        "vehicle_number": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/rc/vehicle-advanced/v3' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"vehicle_number\": \"DL1ABC1234\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/rc/vehicle-advanced/v3', {\n  vehicle_number: 'DL1ABC1234'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                        }
+                    ]
+                },
+                {
+                    "apiName": "Vehicle RC Advanced V2 API",
+                    "id": "vehicle_rc_advanced_v2",
+                    "label": "RC Verification",
+                    "url": "/api/rc/vehicle-advanced/v2",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<apikey>"
+                    },
+                    "body": {
+                        "vehicle_number": "text",
+                        "chasis_number": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/rc/vehicle-advanced/v2' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"vehicle_number\": \"DL3SFF1234\",\n  \"chasis_number\": \"M5ECHAMCR12345678\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/rc/vehicle-advanced/v2', {\n  vehicle_number: 'DL3SFF1234',\n  chasis_number: 'M5ECHAMCR12345678'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                        }
+                    ]
                 },
                 {
                     "apiName": "Vehicle RC Advanced V2",
@@ -225,30 +726,104 @@
                     },
                     "code": [
                         {
-                            "Curl": "curl --location 'https://dev-api.innowave.solutions/rc/v2' \\\n--header 'x-api-key: <api-key>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"vehicle_number\": \"vehicle_number_value\"}'"
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/rc/v2' \\\n--header 'x-api-key: <api-key>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"vehicle_number\": \"vehicle_number_value\"}'",
+                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/rc/v2\",\n  {\n    vehicle_number: \"vehicle_number_value\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<api-key>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
                         }
                     ]
                 },
                 {
-                    "apiName": "Chassis RC Lite (v1) API"
+                    "apiName": "Chassis RC Lite (v1) API",
+                    "id": "chassis_rc_lite_v1",
+                    "label": "Fetch Registration Number by Chassis",
+                    "overview": "This API fetches registration number details based on the provided chassis number. It provides a minimal response containing only the registration number.",
+                    "url": "/api/rc/lite/chassis/v1",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<apikey>"
+                    },
+                    "body": {
+                        "chassis_number": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/rc/lite/chassis/v1' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"chassis_number\": \"MBLJAW123MNB12345\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/rc/lite/chassis/v1', {\n  chassis_number: 'MBLJAW123MNB12345'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                        }
+                    ]
                 },
                 {
                     "apiName": "RC to FASTag Details"
                 },
                 {
-                    "apiName": "Chassis to RC Advance V2"
+                    "apiName": "Chassis RC Lite (v2) API",
+                    "id": "chassis_rc_lite_v2",
+                    "label": "Fetch Registration Number by Chassis (v2)",
+                    "overview": "This API fetches registration number details based on the provided chassis number (version 2). It improves error handling compared to v1.",
+                    "url": "/api/rc/lite/chassis/v2",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<apikey>"
+                    },
+                    "body": {
+                        "chassis_number": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/rc/lite/chassis/v2' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"chassis_number\": \"MBLJAW123MNB12345\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/rc/lite/chassis/v2', {\n  chassis_number: 'MBLJAW123MNB12345'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                        }
+                    ]
                 },
                 {
-                    "apiName": "Chassis RC Lite (v2) API"
+                    "apiName": "Chassis to RC Advance V1 API",
+                    "id": "chassis_to_rc_advance_v1",
+                    "label": "Fetch Detailed Vehicle Information by Chassis",
+                    "overview": "This API fetches detailed vehicle, ownership, insurance, permit, pollution, tax, and status information using the chassis number.",
+                    "url": "/api/rc/chassis-advance/v1",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<apikey>"
+                    },
+                    "body": {
+                        "chassis_number": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/rc/chassis-advance/v1' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"chassis_number\": \"MA3EWB22SJEXXXXXX\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/rc/chassis-advance/v1', {\n  chassis_number: 'MA3EWB22SJEXXXXXX'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                        }
+                    ]
                 },
                 {
-                    "apiName": "Chassis to RC Advance V1"
+                    "apiName": "Chassis to RC Advance (v2) API",
+                    "id": "chassis_to_rc_advance_v2",
+                    "label": "Fetch Detailed Vehicle Information by Chassis (v2)",
+                    "overview": "This is the enhanced version of Chassis to RC Advance API. It fetches detailed vehicle, ownership, insurance, permit, tax, pollution, and status details with improved error handling.",
+                    "url": "/api/rc/chassis-advance/v2",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<apikey>"
+                    },
+                    "body": {
+                        "chassis_number": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/rc/chassis-advance/v2' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"chassis_number\": \"MBLJAW141MHC21171\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/rc/chassis-advance/v2', {\n  chassis_number: 'MBLJAW141MHC21171'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                        }
+                    ]
                 },
                 {
                     "apiName": "Fastag Details API",
                     "id": "3u1reuv4",
                     "label": "Fastag API",
                     "url": "/api/rc/fastag-details",
+                    "overview": "This API provides Fastag details of a vehicle, including tag identifiers, status, issue date, issuing bank, and associated vehicle details.",
                     "method": "POST",
                     "headers": {
                         "Content-Type": "application/json",
@@ -263,6 +838,30 @@
                             "JavaScript": "import axios from \"axios\";\n  const response = await axios.post(\"https://dev-api.innowave.solutions/rc/fastag-details\",\n    {vehicle_number: \"vehicle_number_value\",},\n    {headers: {\"x-api-key\": \"<api-key>\",\"Content-Type\": \"application/json\",},\n  }\n);"
                         }
                     ]
+                },
+                {
+                    "apiName": "Vehicle Tax by Transaction ID",
+                    "id": "vehicle_tax_by_transaction_id",
+                    "label": "Vehicle Tax Payment Details",
+                    "overview": "This API provides vehicle tax payment details for a given transaction ID, including vehicle info, payment info, and payment status.",
+                    "url": "/api/rc/vehicle-tax/by-transaction-id",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<apikey>"
+                    },
+                    "body": {
+                        "transaction_number": "text"
+                    },
+                    "exampleRequest": {
+                        "transaction_number": "ABY2501018739876"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/rc/vehicle-tax/by-transaction-id' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"transaction_number\": \"ABY2501018739876\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/rc/vehicle-tax/by-transaction-id', {\n  transaction_number: 'ABY2501018739876'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                        }
+                    ]
                 }
             ]
         },
@@ -273,13 +872,85 @@
             "size": 12,
             "content": [
                 {
-                    "apiName": "Lookup Basics API (Telecom API)"
+                    "apiName": "Lookup Basics API (Telecom API)",
+                    "id": "lookupbasicsapi7722",
+                    "label": "Lookup Basics API",
+                    "url": "/api/telco/lookup-basic",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<api_key>"
+                    },
+                    "body": {
+                        "mobile_number": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/telco/lookup-basic' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"mobile_number\": \"<MobileNumber>\"\n}'",
+                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/telco/lookup-basic\",\n  {\n    mobile_number: \"<MobileNumber>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
+                        }
+                    ]
                 },
                 {
-                    "apiName": "Telco lookup (Advance) API"
+                    "apiName": "Telco lookup (Advance) API",
+                    "id": "telcolookupadvancedapi6633",
+                    "label": "Telco Lookup Advanced",
+                    "url": "/api/telco/lookup-advanced",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<api_key>"
+                    },
+                    "body": {
+                        "mobile_number": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/telco/lookup-advanced' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"mobile_number\": \"<MobileNumber>\"\n}'",
+                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/telco/lookup-advanced\",\n  {\n    mobile_number: \"<MobileNumber>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
+                        }
+                    ]
                 },
                 {
-                    "apiName": "Telco OTP Verification API"
+                    "apiName": "Telco Advance (OTP Based, Send OTP) API",
+                    "id": "telcoadvanceotp001",
+                    "label": "Telco Send OTP API",
+                    "url": "/api/telco/send-otp",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<api_key>"
+                    },
+                    "body": {
+                        "mobile_number": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/telco/send-otp' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"mobile_number\": \"<MobileNumber>\"\n}'",
+                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/telco/send-otp\",\n  {\n    mobile_number: \"<MobileNumber>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
+                        }
+                    ]
+                },
+                {
+                    "apiName": "Telco Advance (OTP Based, Verify OTP) API",
+                    "id": "telcoadvanceotpverify001",
+                    "label": "Telco Verify OTP API",
+                    "url": "/api/telco/verify-otp",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<api_key>"
+                    },
+                    "body": {
+                        "client_Id": "text",
+                        "otp": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/telco/verify-otp' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"client_Id\": \"<client_Id>\",\n  \"otp\": \"<otp>\"\n}'",
+                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/telco/verify-otp\",\n  {\n    client_Id: \"<client_Id>\",\n    otp: \"<otp>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
+                        }
+                    ]
                 }
             ]
         },
@@ -314,6 +985,305 @@
                 },
                 {
                     "apiName": "Standard eSign API"
+                }
+            ]
+        },
+        {
+            "name": "Address & Demographic Verification",
+            "value": "Address & Demographic",
+            "catId": "cat91nzx6z",
+            "size": 12,
+            "content": [
+                {
+                    "apiName": "Gujarat Land Verification - District List API",
+                    "id": "gujarat_land_verification_district_list",
+                    "label": "Fetch Gujarat District List",
+                    "overview": "This API provides the list of districts in Gujarat for land verification purposes. It is the first step in fetching hierarchical land details such as taluka, village, and block information.",
+                    "url": "/api/land-verification/gujrat/district-list",
+                    "method": "GET",
+                    "headers": {
+                        "Authorization": "application/json",
+                        "x-api-key": "<apikey>"
+                    },
+                    "body": {},
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/land-verification/gujrat/district-list' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data ''",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/land-verification/gujrat/district-list', {}, {\n  headers: {\n    'Authorization': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                        }
+                    ]
+                },
+                {
+                    "apiName": "Gujarat Land Verification - Taluka List API",
+                    "id": "gujarat_land_verification_taluka_list",
+                    "label": "Fetch Taluka List by District",
+                    "overview": "This API provides the list of talukas in a specified district of Gujarat for land verification purposes.",
+                    "url": "/api/land-verification/gujrat/taluka-list",
+                    "method": "POST",
+                    "headers": {
+                        "Authorization": "application/json",
+                        "x-api-key": "<apikey>",
+                        "Content-Type": "application/json"
+                    },
+                    "body": {
+                        "district_name": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/land-verification/gujrat/taluka-list' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"district_name\": \"ahmadabad\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/land-verification/gujrat/taluka-list', {\n  district_name: 'ahmadabad'\n}, {\n  headers: {\n    'Authorization': 'application/json',\n    'x-api-key': '<apikey>',\n    'Content-Type': 'application/json'\n  }\n});"
+                        }
+                    ]
+                },
+                {
+                    "apiName": "Gujarat Land Verification - Village List API",
+                    "id": "gujarat_land_verification_village_list",
+                    "label": "Fetch Village List by District and Taluka",
+                    "overview": "This API provides the list of villages in a specified taluka of a district in Gujarat for land verification purposes.",
+                    "url": "/api/land-verification/gujrat/village-list",
+                    "method": "POST",
+                    "headers": {
+                        "Authorization": "application/json",
+                        "x-api-key": "<apikey>",
+                        "Content-Type": "application/json"
+                    },
+                    "body": {
+                        "district_name": "text",
+                        "taluka_name": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/land-verification/gujrat/village-list' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"district_name\": \"ahmadabad\",\n  \"taluka_name\": \"sanand\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/land-verification/gujrat/village-list', {\n  district_name: 'ahmadabad',\n  taluka_name: 'sanand'\n}, {\n  headers: {\n    'Authorization': 'application/json',\n    'x-api-key': '<apikey>',\n    'Content-Type': 'application/json'\n  }\n});"
+                        }
+                    ]
+                },
+                {
+                    "apiName": "Gujarat Land Verification - Block List API",
+                    "id": "gujarat_land_verification_block_list",
+                    "label": "Fetch Block List by District, Taluka, and Village",
+                    "overview": "This API provides the list of blocks in a specified village of a taluka in Gujarat for land verification purposes.",
+                    "url": "/api/land-verification/gujrat/block-list",
+                    "method": "POST",
+                    "headers": {
+                        "Authorization": "application/json",
+                        "x-api-key": "<apikey>",
+                        "Content-Type": "application/json"
+                    },
+                    "body": {
+                        "district_name": "text",
+                        "taluka_name": "text",
+                        "village_name": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/land-verification/gujrat/block-list' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key:<apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"district_name\": \"ahmadabad\",\n  \"taluka_name\": \"sanand\",\n  \"village_name\": \"garodiya\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/land-verification/gujrat/block-list', {\n  district_name: 'ahmadabad',\n  taluka_name: 'sanand',\n  village_name: 'garodiya'\n}, {\n  headers: {\n    'Authorization': 'application/json',\n    'x-api-key': '<apikey>',\n    'Content-Type': 'application/json'\n  }\n});"
+                        }
+                    ]
+                },
+                {
+                    "apiName": "Gujarat Land Verification - Owner Verification API",
+                    "id": "gujarat_land_verification_owner_verification",
+                    "label": "Verify Land Ownership by Details",
+                    "overview": "This API allows verification of land ownership in Gujarat based on district, taluka, village, block, and owner name against government records.",
+                    "url": "/api/land-verification/gujrat/verification",
+                    "method": "POST",
+                    "headers": {
+                        "Authorization": "application/json",
+                        "x-api-key": "<apikey>",
+                        "Content-Type": "application/json"
+                    },
+                    "body": {
+                        "district_name": "text",
+                        "taluka_name": "text",
+                        "village_name": "text",
+                        "block": "text",
+                        "owner_name": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/land-verification/gujrat/verification' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"district_name\": \"bhavnagar\",\n  \"taluka_name\": \"vallabhipur\",\n  \"village_name\": \"bhojpara\",\n  \"block\": \"26\",\n  \"owner_name\": \"ashaben thakarshibhai lakhani\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/land-verification/gujrat/verification', {\n  district_name: 'bhavnagar',\n  taluka_name: 'vallabhipur',\n  village_name: 'bhojpara',\n  block: '26',\n  owner_name: 'ashaben thakarshibhai lakhani'\n}, {\n  headers: {\n    'Authorization': 'application/json',\n    'x-api-key': '<apikey>',\n    'Content-Type': 'application/json'\n  }\n});"
+                        }
+                    ]
+                },
+                {
+                    "apiName": "MP Land Verification - District List API",
+                    "id": "mp_land_verification_district_list",
+                    "label": "Fetch MP District List",
+                    "overview": "This API provides the list of districts in Madhya Pradesh for land verification purposes.",
+                    "url": "/api/land-verification/mp/district-list",
+                    "method": "GET",
+                    "headers": {
+                        "Authorization": "application/json",
+                        "x-api-key": "<apikey>"
+                    },
+                    "body": {},
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/land-verification/mp/district-list' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data ''",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/land-verification/mp/district-list', {}, {\n  headers: {\n    'Authorization': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                        }
+                    ]
+                },
+                {
+                    "apiName": "MP Land Verification - Tehsil List API",
+                    "id": "mp_land_verification_tehsil_list",
+                    "label": "Fetch Tehsil List by District",
+                    "overview": "This API provides the list of tehsils (talukas) in a specified district of Madhya Pradesh for land verification purposes.",
+                    "url": "/api/land-verification/mp/taluka-list",
+                    "method": "POST",
+                    "headers": {
+                        "Authorization": "application/json",
+                        "x-api-key": "<apikey>",
+                        "Content-Type": "application/json"
+                    },
+                    "body": {
+                        "district_name": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/land-verification/mp/taluka-list' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"district_name\": \"agar-malwa\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/land-verification/mp/taluka-list', {\n  district_name: 'agar-malwa'\n}, {\n  headers: {\n    'Authorization': 'application/json',\n    'x-api-key': '<apikey>',\n    'Content-Type': 'application/json'\n  }\n});"
+                        }
+                    ]
+                },
+                {
+                    "apiName": "MP Land Verification - Village List API",
+                    "id": "mp_land_verification_village_list",
+                    "label": "Fetch Village List by District and Tehsil",
+                    "overview": "This API provides the list of villages in a specified tehsil of a district in Madhya Pradesh for land verification purposes.",
+                    "url": "/api/land-verification/mp/village-list",
+                    "method": "POST",
+                    "headers": {
+                        "Authorization": "application/json",
+                        "x-api-key": "<apikey>",
+                        "Content-Type": "application/json"
+                    },
+                    "body": {
+                        "district_name": "text",
+                        "tehsil_name": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/land-verification/mp/village-list' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"district_name\": \"agar-malwa\",\n  \"tehsil_name\": \"nalkheda\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/land-verification/mp/village-list', {\n  district_name: 'agar-malwa',\n  tehsil_name: 'nalkheda'\n}, {\n  headers: {\n    'Authorization': 'application/json',\n    'x-api-key': '<apikey>',\n    'Content-Type': 'application/json'\n  }\n});"
+                        }
+                    ]
+                },
+                {
+                    "apiName": "MP Land Verification - Khasra List API",
+                    "id": "mp_land_verification_khasra_list",
+                    "label": "Fetch Khasra List by District, Tehsil, and Village",
+                    "overview": "This API provides the list of khasra numbers in a specified village of a tehsil in Madhya Pradesh for land verification purposes.",
+                    "url": "/api/land-verification/mp/khasara-list",
+                    "method": "POST",
+                    "headers": {
+                        "Authorization": "application/json",
+                        "x-api-key": "<apikey>",
+                        "Content-Type": "application/json"
+                    },
+                    "body": {
+                        "district_name": "text",
+                        "tehsil_name": "text",
+                        "village_name": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/land-verification/mp/khasara-list' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"district_name\": \"agar-malwa\",\n  \"tehsil_name\": \"nalkheda\",\n  \"village_name\": \"anandikhedi\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/land-verification/mp/khasara-list', {\n  district_name: 'agar-malwa',\n  tehsil_name: 'nalkheda',\n  village_name: 'anandikhedi'\n}, {\n  headers: {\n    'Authorization': 'application/json',\n    'x-api-key': '<apikey>',\n    'Content-Type': 'application/json'\n  }\n});"
+                        }
+                    ]
+                },
+                {
+                    "apiName": "MP Land Verification - Owner Verification API",
+                    "id": "mp_land_verification_owner_verification",
+                    "label": "Verify Land Ownership by Khasra Number",
+                    "overview": "This API allows verification of land ownership in Madhya Pradesh based on district, tehsil, village, and khasra number against government records.",
+                    "url": "/api/land-verification/mp/verification",
+                    "method": "POST",
+                    "headers": {
+                        "Authorization": "application/json",
+                        "x-api-key": "<apikey>",
+                        "Content-Type": "application/json"
+                    },
+                    "body": {
+                        "district_name": "text",
+                        "tehsil_name": "text",
+                        "village_name": "text",
+                        "khasra_no": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/land-verification/mp/verification' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"district_name\": \"datia\",\n  \"tehsil_name\": \"seondha\",\n  \"village_name\": \"badokhari\",\n  \"khasra_no\": \"48\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/land-verification/mp/verification', {\n  district_name: 'datia',\n  tehsil_name: 'seondha',\n  village_name: 'badokhari',\n  khasra_no: '48'\n}, {\n  headers: {\n    'Authorization': 'application/json',\n    'x-api-key': '<apikey>',\n    'Content-Type': 'application/json'\n  }\n});"
+                        }
+                    ]
+                },
+                {
+                    "apiName": "Karnataka Land Verification - District List API",
+                    "id": "karnataka_land_verification_district_list",
+                    "label": "Fetch Karnataka District List",
+                    "overview": "This API provides the complete list of districts in Karnataka. It is the entry point for land verification queries, as district selection is required to drill down further into blocks, talukas, and zones.",
+                    "url": "/api/land-verification/karnataka/district-list",
+                    "method": "GET",
+                    "headers": {
+                        "x-api-key": "<apikey>"
+                    },
+                    "body": {},
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/land-verification/karnataka/district-list' \\\n--header 'x-api-key: <apikey>' \\\n--data ''",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/land-verification/karnataka/district-list', {}, {\n  headers: {\n    'x-api-key': '<apikey>'\n  }\n});"
+                        }
+                    ]
+                },
+                {
+                    "apiName": "Karnataka Land Verification - Block List API",
+                    "id": "karnataka_land_verification_block_list",
+                    "label": "Fetch Block List by District",
+                    "overview": "This API provides the list of blocks in a specified district of Karnataka for land verification purposes.",
+                    "url": "/api/land-verification/karnataka/block-list",
+                    "method": "POST",
+                    "headers": {
+                        "x-api-key": "<apikey>",
+                        "Content-Type": "application/json"
+                    },
+                    "body": {
+                        "district_name": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/land-verification/karnataka/block-list' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"district_name\": \"davanagere\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/land-verification/karnataka/block-list', {\n  district_name: 'davanagere'\n}, {\n  headers: {\n    'x-api-key': '<apikey>',\n    'Content-Type': 'application/json'\n  }\n});"
+                        }
+                    ]
+                },
+                {
+                    "apiName": "Karnataka Land Verification - Owner Verification API",
+                    "id": "karnataka_land_verification_owner_verification",
+                    "label": "Fetch Land Ownership Details",
+                    "overview": "This API provides detailed ownership and land parcel information for locations in Karnataka. It includes khata number, owner details, land area, tax information, and more.",
+                    "url": "/api/land-verification/karnataka/verification",
+                    "method": "POST",
+                    "headers": {
+                        "x-api-key": "<apikey>",
+                        "Content-Type": "application/json"
+                    },
+                    "body": {
+                        "district_name": "text",
+                        "taluka_name": "text",
+                        "zone_name": "text",
+                        "locality_name": "text",
+                        "zone_id": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/land-verification/karnataka/verification' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"district_name\": \"belgaum\",\n  \"taluka_name\": \"chikkodi\",\n  \"zone_name\": \"chikkodi\",\n  \"locality_name\": \"chikkodi\",\n  \"zone_id\": \"1\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/land-verification/karnataka/verification', {\n  district_name: 'belgaum',\n  taluka_name: 'chikkodi',\n  zone_name: 'chikkodi',\n  locality_name: 'chikkodi',\n  zone_id: '1'\n}, {\n  headers: {\n    'x-api-key': '<apikey>',\n    'Content-Type': 'application/json'\n  }\n});"
+                        }
+                    ]
                 }
             ]
         }

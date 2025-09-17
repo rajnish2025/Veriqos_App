@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Select from "react-select";
-import axios from "axios";
+// import axios from "axios";
+import instance from "@/utilities/iniciate";
 import CodeBlocks from "../components/CodeBlock";
 import { useLocation, useParams } from "react-router-dom";
 import jsonApiData from "../../data.json";
+import { toast } from "sonner";
+import { LineSpinner } from "ldrs/react";
+import "ldrs/react/LineSpinner.css";
 
 const DashBoard = () => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -14,6 +18,7 @@ const DashBoard = () => {
   const [apiTestData, setApiTestData] = useState(null);
   const location = useLocation();
   const params = useParams();
+  const [showLoader, setShowLoader] = useState(false);
 
   const marketingAPIs = [
     {
@@ -143,22 +148,52 @@ const DashBoard = () => {
       const apiData = jsonApiData.categories
         .filter((category) => category.catId === catId)[0]
         .content.filter((api) => api.id === id);
-      // console.log(apiData[0]);
-      console.log(apiData[0].code[0]);
       setApiTestData(apiData[0]);
     }
   }, []);
 
   const onSubmit = async (data) => {
-    const result = await axios.post(selectedOption.url, data, {
-      headers: selectedOption.headers,
-    });
-    setDownloadResponse(result.data);
-    setResponse(
-      Object.keys(result.data).includes("result")
-        ? result.data.result[0]
-        : result.data
-    );
+    try {
+      setShowLoader(true);
+      // if (data.hasOwnProperty("dob")) {
+      //   data["dob"] = data.dob.split("-").reverse().join("/");
+      // }
+      apiTestData.headers["x-api-key"] = import.meta.env.VITE_API_TOKEN_KEY;
+      const result = await instance.post(
+        selectedOption != null ? selectedOption.url : apiTestData.url,
+        data,
+        {
+          headers:
+            selectedOption == null
+              ? apiTestData.headers
+              : selectedOption.headers,
+        }
+      );
+      console.log(result.data);
+      let validResultData =
+        result != null ? (result.data != null ? result.data : result) : {};
+      setDownloadResponse(validResultData);
+      console.log(Object.keys(validResultData));
+      setResponse(
+        Object.keys(validResultData).includes("result")
+          ? Array.isArray(result.data.result)
+            ? result.data.result[0]
+            : result.data
+          : result.data
+      );
+      toast.success("Data fetched Successfully.");
+    } catch (error) {
+      let message = "an error occured";
+      if (error.response && error.response.data) {
+        message =
+          error.response.data.message || JSON.stringify(error.response.data);
+      } else if (error.message) {
+        message = error.message;
+      }
+      toast.error(message);
+    } finally {
+      setShowLoader(false);
+    }
   };
 
   const renderTable = (data, level = 0) => {
@@ -193,7 +228,6 @@ const DashBoard = () => {
 
     // Handle objects
     const entries = Object.entries(data);
-    console.log(entries, data);
     if (entries.length === 0) {
       return (
         <div className="text-gray-500 italic px-3 py-2">
@@ -348,7 +382,7 @@ const DashBoard = () => {
               </h2>
               <span>
                 <button
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-[#00538C] to-[#00859D] text-white font-semibold shadow hover:from-[#00859D] hover:to-[#00538C] transition-all duration-200 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-[#00538C] to-[#00859D] text-white font-semibold shadow hover:from-[#00859D] hover:to-[#00538C] transition-all duration-200 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-400`}
                   onClick={() => {
                     if (downloadResponse) {
                       const json = JSON.stringify(downloadResponse, null, 2);
@@ -366,7 +400,7 @@ const DashBoard = () => {
                       URL.revokeObjectURL(url);
                     }
                   }}
-                  disabled={!response}
+                  disabled={!downloadResponse}
                   title={response ? "Download JSON" : "No response to download"}
                 >
                   <svg
@@ -396,7 +430,6 @@ const DashBoard = () => {
                     ? apiTestData && apiTestData.code[0]
                     : ""
                 }
-                language={"bash"}
               />
             </div>
           </div>
@@ -429,7 +462,12 @@ const DashBoard = () => {
             </div>
           </div>
         ) : (
-          ""
+          showLoader && (
+            <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-[#024688] to-[#03BEAC] bg-clip-text text-transparent flex justify-start gap-5">
+              Response
+              <LineSpinner size="30" stroke="3" speed="1" color="#024688" />
+            </h2>
+          )
         )}
       </div>
 

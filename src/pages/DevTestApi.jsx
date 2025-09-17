@@ -1,10 +1,13 @@
-import axios from "axios";
+import instance from "@/utilities/iniciate";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import jsonApiData from "../../data.json";
+import { toast } from "sonner";
+import { LineSpinner } from "ldrs/react";
+import "ldrs/react/LineSpinner.css";
 
-const CodeBlock = ({ code, language = "json", backgound = "bg-gray-900" }) => (
+const CodeBlock = ({ code, language = "bash", backgound = "bg-gray-900" }) => (
   <pre
     className={`rounded-xl ${backgound} text-white text-sm p-4 overflow-x-auto`}
   >
@@ -24,17 +27,33 @@ const DevTestApi = () => {
   const { register, handleSubmit } = useForm();
   console.log(rowData[0]);
   const [response, setResponse] = useState(null);
+  const [showLoader, setShowLoader] = useState(false);
 
   const onSubmit = async (data) => {
-    const result = await axios.post(rowData[0].url, data, {
-      headers: rowData[0].headers,
-    });
-    setJsonResponse(result.data);
-    setResponse(
-      Object.keys(result.data).includes("result")
-        ? result.data.result[0]
-        : result.data
-    );
+    try {
+      setShowLoader(true);
+      rowData[0].headers["x-api-key"] = import.meta.env.VITE_API_TOKEN_KEY_2;
+      const result = await instance.post(rowData[0].url, data, {
+        headers: rowData[0].headers,
+      });
+      setJsonResponse(result.data);
+      setResponse(
+        Object.keys(result.data).includes("result")
+          ? result.data.result[0]
+          : result.data
+      );
+    } catch (error) {
+      let message = "an error occured";
+      if (error.response && error.response.data) {
+        message =
+          error.response.data.message || JSON.stringify(error.response.data);
+      } else if (error.message) {
+        message = errror.message;
+      }
+      toast.error(message);
+    } finally {
+      setShowLoader(false);
+    }
   };
 
   const body = rowData[0].body || {
@@ -244,7 +263,12 @@ const DevTestApi = () => {
               </div>
             </div>
           ) : (
-            ""
+            showLoader && (
+              <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-[#024688] to-[#03BEAC] bg-clip-text text-transparent flex justify-start gap-5">
+                Response
+                <LineSpinner size="30" stroke="3" speed="1" color="#024688" />
+              </h2>
+            )
           )}
         </div>
 
