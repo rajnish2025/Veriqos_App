@@ -62,7 +62,7 @@
                     "id": "panverificationapi5566",
                     "label": "PAN Verification API",
                     "url": "/api/pan/pan-verification",
-                    "serverUrl": "/pan-verification",
+                    "serverUrl": "/pan/pan-verification",
                     "method": "POST",
                     "headers": {
                         "Content-Type": "application/json",
