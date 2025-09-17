@@ -9,14 +9,14 @@ export default defineConfig({
   resolve: {
     alias: { "@": path.resolve(__dirname, "./src") },
   },
-  // server: {
-  //   proxy: {
-  //     "/api": {
-  //       target: "https://dev-api.innowave.solutions",
-  //       changeOrigin: true,
-  //       secure: false,
-  //       rewrite: (path) => path.replace(/^\/api/, ""),
-  //     },
-  //   },
-  // },
+  server: {
+    proxy: {
+      "/api": {
+        target: "https://dev-api.innowave.solutions",
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+    },
+  },
 })
