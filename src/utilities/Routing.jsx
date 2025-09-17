@@ -37,7 +37,7 @@ const Routing = () => {
           element={
             localStorage.getItem("email") ? (
               <>
-                <Navbar />
+                {/* <Navbar /> */}
                 <ApiDocs />{" "}
               </>
             ) : (

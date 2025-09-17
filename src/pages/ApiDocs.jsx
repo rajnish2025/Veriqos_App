@@ -12,6 +12,11 @@ import { FaBook, FaCode, FaLink } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import apiJsonData from "../../data.json";
+import pdfdata from "../assets/Veriqos_API_Suites.pdf";
+
+const handleRedirect = (e) => {
+  e.preventDefault();
+};
 
 const ApiDocsHero = () => (
   <div className="bg-gradient-to-r from-[#024888] to-[#00BAAB] text-white rounded-xl p-6 mb-5 shadow flex flex-col md:flex-row items-center justify-between">
@@ -26,6 +31,7 @@ const ApiDocsHero = () => (
       </p>
       <Link
         to="/"
+        onClick={handleRedirect}
         className="inline-flex items-center px-5 py-2 bg-white text-[#00819C] font-semibold rounded shadow hover:bg-blue-50 transition"
       >
         <FaLink className="mr-2" /> Jump to Endpoints
@@ -249,17 +255,18 @@ const ApiDocs = () => {
     console.log(res2);
     setSearchResult(res2);
   };
+  // ReactPDF.render(<PdfViewer />, `${pdfdata}`);
   return (
-    <div className="md:px-5 py-5 relative top-12">
+    <div className="md:px-5 py-5 relative top-0">
       <ApiDocsHero />
-      <div className="lg:w-[60%] w-[90%] mx-auto">
+      {/* <div className="lg:w-[60%] w-[90%] mx-auto">
         <Input
           type="search"
           placeholder="Search APIs details..."
           className="mb-5 py-7 lg:rounded-4xl rounded-2xl border-1 border-teal-600  focus:shadow-teal-700"
           onChange={handleSearchResult}
         />
-      </div>
+      </div> */}
       <div className="w-full mx-auto">
         <div className="w-full p-6 flex flex-col gap-6 mx-auto">
           {search.length !== 0 ? (
@@ -267,50 +274,64 @@ const ApiDocs = () => {
               {searchResult.length} Matching Result Found.
             </p>
           ) : null}
-
+          <div>
+            <iframe
+              src={pdfdata}
+              width="100%"
+              height="1000px"
+              title="PDF Viewer"
+            />
+          </div>
           <Tabs defaultValue={tabs[0].value} className="max-w-full w-full">
             {searchResult.length === 0 && search.length === 0 ? (
               <TabsList
                 className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 
     gap-2 p-0 bg-background border-b rounded-none h-fit"
               >
-                {tabs.map((tab) => (
-                  <TabsTrigger
-                    key={tab.value}
-                    value={tab.value}
-                    className="rounded-md text-center bg-background py-2 px-1 gap-2 
+                {
+                  !tabs.map((tab) => (
+                    <TabsTrigger
+                      key={tab.value}
+                      value={tab.value}
+                      className="rounded-md text-center bg-background py-2 px-1 gap-2 
         data-[state=active]:shadow-sm border border-transparent 
         data-[state=active]:border-[#00B8AA] 
         data-[state=active]:bg-gradient-to-br from-[#f3fffd] to-[#f8fcff] min-w-fit"
-                  >
-                    <code className="text-[14px] font-sans">{tab.name}</code>
-                  </TabsTrigger>
-                ))}
+                    >
+                      <code className="text-[14px] font-sans">{tab.name}</code>
+                    </TabsTrigger>
+                  ))
+                }
               </TabsList>
             ) : (
               ""
             )}
-            {tabs.map((tab) => (
-              <TabsContent key={tab.value} value={tab.value} className="w-full">
-                <div
-                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 
-                  border rounded-md mt-7 p-5 mx-auto overflow-y-auto max-h-[54vh]"
+            {
+              !tabs.map((tab) => (
+                <TabsContent
+                  key={tab.value}
+                  value={tab.value}
+                  className="w-full"
                 >
-                  {searchResult.length === 0 && search.length === 0
-                    ? tab.content.map((item, idx) => (
-                        <Card
-                          key={idx}
-                          className="w-full shadow-lg border-0 bg-gradient-to-br from-[#f3fffd] to-[#f8fcff] hover:scale-[1.03] transition-transform duration-200 h-auto"
-                        >
-                          <CardHeader className="pb-2">
-                            <CardTitle className="text-xl font-bold text-[#00B8AA]">
-                              {item.apiName}
-                            </CardTitle>
-                            <CardDescription className="text-gray-600 mt-1">
-                              {item.overview}
-                            </CardDescription>
-                          </CardHeader>
-                          {/* <CardContent className="py-2">
+                  <div
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 
+                  border rounded-md mt-7 p-5 mx-auto overflow-y-auto min-h-[54vh]"
+                  >
+                    {searchResult.length === 0 && search.length === 0
+                      ? tab.content.map((item, idx) => (
+                          <Card
+                            key={idx}
+                            className="w-full shadow-lg border-0 bg-gradient-to-br from-[#f3fffd] to-[#f8fcff] hover:scale-[1.03] transition-transform duration-200 h-auto"
+                          >
+                            <CardHeader className="pb-2">
+                              <CardTitle className="text-xl font-bold text-[#00B8AA]">
+                                {item.apiName}
+                              </CardTitle>
+                              <CardDescription className="text-gray-600 mt-1">
+                                {item.overview}
+                              </CardDescription>
+                            </CardHeader>
+                            {/* <CardContent className="py-2">
                             <ul className="text-sm text-gray-700 list-disc pl-5 space-y-1">
                               <li>
                                 Method:{" "}
@@ -332,44 +353,44 @@ const ApiDocs = () => {
                               </li>
                             </ul>
                           </CardContent> */}
-                          <CardFooter className="pt-2 flex justify-end">
-                            <button className="group relative px-5 py-2 rounded-lg bg-gradient-to-r from-[#00B8AA] to-[#00859D] text-white font-semibold shadow-md overflow-hidden transition-all duration-200 hover:from-[#00859D] hover:to-[#00B8AA] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#00B8AA] focus:ring-offset-2">
-                              <span className="relative z-10 flex items-center gap-2">
-                                Read more
-                                <svg
-                                  className="w-4 h-4 ml-1 transition-transform duration-200 group-hover:translate-x-1"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  strokeWidth="2"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M9 5l7 7-7 7"
-                                  />
-                                </svg>
-                              </span>
-                              <span className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-white transition-opacity duration-200"></span>
-                            </button>
-                          </CardFooter>
-                        </Card>
-                      ))
-                    : searchResult.map(({ item }, idx) => (
-                        <Card
-                          key={idx}
-                          className="w-full shadow-lg border-0 bg-gradient-to-br 
+                            <CardFooter className="pt-2 flex justify-end">
+                              <button className="group relative px-5 py-2 rounded-lg bg-gradient-to-r from-[#00B8AA] to-[#00859D] text-white font-semibold shadow-md overflow-hidden transition-all duration-200 hover:from-[#00859D] hover:to-[#00B8AA] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#00B8AA] focus:ring-offset-2">
+                                <span className="relative z-10 flex items-center gap-2">
+                                  Read more
+                                  <svg
+                                    className="w-4 h-4 ml-1 transition-transform duration-200 group-hover:translate-x-1"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      d="M9 5l7 7-7 7"
+                                    />
+                                  </svg>
+                                </span>
+                                <span className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-white transition-opacity duration-200"></span>
+                              </button>
+                            </CardFooter>
+                          </Card>
+                        ))
+                      : searchResult.map(({ item }, idx) => (
+                          <Card
+                            key={idx}
+                            className="w-full shadow-lg border-0 bg-gradient-to-br 
                           from-[#f3fffd] to-[#f8fcff] hover:scale-[1.03] transition-transform duration-200 md:h-[240px] sm:h-[270px]"
-                        >
-                          <CardHeader className="pb-2">
-                            <CardTitle className="text-xl font-bold text-[#00B8AA]">
-                              {item.apiName}
-                            </CardTitle>
-                            <CardDescription className="text-gray-600 mt-1">
-                              {item.overview}
-                            </CardDescription>
-                          </CardHeader>
-                          {/* <CardContent className="py-2">
+                          >
+                            <CardHeader className="pb-2">
+                              <CardTitle className="text-xl font-bold text-[#00B8AA]">
+                                {item.apiName}
+                              </CardTitle>
+                              <CardDescription className="text-gray-600 mt-1">
+                                {item.overview}
+                              </CardDescription>
+                            </CardHeader>
+                            {/* <CardContent className="py-2">
                             <ul className="text-sm text-gray-700 list-disc pl-5 space-y-1">
                               <li>
                                 Method:{" "}
@@ -391,32 +412,33 @@ const ApiDocs = () => {
                               </li>
                             </ul>
                           </CardContent> */}
-                          <CardFooter className="pt-2 flex justify-end">
-                            <button className="group relative px-5 py-2 rounded-lg bg-gradient-to-r from-[#00B8AA] to-[#00859D] text-white font-semibold shadow-md overflow-hidden transition-all duration-200 hover:from-[#00859D] hover:to-[#00B8AA] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#00B8AA] focus:ring-offset-2">
-                              <span className="relative z-10 flex items-center gap-2">
-                                Read more
-                                <svg
-                                  className="w-4 h-4 ml-1 transition-transform duration-200 group-hover:translate-x-1"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  strokeWidth="2"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M9 5l7 7-7 7"
-                                  />
-                                </svg>
-                              </span>
-                              <span className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-white transition-opacity duration-200"></span>
-                            </button>
-                          </CardFooter>
-                        </Card>
-                      ))}
-                </div>
-              </TabsContent>
-            ))}
+                            <CardFooter className="pt-2 flex justify-end">
+                              <button className="group relative px-5 py-2 rounded-lg bg-gradient-to-r from-[#00B8AA] to-[#00859D] text-white font-semibold shadow-md overflow-hidden transition-all duration-200 hover:from-[#00859D] hover:to-[#00B8AA] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#00B8AA] focus:ring-offset-2">
+                                <span className="relative z-10 flex items-center gap-2">
+                                  Read more
+                                  <svg
+                                    className="w-4 h-4 ml-1 transition-transform duration-200 group-hover:translate-x-1"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      d="M9 5l7 7-7 7"
+                                    />
+                                  </svg>
+                                </span>
+                                <span className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-white transition-opacity duration-200"></span>
+                              </button>
+                            </CardFooter>
+                          </Card>
+                        ))}
+                  </div>
+                </TabsContent>
+              ))
+            }
           </Tabs>
         </div>
       </div>

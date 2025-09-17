@@ -159,6 +159,7 @@ const DashBoard = () => {
       //   data["dob"] = data.dob.split("-").reverse().join("/");
       // }
       apiTestData.headers["x-api-key"] = import.meta.env.VITE_API_TOKEN_KEY;
+      console.log("token key : ", import.meta.env.VITE_API_TOKEN_KEY);
       const result = await instance.post(
         selectedOption != null ? selectedOption.url : apiTestData.url,
         data,
