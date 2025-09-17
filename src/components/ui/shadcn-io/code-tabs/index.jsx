@@ -90,7 +90,7 @@ function CodeTabsContent({
           <TabsContent
             data-slot="install-tabs-content"
             key={code}
-            className="w-full text-sm flex items-center p-4 overflow-auto"
+            className="w-full text-sm flex p-4 overflow-auto h-[100%] items-start"
             value={code}
           >
             <div className="w-full [&>pre]:m-0 [&>pre]:p-0 [&>pre]:bg-transparent [&>pre]:border-none [&>pre]:text-[13px] [&>pre]:leading-relaxed [&_code]:text-[13px] [&_code]:leading-relaxed [&_code]:bg-transparent">
