@@ -83,7 +83,7 @@
                     "id": "identitymatchapi5678",
                     "label": "Identity Match API",
                     "url": "/api/pan/identity-match",
-                    "serverUrl": "/identity-match",
+                    "serverUrl": "/pan/identity-match",
                     "overview": "Fetch identity details including name, email, phone, gender, DOB, Aadhaar linkage, and address.",
                     "method": "POST",
                     "headers": {
