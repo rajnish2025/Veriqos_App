@@ -5,7 +5,7 @@ const ProtectedRoutes = ({ children }) => {
   let token = localStorage.getItem("token");
   console.log("temp token: ", typeof import.meta.env.VITE_TEM_TOKEN, token);
   if (!token || token != import.meta.env.VITE_TEM_TOKEN) {
-    return <Navigate to="/veriqos/api/docs" replace />;
+    return <Navigate to="/docs" replace />;
   }
   return children;
 };

@@ -84,10 +84,7 @@ const Navbar = () => {
           <Link to="/sandbox" className={linkClasses("/sandbox")}>
             <Edit size={16} /> Sandbox
           </Link>
-          <Link
-            to="/veriqos/api/docs"
-            className={linkClasses("/veriqos/api/docs")}
-          >
+          <Link to="/docs" className={linkClasses("/docs")}>
             <Book size={16} /> Docs
           </Link>
           <Link to="/devdocs" className={linkClasses("/devdocs")}>
@@ -130,10 +127,7 @@ const Navbar = () => {
                   </Link>
                 </SheetClose>
                 <SheetClose asChild>
-                  <Link
-                    to="/veriqos/api/docs"
-                    className={linkClasses("/veriqos/api/docs")}
-                  >
+                  <Link to="/docs" className={linkClasses("/docs")}>
                     <Book size={18} /> Docs
                   </Link>
                 </SheetClose>
@@ -157,19 +151,18 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {location.pathname !== "/veriqos/api/docs" &&
-        location.pathname !== "/devdocs" && (
-          <header className="bg-gradient-to-r from-[#034487] to-[#05C1AD] text-white py-6 shadow-lg mt-[1px]">
-            <div className="max-w-7xl mx-auto flex justify-between items-center px-6">
-              <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
-                Veriqos API {currentHeading}
-              </h1>
-              <span className="text-sm md:text-base opacity-90">
-                Powering Smart Data • Fast • Secure
-              </span>
-            </div>
-          </header>
-        )}
+      {location.pathname !== "/docs" && location.pathname !== "/devdocs" && (
+        <header className="bg-gradient-to-r from-[#034487] to-[#05C1AD] text-white py-6 shadow-lg mt-[1px]">
+          <div className="max-w-7xl mx-auto flex justify-between items-center px-6">
+            <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
+              Veriqos API {currentHeading}
+            </h1>
+            <span className="text-sm md:text-base opacity-90">
+              Powering Smart Data • Fast • Secure
+            </span>
+          </div>
+        </header>
+      )}
     </div>
   );
 };

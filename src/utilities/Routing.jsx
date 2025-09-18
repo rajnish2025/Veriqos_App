@@ -38,7 +38,7 @@ const Routing = () => {
           }
         />
         <Route
-          path="/veriqos/api/docs"
+          path="/docs"
           element={
             localStorage.getItem("email") ? (
               <>
