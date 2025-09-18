@@ -55,7 +55,26 @@
                     ]
                 },
                 {
-                    "apiName": "Aadhaar-PAN Link Status API"
+                    "apiName": "PAN to Aadhaar Link Status",
+                    "id": "pan_to_aadhaar",
+                    "label": "Check PAN-Aadhaar Link Status",
+                    "overview": "This API checks whether a given PAN is linked to a specific Aadhaar number. Useful for compliance verification, KYC processes, and identity validation.",
+                    "url": "/api/pan/pan-to-aadhaar",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<apikey>"
+                    },
+                    "body": {
+                        "pan": "text",
+                        "aadhaar": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/api/pan/pan-to-aadhaar' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n    \"pan\": \"AAAAP0267H\",\n    \"aadhaar\": \"596754462773\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/api/pan/pan-to-aadhaar', {\n  pan: 'AAAAP0267H',\n  aadhaar: '596754462773'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                        }
+                    ]
                 },
                 {
                     "apiName": "PAN Number Verification API",
@@ -63,6 +82,7 @@
                     "label": "PAN Verification API",
                     "url": "/api/pan/pan-verification",
                     "serverUrl": "/pan/pan-verification",
+                    "overview": "This API validates an individual’s or entity’s PAN in real-time, helping businesses ensure compliance, prevent fraud, and simplify onboarding.",
                     "method": "POST",
                     "headers": {
                         "Content-Type": "application/json",
@@ -242,6 +262,7 @@
                     "label": "Father Name Lookup",
                     "url": "/api/pan/father-name-lookup",
                     "serverUrl": "/pan/father-name-lookup",
+                    "overview": "This API retrieves the father’s name linked to a PAN, enabling businesses and institutions to verify identity details, support KYC processes, enhance onboarding accuracy, and reduce fraud risks efficiently.",
                     "method": "POST",
                     "headers": {
                         "Content-Type": "application/json",
@@ -531,7 +552,114 @@
                     "apiName": "Udyog Aadhaar Fetch API"
                 },
                 {
-                    "apiName": "PAN to GSTIN Mapping API"
+                    "apiName": "GSTIN Search API",
+                    "id": "gstin_search",
+                    "label": "Verify and Fetch GSTIN Details",
+                    "overview": "This API verifies a taxpayer or business using their GSTIN and returns details such as legal name, trade name, status, taxpayer type, and registration information. Useful for compliance checks and business verification.",
+                    "url": "/api/gstin/search",
+                    "serverUrl": "/gstin/search",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<apikey>"
+                    },
+                    "body": {
+                        "gstin": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/api/gstin/search' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n    \"gstin\": \"29AAAAP0267H1ZK\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/api/gstin/search', {\n  gstin: '29AAAAP0267H1ZK'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                        }
+                    ]
+                },
+                {
+                    "apiName": "GST to Name API",
+                    "id": "gst_to_name",
+                    "label": "Fetch Legal and Trade Name from GSTIN",
+                    "overview": "This API fetches the legal and trade name of a taxpayer or business using their GSTIN. Useful for quick identity verification, invoicing, and compliance checks.",
+                    "url": "/api/gst-to-name",
+                    "serverUrl": "/gst-to-name",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<apikey>"
+                    },
+                    "body": {
+                        "gstin": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/api/gst-to-name' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n    \"gstin\": \"29AAAAP0267H1ZK\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/api/gst-to-name', {\n  gstin: '29AAAAP0267H1ZK'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                        }
+                    ]
+                },
+                {
+                    "apiName": "GST To HSN API",
+                    "id": "gst_to_hsn",
+                    "label": "Fetch HSN Codes from GSTIN",
+                    "overview": "This API provides HSN codes and their descriptions associated with a business using its GSTIN. Useful for validating goods/services classification for compliance, invoicing, and tax reporting.",
+                    "url": "/api/gst-to-hsn",
+                    "serverUrl": "/gst-to-hsn",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<apikey>"
+                    },
+                    "body": {
+                        "gstin": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/api/gst-to-hsn' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n    \"gstin\": \"29AAAAP0267H1ZK\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/api/gst-to-hsn', {\n  gstin: '29AAAAP0267H1ZK'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                        }
+                    ]
+                },
+                {
+                    "apiName": "PAN to GSTIN API",
+                    "id": "pan_to_gstin",
+                    "label": "Fetch GSTINs Linked to PAN",
+                    "overview": "This API retrieves all GSTINs linked to a given PAN, including their status (Active/Inactive) and state codes. Useful for compliance checks, onboarding, and validating GST registrations associated with a PAN.",
+                    "url": "/api/pan-to-gstin",
+                    "serverUrl": "/pan-to-gstin",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<apikey>"
+                    },
+                    "body": {
+                        "pan": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/api/pan-to-gstin' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n    \"pan\": \"AAAAP0267H\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/api/pan-to-gstin', {\n  pan: 'AAAAP0267H'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                        }
+                    ]
+                },
+                {
+                    "apiName": "HSN Search API",
+                    "id": "hsn_search",
+                    "label": "Fetch HSN/SAC Details",
+                    "overview": "This API retrieves details of goods or services using an HSN/SAC code, including title, description, type, and related trade info. Useful for tax classification, invoicing, and compliance reporting.",
+                    "url": "/api/hsn/search",
+                    "serverUrl": "/hsn/search",
+                    "method": "POST",
+                    "headers": {
+                        "Content-Type": "application/json",
+                        "x-api-key": "<apikey>"
+                    },
+                    "body": {
+                        "code": "text"
+                    },
+                    "code": [
+                        {
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/api/hsn/search' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n    \"code\": \"01011010\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/api/hsn/search', {\n  code: '01011010'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                        }
+                    ]
                 },
                 {
                     "apiName": "PAN to Udyam Mapping API",

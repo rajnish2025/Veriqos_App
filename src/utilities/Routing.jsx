@@ -1,7 +1,6 @@
 import React from "react";
 import DashBoard from "../pages/Dashboard";
 import Navbar from "../components/Navbar";
-import ApisList from "../pages/ApisList";
 import { Route, Routes } from "react-router-dom";
 import ApiDocs from "../pages/ApiDocs";
 import Support from "../pages/Support";
@@ -9,6 +8,8 @@ import DocSubscribe from "../pages/DocSubscribe";
 import DevTestApi from "../pages/DevTestApi";
 import Home from "../pages/Home";
 import DevDocs from "../pages/DevDocs";
+import ProtectedRoutes from "./ProtectedRoutes";
+import PageNotFound from "@/pages/PageNotFound";
 
 const Routing = () => {
   return (
@@ -18,8 +19,10 @@ const Routing = () => {
           path="/sandbox"
           element={
             <>
-              <Navbar />
-              <DashBoard />
+              <ProtectedRoutes>
+                <Navbar />
+                <DashBoard />
+              </ProtectedRoutes>
             </>
           }
         />
@@ -27,8 +30,10 @@ const Routing = () => {
           path="/sandbox/:catId/:id"
           element={
             <>
-              <Navbar />
-              <DashBoard />
+              <ProtectedRoutes>
+                <Navbar />
+                <DashBoard />
+              </ProtectedRoutes>
             </>
           }
         />
@@ -49,8 +54,10 @@ const Routing = () => {
           path="/devdocs"
           element={
             <>
-              <Navbar />
-              <DevDocs />{" "}
+              <ProtectedRoutes>
+                <Navbar />
+                <DevDocs />{" "}
+              </ProtectedRoutes>
             </>
           }
         />
@@ -58,8 +65,10 @@ const Routing = () => {
           path="/support"
           element={
             <>
-              <Navbar />
-              <Support />
+              <ProtectedRoutes>
+                <Navbar />
+                <Support />
+              </ProtectedRoutes>
             </>
           }
         />
@@ -67,8 +76,10 @@ const Routing = () => {
           path="/devApi/test/:catId/:id"
           element={
             <>
-              <Navbar />
-              <DevTestApi />
+              <ProtectedRoutes>
+                <Navbar />
+                <DevTestApi />
+              </ProtectedRoutes>
             </>
           }
         />
@@ -76,8 +87,10 @@ const Routing = () => {
           path="/"
           element={
             <>
-              <Navbar />
-              <Home />
+              <ProtectedRoutes>
+                <Navbar />
+                <Home />
+              </ProtectedRoutes>
             </>
           }
         />
@@ -85,7 +98,7 @@ const Routing = () => {
           path="*"
           element={
             <>
-              <Navbar />
+              <PageNotFound />
             </>
           }
         />

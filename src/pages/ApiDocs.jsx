@@ -257,8 +257,8 @@ const ApiDocs = () => {
   };
   // ReactPDF.render(<PdfViewer />, `${pdfdata}`);
   return (
-    <div className="md:px-5 py-5 relative top-0">
-      <ApiDocsHero />
+    <div className="md:px-5 relative top-0 ">
+      {/* <ApiDocsHero /> */}
       {/* <div className="lg:w-[60%] w-[90%] mx-auto">
         <Input
           type="search"
@@ -267,21 +267,22 @@ const ApiDocs = () => {
           onChange={handleSearchResult}
         />
       </div> */}
-      <div className="w-full mx-auto">
+      <div className="flex justify-center">
+        <iframe
+          src={pdfdata + "#zoom=45"}
+          width="100%"
+          className="h-[97vh]"
+          title="PDF Viewer"
+          viewBox="50%"
+        />
+      </div>
+      <div className="w-full mx-auto hidden">
         <div className="w-full p-6 flex flex-col gap-6 mx-auto">
           {search.length !== 0 ? (
             <p className="text-sm font-medium text-gray-700">
               {searchResult.length} Matching Result Found.
             </p>
           ) : null}
-          <div>
-            <iframe
-              src={pdfdata}
-              width="100%"
-              height="1000px"
-              title="PDF Viewer"
-            />
-          </div>
           <Tabs defaultValue={tabs[0].value} className="max-w-full w-full">
             {searchResult.length === 0 && search.length === 0 ? (
               <TabsList
@@ -412,7 +413,7 @@ const ApiDocs = () => {
                               </li>
                             </ul>
                           </CardContent> */}
-                            <CardFooter className="pt-2 flex justify-end">
+                            {/* <CardFooter className="pt-2 flex justify-end">
                               <button className="group relative px-5 py-2 rounded-lg bg-gradient-to-r from-[#00B8AA] to-[#00859D] text-white font-semibold shadow-md overflow-hidden transition-all duration-200 hover:from-[#00859D] hover:to-[#00B8AA] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#00B8AA] focus:ring-offset-2">
                                 <span className="relative z-10 flex items-center gap-2">
                                   Read more
@@ -432,7 +433,7 @@ const ApiDocs = () => {
                                 </span>
                                 <span className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-white transition-opacity duration-200"></span>
                               </button>
-                            </CardFooter>
+                            </CardFooter> */}
                           </Card>
                         ))}
                   </div>

@@ -37,7 +37,7 @@ const Navbar = () => {
   useEffect(() => {
     if (location.pathname === "/") {
       setCurrentHeading("DashBoard");
-    } else if (location.pathname === "/sandbox") {
+    } else if (location.pathname.match("/sandbox")) {
       setCurrentHeading("SandBox");
     } else if (location.pathname === "/support") {
       setCurrentHeading("Support");
