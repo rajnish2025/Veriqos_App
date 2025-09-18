@@ -19,13 +19,11 @@ const CodeBlock = ({ code, language = "bash", backgound = "bg-gray-900" }) => (
 
 const DevTestApi = () => {
   const { catId, id } = useParams();
-  console.log(catId, id);
   const rowData = jsonApiData.categories
     .filter((category) => category.catId === catId)[0]
     .content.filter((api) => api.id === id);
   const [jsonResponse, setJsonResponse] = useState(null);
   const { register, handleSubmit } = useForm();
-  console.log(rowData[0]);
   const [response, setResponse] = useState(null);
   const [showLoader, setShowLoader] = useState(false);
 
@@ -80,7 +78,7 @@ const DevTestApi = () => {
     if (typeof data !== "object" || data === null) {
       return <span className="text-gray-800">{String(data)}</span>;
     }
-    console.log(data);
+
     // Handle arrays
     if (Array.isArray(data)) {
       if (data.length === 0) {
@@ -107,7 +105,7 @@ const DevTestApi = () => {
 
     // Handle objects
     const entries = Object.entries(data);
-    console.log(entries, data);
+
     if (entries.length === 0) {
       return (
         <div className="text-gray-500 italic px-3 py-2">

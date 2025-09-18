@@ -11,7 +11,6 @@ const Home = () => {
 
   const handRedirectMode = (event, data) => {
     event.preventDefault();
-    console.log(event, data);
     const stored = localStorage.getItem("production");
     if (stored !== null) {
       if (stored === "true") {
@@ -20,7 +19,6 @@ const Home = () => {
         navigate(data.sandboxUrl);
       }
     }
-    console.log(typeof stored);
   };
 
   return (

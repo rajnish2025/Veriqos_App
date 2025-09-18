@@ -159,7 +159,7 @@ const DashBoard = () => {
       //   data["dob"] = data.dob.split("-").reverse().join("/");
       // }
       apiTestData.headers["x-api-key"] = import.meta.env.VITE_API_TOKEN_KEY;
-      console.log("token key : ", typeof import.meta.env.VITE_PRODUCTION);
+
       const result = await instance.post(
         selectedOption != null
           ? selectedOption.url
@@ -174,11 +174,11 @@ const DashBoard = () => {
               : selectedOption.headers,
         }
       );
-      console.log(result.data);
+
       let validResultData =
         result != null ? (result.data != null ? result.data : result) : {};
       setDownloadResponse(validResultData);
-      console.log(Object.keys(validResultData));
+
       setResponse(
         Object.keys(validResultData).includes("result")
           ? Array.isArray(result.data.result)
@@ -206,7 +206,7 @@ const DashBoard = () => {
     if (typeof data !== "object" || data === null) {
       return <span className="text-gray-800">{String(data)}</span>;
     }
-    console.log(data);
+
     // Handle arrays
     if (Array.isArray(data)) {
       if (data.length === 0) {
@@ -391,7 +391,6 @@ const DashBoard = () => {
                   onClick={() => {
                     if (downloadResponse) {
                       const json = JSON.stringify(downloadResponse, null, 2);
-                      console.log(downloadResponse);
                       const blob = new Blob([json], {
                         type: "application/json",
                       });

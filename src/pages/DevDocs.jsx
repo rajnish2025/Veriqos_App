@@ -248,8 +248,6 @@ const DevDocs = () => {
     // );
     const fuse2 = new Fuse(apidocsList, fuseOptions);
     const res2 = fuse2.search(e.target.value);
-    console.log(apidocsList);
-    console.log(res2);
     setSearchResult(res2);
   };
 
@@ -339,7 +337,6 @@ const DevDocs = () => {
                           key={idx}
                           className="w-full shadow-lg border-0 bg-gradient-to-br from-[#f3fffd] to-[#f8fcff] hover:scale-[1.03] transition-transform duration-200 h-auto flex flex-col justify-between"
                         >
-                          {console.log(item)}
                           <CardHeader className="pb-2">
                             <CardTitle className="text-xl font-bold text-[#00B8AA]">
                               {item.apiName}
