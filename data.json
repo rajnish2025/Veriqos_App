@@ -284,6 +284,7 @@
                     "label": "Name & DOB Lookup",
                     "url": "/api/pan/name-and-dob-lookup",
                     "serverUrl": "/pan/name-and-dob-lookup",
+                    "overview": "This API fetches a PAN holder’s name and date of birth, useful for identity verification, KYC compliance, and streamlining customer onboarding.",
                     "method": "POST",
                     "headers": {
                         "Content-Type": "application/json",
@@ -305,6 +306,7 @@
                     "label": "PAN to Account Linkage",
                     "url": "/api/pan-account-linkage/v1",
                     "serverUrl": "/pan-account-linkage/v1",
+                    "overview": "This API checks if a PAN is linked to a bank account using the account number and IFSC, helping verify ownership and ensure compliance with regulatory requirements.",
                     "method": "POST",
                     "headers": {
                         "Content-Type": "application/json",
@@ -334,6 +336,7 @@
                     "label": "Occupation API",
                     "url": "/api/pan/occupation-status",
                     "serverUrl": "/pan/occupation-status",
+                    "overview": "This API fetches occupation-related details of a PAN holder, including employment type, directorship, or sole proprietor status, useful for KYC, compliance checks, and financial due diligence.",
                     "method": "POST",
                     "headers": {
                         "Content-Type": "application/json",
@@ -355,6 +358,7 @@
                     "label": "PAN Supreme v1",
                     "url": "/api/pan/panv1",
                     "serverUrl": "/pan/panv1",
+                    "overview": "This API verifies a PAN and fetches the holder’s name, gender, date of birth, Aadhaar linkage status, and category for KYC and compliance purposes.",
                     "method": "POST",
                     "headers": {
                         "Content-Type": "application/json",
@@ -388,6 +392,7 @@
                     "label": "LPG Verification by Mobile Number",
                     "url": "/api/mobile-number/LPG-verification",
                     "serverUrl": "/mobile-number/LPG-verification",
+                    "overview": "This API verifies LPG consumer details (Indane, HP, Bharat Gas) using a registered mobile number and returns linked consumer, distributor, and connection information for validation and compliance.",
                     "method": "POST",
                     "headers": {
                         "Authorization": "application/json",
@@ -436,6 +441,7 @@
                     "label": "Challan API",
                     "url": "/api/rc/challan-details",
                     "serverUrl": "/rc/challan-details",
+                    "overview": "This API retrieves vehicle challan details, including challan number, status, date, location, offenses, accused information, and related document URLs, useful for compliance checks and traffic violation tracking.",
                     "method": "POST",
                     "headers": {
                         "Content-Type": "application/json",
