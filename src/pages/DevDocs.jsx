@@ -329,7 +329,7 @@ const DevDocs = () => {
               <TabsContent key={tab.value} value={tab.value} className="w-full">
                 <div
                   className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 
-            border rounded-md mt-7 p-5 mx-auto overflow-y-auto max-h-[54vh]"
+            border rounded-md mt-7 p-5 mx-auto overflow-y-auto max-h-[68vh]"
                 >
                   {searchResult.length === 0 && search.length === 0
                     ? tab.content.map((item, idx) => (
@@ -369,22 +369,30 @@ const DevDocs = () => {
                           </CardContent>
                           <CardFooter className="pt-2 flex justify-end">
                             <button className="group relative px-5 py-2 rounded-lg bg-gradient-to-r from-[#00B8AA] to-[#00859D] text-white font-semibold shadow-md overflow-hidden transition-all duration-200 hover:from-[#00859D] hover:to-[#00B8AA] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#00B8AA] focus:ring-offset-2">
-                              <span className="relative z-10 flex items-center gap-2">
-                                Read more
-                                <svg
-                                  className="w-4 h-4 ml-1 transition-transform duration-200 group-hover:translate-x-1"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  strokeWidth="2"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M9 5l7 7-7 7"
-                                  />
-                                </svg>
-                              </span>
+                              <Link
+                                to={
+                                  item["devDocsId"] != undefined
+                                    ? `/devdocs/${item.devDocsId}`
+                                    : "/devdocs"
+                                }
+                              >
+                                <span className="relative z-10 flex items-center gap-2">
+                                  Read more
+                                  <svg
+                                    className="w-4 h-4 ml-1 transition-transform duration-200 group-hover:translate-x-1"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      d="M9 5l7 7-7 7"
+                                    />
+                                  </svg>
+                                </span>
+                              </Link>
                               <span className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-white transition-opacity duration-200"></span>
                             </button>
                           </CardFooter>
@@ -428,22 +436,30 @@ const DevDocs = () => {
                           </CardContent>
                           <CardFooter className="pt-2 flex justify-end">
                             <button className="group relative px-5 py-2 rounded-lg bg-gradient-to-r from-[#00B8AA] to-[#00859D] text-white font-semibold shadow-md overflow-hidden transition-all duration-200 hover:from-[#00859D] hover:to-[#00B8AA] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#00B8AA] focus:ring-offset-2">
-                              <span className="relative z-10 flex items-center gap-2">
-                                Read more
-                                <svg
-                                  className="w-4 h-4 ml-1 transition-transform duration-200 group-hover:translate-x-1"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  strokeWidth="2"
-                                  viewBox="0 0 24 24"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M9 5l7 7-7 7"
-                                  />
-                                </svg>
-                              </span>
+                              <Link
+                                to={
+                                  item["devDocsId"] != undefined
+                                    ? `/devdocs/${item.devDocsId}`
+                                    : "/devdocs"
+                                }
+                              >
+                                <span className="relative z-10 flex items-center gap-2">
+                                  Read more
+                                  <svg
+                                    className="w-4 h-4 ml-1 transition-transform duration-200 group-hover:translate-x-1"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      d="M9 5l7 7-7 7"
+                                    />
+                                  </svg>
+                                </span>
+                              </Link>
                               <span className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-white transition-opacity duration-200"></span>
                             </button>
                           </CardFooter>

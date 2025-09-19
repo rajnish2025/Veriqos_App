@@ -12,6 +12,7 @@
                 {
                     "apiName": "Driving License Advance API",
                     "id": "dladvanceapi1010",
+                    "devDocsId": "docs_dladvance_004",
                     "label": "DL Advance API",
                     "url": "/api/dl/advance",
                     "serverUrl": "/dl/advance",
@@ -35,6 +36,7 @@
                 {
                     "apiName": "Voter ID API",
                     "id": "voteridapi8822",
+                    "devDocsId": "docs_voterid_005",
                     "label": "Voter ID API",
                     "url": "/api/voterid/v1",
                     "serverUrl": "/voterid/v1",
@@ -101,6 +103,7 @@
                 {
                     "apiName": "PAN Identity Match API",
                     "id": "identitymatchapi5678",
+                    "devDocsId": "docs_identitymatch_003",
                     "label": "Identity Match API",
                     "url": "/api/pan/identity-match",
                     "serverUrl": "/pan/identity-match",
@@ -333,6 +336,7 @@
                 {
                     "apiName": "Occupation API ",
                     "id": "bhqecj4p",
+                    "devDocsId": "docs234sfs321",
                     "label": "Occupation API",
                     "url": "/api/pan/occupation-status",
                     "serverUrl": "/pan/occupation-status",
@@ -355,6 +359,7 @@
                 {
                     "apiName": "PAN Supreme v1",
                     "id": "panv1api1234",
+                    "devDocsId": "docs_panv1_002",
                     "label": "PAN Supreme v1",
                     "url": "/api/pan/panv1",
                     "serverUrl": "/pan/panv1",

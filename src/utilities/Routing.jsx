@@ -10,6 +10,7 @@ import Home from "../pages/Home";
 import DevDocs from "../pages/DevDocs";
 import ProtectedRoutes from "./ProtectedRoutes";
 import PageNotFound from "@/pages/PageNotFound";
+import DocumentationPage from "@/pages/DocumentationPage";
 
 const Routing = () => {
   return (
@@ -57,6 +58,17 @@ const Routing = () => {
               <ProtectedRoutes>
                 <Navbar />
                 <DevDocs />{" "}
+              </ProtectedRoutes>
+            </>
+          }
+        />
+        <Route
+          path="/devdocs/:id"
+          element={
+            <>
+              <ProtectedRoutes>
+                <Navbar />
+                <DocumentationPage />{" "}
               </ProtectedRoutes>
             </>
           }

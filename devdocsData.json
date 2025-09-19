@@ -1,0 +1,325 @@
+[
+    {
+        "id": "docs234sfs321",
+        "name": "Occupation API",
+        "overview": "Fetch occupation-related details (employment, director, sole proprietor status) of a PAN holder.",
+        "endpoint": "https://dev-api.innowave.solutions/pan/occupation-status",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pan/occupation-status' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"pan\": \"HCEPP8169Q\",\n    \"employment_status\": \"Y\",\n    \"director_status\": \"N\",\n    \"sole_proprietor_status\": \"\"\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "Invalid PAN",
+                "message": "{\"message\": \"Invalid PAN\", \"responseId\": 1002}"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "No",
+                "description": "Inactive PAN",
+                "message": "{\"message\": \"Inactive PAN\", \"responseId\": 1003}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid, missing / you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exhausted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_panv1_002",
+        "name": "PAN Supreme v1",
+        "overview": "Verifies PAN and fetches name, gender, DOB, Aadhaar linkage, category.",
+        "endpoint": "https://dev-api.innowave.solutions/pan/panv1",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pan/panv1' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"full_name\": \"MANOJ PATIDAR\",\n    \"panNumber\": \"HCEPP8169Q\",\n    \"aadhaar\": \"XXXXXXXX2773\",\n    \"gender\": \"M\",\n    \"dob\": \"2000-08-15\",\n    \"category\": \"Person\"\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "Invalid PAN",
+                "message": "{\"message\": \"Invalid PAN\", \"responseId\": 1002}"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "No",
+                "description": "Inactive PAN",
+                "message": "{\"message\": \"Inactive PAN\", \"responseId\": 1003}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid, missing / you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exhausted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_identitymatch_003",
+        "name": "Identity Match API",
+        "overview": "Fetch identity details including name, email, phone, gender, DOB, Aadhaar linkage, and address.",
+        "endpoint": "https://dev-api.innowave.solutions/pan/identity-match",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pan/identity-match' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"pan_number\": \"HCEPP8169Q\",\n    \"name\": \"MANOJ PATIDAR\",\n    \"dob\": \"2000-08-15\",\n    \"mail_id\": \"ef********97@gmail.com\",\n    \"mobile\": \"62XXXXXX89\",\n    \"gender\": \"M\",\n    \"is_aadhaar_linked\": true,\n    \"aadhaar_mask\": \"XXXXXXXX2773\",\n    \"entity_type\": \"person\",\n    \"residence\": {\n      \"addr_line1\": \"MAKAN NO. 156 WARD NO.-07\",\n      \"addr_line2\": \"HOLI CHOUK PATIDAR MOHALLA DHAKANI\",\n      \"zip_code\": \"458113\",\n      \"city_name\": \"Dhakani\",\n      \"region\": \"Madhya Pradesh\",\n      \"nation\": \"INDIA\",\n      \"street\": \"Nalkheda B.O\",\n      \"complete_address\": \"MAKAN NO. 156 WARD NO.-07 HOLI CHOUK...\"\n    }\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "Invalid PAN",
+                "message": "{\"message\": \"Invalid PAN\", \"responseId\": 1002}"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "No",
+                "description": "Inactive PAN",
+                "message": "{\"message\": \"Inactive PAN\", \"responseId\": 1003}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid, missing / you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exhausted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_dladvance_004",
+        "name": "DL Advance API",
+        "overview": "The DL Advance API enables retrieval of driving license details such as personal information, address, license validity, vehicle category, and status by providing a driving license number (DL No) and date of birth (DOB). This API is useful for digital onboarding, KYC verification, and compliance checks.",
+        "endpoint": "https://dev-api.innowave.solutions/dl/advance",
+        "request": "curl --location 'https://dev-api.innowave.solutions/dl/advance' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n    \"dl_number\":\"AS172020000XXXX\",\n    \"dob\":\"DD-MM-YYYY\"\n}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"license_information\": {\n      \"license_status\": \"Active\",\n      \"license_number\": \"UP81XXXXXXX\",\n      \"issue_date\": \"28-11-XXXX\",\n      \"expiry_date\": \"27-11-2037\",\n      \"endorsement_number\": \"UP81 /AED/0002697/XXXX\",\n      \"endorsement_date\": \"28-12-2018\",\n      \"validity_non_transport\": {\n        \"valid_from\": \"28-11-2017\",\n        \"valid_to\": \"27-11-2037\"\n      },\n      \"validity_transport\": {\n        \"valid_from\": \"\",\n        \"valid_to\": \"\"\n      },\n      \"status_history\": {\n        \"valid_from\": \"\",\n        \"valid_to\": \"\",\n        \"remarks\": \"\"\n      }\n    },\n    \"holder_details\": {\n      \"full_name\": \"XXXX XXXXX\",\n      \"father_or_husband\": \"XXXXX KUMAR\",\n      \"dob\": \"02-10-XXXX\",\n      \"blood_group\": \"O+\",\n      \"photo_base64\": \"<base64 of user image>\",\n      \"state_of_issue\": \"Uttar Pradesh\"\n    },\n    \"residential_addresses\": {\n      \"current_address\": {\n        \"address_line\": \"XXXXX XXXXX\",\n        \"full_address\": \"XXXXXX XXXXX\",\n        \"district\": \"PRATHIBHA COLONY TEH KOIL\",\n        \"state\": \"Uttar Pradesh\",\n        \"country\": \"India\",\n        \"pincode\": \"202001\"\n      },\n      \"permanent_address\": {\n        \"address_line\": \"XXXXXX XXXXX\",\n        \"full_address\": \"XXXXXX XXXXX\",\n        \"district\": \"PRATHIBHA COLONY TEH KOIL\",\n        \"state\": \"Uttar Pradesh\",\n        \"country\": \"India\",\n        \"pincode\": \"202001\"\n      }\n    },\n    \"vehicle_classes\": [\n      {\n        \"vehicle_type\": \"MCWG\",\n        \"issued_on\": \"\",\n        \"expires_on\": \"\"\n      },\n      {\n        \"vehicle_type\": \"LMV\",\n        \"issued_on\": \"\",\n        \"expires_on\": \"\"\n      }\n    ]\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "No Record Found",
+                "message": "{\"message\": \"No Record Found\", \"responseId\": 1002}"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "Yes",
+                "description": "Invalid DOB",
+                "message": "{\"message\": \"Invalid DOB\", \"responseId\": 1003}"
+            },
+            {
+                "code": 200,
+                "responseId": 1004,
+                "billable": "No",
+                "description": "Number of inputs exceeded",
+                "message": "{\"message\": \"Number of inputs exceeded. Please limit the number of input parameters as per API guidelines.\", \"responseId\": 1004}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid, missing / you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exhausted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_voterid_005",
+        "name": "Voter ID API",
+        "overview": "The Voter ID API helps verify and fetch details of an Indian voter using the voter ID number. It provides personal information, constituency details, booth information, and location data. This API is useful for onboarding, identity verification, and compliance purposes.",
+        "endpoint": "https://dev-api.innowave.solutions/voterid/v1",
+        "request": "curl --location 'https://dev-api.innowave.solutions/voterid/v1' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"voter_id\": \"MNO456\"\n}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"electoral_booth\": {\n      \"booth_number\": \"505\",\n      \"booth_coordinates\": \"0.0,0.0\",\n      \"booth_name\": {\n        \"english\": \"XXXXXXXX, XXXXXXX, Lalitha Nagar, LKG Room\",\n        \"local_language\": \"XXXXXXX, XXXXXXXX, లలిత నగర్, ఎల్ కే జి రూమ్\"\n      }\n    },\n    \"voter_details\": {\n      \"name\": {\n        \"english\": \"XXXXX XXXXX Gamini\",\n        \"local_language\": \"శ్రీనివాస రావు గమిని\"\n      },\n      \"gender\": \"Male\",\n      \"age\": 55,\n      \"voter_id\": \"ZTS041XXXX\",\n      \"relation_details\": {\n        \"relation_type\": \"Father\",\n        \"name_english\": \"XXXXXX Raju Gamini\",\n        \"name_local\": \"సత్తి రాజు గమిని\"\n      },\n      \"status\": \"N\",\n      \"last_updated_on\": \"Wed Feb 08 04:15:42 IST 2023\"\n    },\n    \"geographical_info\": {\n      \"state\": {\n        \"state_name\": \"Telangana\",\n        \"state_code\": \"S29\"\n      },\n      \"region\": {\n        \"region_code\": \"14\",\n        \"region_name\": \"Rangareddy\",\n        \"vernacular_name\": \"రంగారెడ్డి \"\n      }\n    },\n    \"constituency_info\": {\n      \"assembly_constituency\": {\n        \"assembly_name\": \"Lal Bahadur Nagar\",\n        \"vernacular_name\": \"లాల్ బహాదుర్ నగర్\",\n        \"assembly_code\": \"49\"\n      },\n      \"parliament_constituency\": {\n        \"parliament_name\": \"Malkajgiri\",\n        \"vernacular_name\": \"మల్కజగిరి\",\n        \"parliament_code\": \"7\"\n      },\n      \"section_no\": \"1\",\n      \"serial_no_in_part\": \"289\",\n      \"part_info\": {\n        \"part_number\": \"505\",\n        \"polling_location\": {\n          \"english\": \"XXXXXXXXX XXXXXXX, Lalitha Nagar, Drawing Room\",\n          \"local_language\": \"XXXXXXXX, XXXXXXX, లలిత నగర్, డ్రాయింగ్ రూమ్\"\n        }\n      }\n    }\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "Invalid ID Number or Combination of Inputs",
+                "message": "{\"message\": \"Invalid ID number or combination of inputs\", \"responseId\": 1002}"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "No",
+                "description": "Multiple Records Found",
+                "message": "{\"message\": \"Multiple records found for the given input\", \"responseId\": 1003}"
+            },
+            {
+                "code": 200,
+                "responseId": 1004,
+                "billable": "No",
+                "description": "Partial Record Found",
+                "message": "{\"message\": \"Partial record found for the given input\", \"responseId\": 1004}"
+            },
+            {
+                "code": 200,
+                "responseId": 1005,
+                "billable": "No",
+                "description": "Duplicate Transaction",
+                "message": "{\"message\": \"Duplicate transaction detected\", \"responseId\": 1005}"
+            },
+            {
+                "code": 200,
+                "responseId": 1006,
+                "billable": "No",
+                "description": "Number of inputs exceeded",
+                "message": "{\"message\": \"Number of inputs exceeded. Please limit the number of input parameters as per API guidelines\", \"responseId\": 1006}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source down/internal server error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    }
+]
