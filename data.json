@@ -15,6 +15,7 @@
                     "devDocsId": "docs_dladvance_004",
                     "label": "DL Advance API",
                     "url": "/api/dl/advance",
+                    "date_format": "dd-MM-yyyy",
                     "serverUrl": "/dl/advance",
                     "overview": "The DL Advance API retrieves driving license details using DL number and DOB. It provides personal info, address, validity, vehicle class, and supports KYC and compliance checks.",
                     "method": "POST",
@@ -195,6 +196,7 @@
                     "label": "Demographic Data Fetch",
                     "url": "/api/pan/demographic-data-fetch",
                     "serverUrl": "/pan/demographic-data-fetch",
+                    "date_format": "dd/MM/yyyy",
                     "overview": "This API retrieves demographic information linked to a PAN, such as address, state, and pincode. It supports KYC, identity verification, and customer onboarding processes.",
                     "method": "POST",
                     "headers": {
@@ -241,6 +243,7 @@
                     "label": "Demographic Advance",
                     "url": "/api/pan/demographic-advance",
                     "serverUrl": "/pan/demographic-advance",
+                    "date_format": "yyyy-MM-dd",
                     "overview": "This API provides extended demographic information linked to a PAN, including multiple addresses if available. It is useful for thorough identity checks, KYC, and compliance workflows.",
                     "method": "POST",
                     "headers": {

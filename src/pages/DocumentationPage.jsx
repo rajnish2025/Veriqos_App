@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import apiDocumentation from "../../devdocsData.json";
 import { useParams, useNavigate } from "react-router-dom";
-import { CopyIcon, ArrowLeft, Menu } from "lucide-react";
-
+import { ArrowLeft, Menu } from "lucide-react";
+import CodeBlock from "@/components/CodeBlock";
 const SectionBlock = ({ title, children }) => (
   <div className="mb-8">
     <h2 className="text-xl font-semibold text-[#043758] mb-2">{title}</h2>
@@ -12,34 +12,11 @@ const SectionBlock = ({ title, children }) => (
   </div>
 );
 
-const CodeBlock = ({ text }) => {
-  const handleCopy = () => {
-    navigator.clipboard.writeText(
-      typeof text === "object" ? JSON.stringify(text, null, 2) : text
-    );
-  };
-
-  return (
-    <div className="relative">
-      <pre className="bg-[#043758] text-white p-4 rounded-md text-sm overflow-x-auto">
-        {typeof text === "object" ? JSON.stringify(text, null, 2) : text}
-      </pre>
-      <button
-        onClick={handleCopy}
-        className="absolute top-2 right-2 text-gray-400 hover:text-white transition"
-        aria-label="Copy to clipboard"
-      >
-        <CopyIcon size={16} />
-      </button>
-    </div>
-  );
-};
-
 const DocumentationPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
+  const [activeLink, setActiveLink] = useState(null);
   const docsData = apiDocumentation.find((api) => api.id == id);
   if (!docsData) {
     return <div className="p-8 text-red-500">API not found</div>;
@@ -52,10 +29,6 @@ const DocumentationPage = () => {
     { id: "response", label: "Response" },
     { id: "status-codes", label: "Status Codes" },
   ];
-
-  const handleActive = (e) => {
-    console.log(e);
-  };
 
   return (
     <div className="min-h-screen bg-white text-[#043758] relative top-40">
@@ -72,12 +45,19 @@ const DocumentationPage = () => {
             {sidebarLinks.map((link) => (
               <li
                 key={link.id}
-                className="p-5 size-4 hover:bg-[#043758] text-white rounded-sm"
+                className={`p-5 size-4 rounded-sm ${
+                  activeLink === link.id ? "bg-[#043758]" : "hover:bg-[#043758]"
+                } `}
               >
                 <a
                   href={`#${link.id}`}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block text-gray-700 hover:text-white active:bg-[#043758]"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    setActiveLink(link.id);
+                  }}
+                  className={`block text-gray-700 ${
+                    activeLink === link.id ? "text-white" : "hover:text-white"
+                  } active:bg-[#043758]`}
                 >
                   {link.label}
                 </a>
@@ -90,18 +70,22 @@ const DocumentationPage = () => {
       <div className="flex">
         <aside className="w-64 border-r border-gray-200 sticky top-40 h-[calc(100vh-10rem)] p-6 hidden md:block">
           <h2 className="text-lg font-semibold mb-4 text-gray-900">
-            API Sections
+            Document Sections
           </h2>
           <ul className="space-y-2 text-sm">
             {sidebarLinks.map((link) => (
               <li
                 key={link.id}
-                className="p-3 text-md hover:bg-[#043758] hover:text-white rounded-sm"
+                className={`p-3 text-md ${
+                  activeLink === link.id ? "bg-[#043758]" : "hover:bg-[#043758]"
+                } hover:text-white rounded-sm`}
               >
                 <a
                   href={`#${link.id}`}
-                  className="hover:text-white active:bg-[#043758]"
-                  onClick={handleActive}
+                  className={`${
+                    activeLink === link.id ? "text-white" : "hover:text-white"
+                  } active:bg-[#043758]`}
+                  onClick={() => setActiveLink(link.id)}
                 >
                   {link.label}
                 </a>

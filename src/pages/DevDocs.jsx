@@ -37,215 +37,21 @@ const ApiDocsHero = () => (
   </div>
 );
 
-// const tabs = [
-//   {
-//     name: "Digital Onboarding",
-//     value: "onboarding",
-//     content: [
-//       {
-//         title: "User Registration",
-//         description: "Register a new user with KYC verification.",
-//         method: "POST",
-//         endpoint: "/api/v1/onboarding/register",
-//         auth: "API Key",
-//       },
-//       {
-//         title: "Document Upload",
-//         description: "Upload identity documents details for onboarding.",
-//         method: "POST",
-//         endpoint: "/api/v1/onboarding/upload",
-//         auth: "API Key",
-//       },
-//       {
-//         title: "Document Upload",
-//         description: "Upload identity documents details for onboarding.",
-//         method: "POST",
-//         endpoint: "/api/v1/onboarding/upload",
-//         auth: "API Key",
-//       },
-//       {
-//         title: "Document Upload",
-//         description: "Upload identity documents details for onboarding.",
-//         method: "POST",
-//         endpoint: "/api/v1/onboarding/upload",
-//         auth: "API Key",
-//       },
-//       {
-//         title: "Document Upload",
-//         description: "Upload identity documents details for onboarding.",
-//         method: "POST",
-//         endpoint: "/api/v1/onboarding/upload",
-//         auth: "API Key",
-//       },
-//       {
-//         title: "Document Upload",
-//         description: "Upload identity documents details for onboarding.",
-//         method: "POST",
-//         endpoint: "/api/v1/onboarding/upload",
-//         auth: "API Key",
-//       },
-//       {
-//         title: "Document Upload",
-//         description: "Upload identity documents details for onboarding.",
-//         method: "POST",
-//         endpoint: "/api/v1/onboarding/upload",
-//         auth: "API Key",
-//       },
-//       {
-//         title: "Document Upload",
-//         description: "Upload identity documents details for onboarding.",
-//         method: "POST",
-//         endpoint: "/api/v1/onboarding/upload",
-//         auth: "API Key",
-//       },
-//       {
-//         title: "Document Upload",
-//         description: "Upload identity documents details for onboarding.",
-//         method: "POST",
-//         endpoint: "/api/v1/onboarding/upload",
-//         auth: "API Key",
-//       },
-//       {
-//         title: "Document Upload",
-//         description: "Upload identity documents details for onboarding.",
-//         method: "POST",
-//         endpoint: "/api/v1/onboarding/upload",
-//         auth: "API Key",
-//       },
-//       {
-//         title: "Document Upload",
-//         description: "Upload identity documents details for onboarding.",
-//         method: "POST",
-//         endpoint: "/api/v1/onboarding/upload",
-//         auth: "API Key",
-//       },
-//     ],
-//   },
-//   {
-//     name: "Risk, Fraud & AML",
-//     value: "risk",
-//     content: [
-//       {
-//         title: "Fraud Check",
-//         description: "Check user against fraud databases.",
-//         method: "GET",
-//         endpoint: "/api/v1/risk/fraud-check",
-//         auth: "API Key",
-//       },
-//     ],
-//   },
-//   {
-//     name: "Global Verification",
-//     value: "global",
-//     content: [
-//       {
-//         title: "Passport Verification",
-//         description: "Verify passport details globally.",
-//         method: "POST",
-//         endpoint: "/api/v1/global/passport",
-//         auth: "API Key",
-//       },
-//     ],
-//   },
-//   {
-//     name: "Vehical & Asset",
-//     value: "vehical",
-//     content: [
-//       {
-//         title: "Vehical RC V2",
-//         description: "vehical Detaisl generation.",
-//         method: "POST",
-//         endpoint: "/api/v1/vehical/verification",
-//         auth: "API Key",
-//       },
-//     ],
-//   },
-//   {
-//     name: "Fincancial Accounts Verification",
-//     value: "fincancial",
-//     content: [
-//       {
-//         title: "Vehical RC V2",
-//         description: "vehical Detaisl generation.",
-//         method: "POST",
-//         endpoint: "/api/v1/vehical/verification",
-//         auth: "API Key",
-//       },
-//     ],
-//   },
-//   {
-//     name: "Consent & digital signature",
-//     value: "consent",
-//     content: [
-//       {
-//         title: "Vehical RC V2",
-//         description: "vehical Detaisl generation.",
-//         method: "POST",
-//         endpoint: "/api/v1/vehical/verification",
-//         auth: "API Key",
-//       },
-//     ],
-//   },
-//   {
-//     name: "Business & Entity Verification",
-//     value: "business",
-//     content: [
-//       {
-//         title: "Vehical RC V2",
-//         description: "vehical Detaisl generation.",
-//         method: "POST",
-//         endpoint: "/api/v1/vehical/verification",
-//         auth: "API Key",
-//       },
-//     ],
-//   },
-//   {
-//     name: "Contact & Communication",
-//     value: "contact",
-//     content: [
-//       {
-//         title: "Vehical RC V2",
-//         description: "vehical Detaisl generation.",
-//         method: "POST",
-//         endpoint: "/api/v1/vehical/verification",
-//         auth: "API Key",
-//       },
-//     ],
-//   },
-//   {
-//     name: "Lending & Underwriting",
-//     value: "lending",
-//     content: [
-//       {
-//         title: "Vehical RC V2",
-//         description: "vehical Detaisl generation.",
-//         method: "POST",
-//         endpoint: "/api/v1/vehical/verification",
-//         auth: "API Key",
-//       },
-//     ],
-//   },
-// ];
-const tabss = apiJsonData.categories;
+const tabs = apiJsonData.categories;
 const DevDocs = () => {
   const [searchResult, setSearchResult] = useState([]);
   const [search, setSearch] = useState("");
   const fuseOptions = {
     includeScore: true,
     threshold: 0.3,
-    // keys: ["title", "description", "method", "endpoint"],
     keys: ["apiName", "overview", "label", "url", "method"],
   };
   const handleSearchResult = (e) => {
     setSearch(e.target.value);
-    const apidocsList = tabss.reduce(
+    const apidocsList = tabs.reduce(
       (prev, tabcontent) => [...prev, ...tabcontent.content],
       []
     );
-    // const apidocsList = tabs.reduce(
-    //   (prev, tabcontent) => [...prev, ...tabcontent.content],
-    //   []
-    // );
     const fuse2 = new Fuse(apidocsList, fuseOptions);
     const res2 = fuse2.search(e.target.value);
     setSearchResult(res2);
@@ -300,7 +106,7 @@ const DevDocs = () => {
             </p>
           ) : null}
 
-          <Tabs defaultValue={tabss[0].value} className="w-full">
+          <Tabs defaultValue={tabs[0].value} className="w-full">
             {searchResult.length === 0 && search.length === 0 ? (
               <TabsList
                 ref={scrollRef}
@@ -311,7 +117,7 @@ const DevDocs = () => {
                 className="w-full flex gap-1 p-0 bg-background justify-start border-b rounded-none 
         overflow-x-auto no-scrollbar scroll-smooth cursor-grab select-none"
               >
-                {tabss.map((tab) => (
+                {tabs.map((tab) => (
                   <TabsTrigger
                     key={tab.value}
                     value={tab.value}
@@ -325,7 +131,7 @@ const DevDocs = () => {
                 ))}
               </TabsList>
             ) : null}
-            {tabss.map((tab) => (
+            {tabs.map((tab) => (
               <TabsContent key={tab.value} value={tab.value} className="w-full">
                 <div
                   className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 

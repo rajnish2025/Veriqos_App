@@ -6,16 +6,7 @@ import jsonApiData from "../../data.json";
 import { toast } from "sonner";
 import { LineSpinner } from "ldrs/react";
 import "ldrs/react/LineSpinner.css";
-
-const CodeBlock = ({ code, language = "bash", backgound = "bg-gray-900" }) => (
-  <pre
-    className={`rounded-xl ${backgound} text-white text-sm p-4 overflow-x-auto`}
-  >
-    <code>
-      {typeof code === "object" ? JSON.stringify(code, null, 2) : code}
-    </code>
-  </pre>
-);
+import CodeBlock from "@/components/CodeBlock";
 
 const DevTestApi = () => {
   const { catId, id } = useParams();
@@ -26,7 +17,6 @@ const DevTestApi = () => {
   const { register, handleSubmit } = useForm();
   const [response, setResponse] = useState(null);
   const [showLoader, setShowLoader] = useState(false);
-
   const onSubmit = async (data) => {
     try {
       setShowLoader(true);
@@ -64,14 +54,6 @@ const DevTestApi = () => {
   const curlUrl =
     rowData[0].code[0]?.Curl ||
     `curl -X POST https://api.example.com/test -d '${JSON.stringify(body)}'`;
-
-  const handleCopy = (text) => {
-    if (typeof text === "object") {
-      navigator.clipboard.writeText(JSON.stringify(text, null, 2));
-    } else {
-      navigator.clipboard.writeText(text);
-    }
-  };
 
   const renderTable = (data, level = 0) => {
     // Handle primitives & null
@@ -159,43 +141,6 @@ const DevTestApi = () => {
     );
   };
 
-  const CopyIcon = ({ onClick }) => (
-    <button
-      onClick={onClick}
-      className="ml-2 p-1 rounded hover:bg-gray-200 transition"
-      aria-label="Copy to clipboard"
-      type="button"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-5 w-5 text-gray-500"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={2}
-      >
-        <rect
-          x="9"
-          y="9"
-          width="13"
-          height="13"
-          rx="2"
-          fill="none"
-          stroke="currentColor"
-        />
-        <rect
-          x="3"
-          y="3"
-          width="13"
-          height="13"
-          rx="2"
-          fill="none"
-          stroke="currentColor"
-        />
-      </svg>
-    </button>
-  );
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-white to-blue-100 px-2 py-6 sm:px-4 sm:py-10 relative top-36">
       <div className="w-full max-w-[90%] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10">
@@ -276,25 +221,17 @@ const DevTestApi = () => {
               <h2 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-[#00538C] to-[#00859D] bg-clip-text text-transparent">
                 cURL Preview
               </h2>
-              <CopyIcon onClick={() => handleCopy(curlUrl)} />
             </div>
-            <CodeBlock
-              code={curlUrl}
-              language="bash"
-              backgound="bg-[#043758]"
-            />
+            <CodeBlock text={curlUrl} />
           </div>
           <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl p-4 sm:p-6">
             <div className="flex items-center justify-between mb-2">
               <h2 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-[#024688] to-[#03BEAC] bg-clip-text text-transparent">
                 JSON Response
               </h2>
-              <CopyIcon onClick={() => handleCopy(jsonResponse)} />
             </div>
             <CodeBlock
-              code={jsonResponse}
-              language="json"
-              backgound="bg-[#043758]"
+              text={jsonResponse == null ? "no response" : jsonResponse}
             />
           </div>
         </div>

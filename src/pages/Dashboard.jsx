@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Select from "react-select";
-// import axios from "axios";
 import instance from "@/utilities/iniciate";
-import CodeBlocks from "../components/CodeBlock";
+import CodeBlocks from "../components/CodeBlocks";
 import { useLocation, useParams } from "react-router-dom";
 import jsonApiData from "../../data.json";
 import { toast } from "sonner";
 import { LineSpinner } from "ldrs/react";
 import "ldrs/react/LineSpinner.css";
+import { format } from "date-fns";
 
 const DashBoard = () => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -152,14 +152,25 @@ const DashBoard = () => {
     }
   }, []);
 
+  const DateFormating = (data) => {
+    for (let key in data) {
+      if (data[key].match(/\d{4}-\d{2}-\d{2}/)) {
+        let formatedDate = format(data[key], apiTestData.date_format);
+        console.log(formatedDate);
+        data[key] = formatedDate;
+      }
+    }
+  };
+
   const onSubmit = async (data) => {
     try {
       setShowLoader(true);
-      // if (data.hasOwnProperty("dob")) {
-      //   data["dob"] = data.dob.split("-").reverse().join("/");
-      // }
-      apiTestData.headers["x-api-key"] = import.meta.env.VITE_API_TOKEN_KEY;
 
+      if (apiTestData["date_format"] !== null) {
+        DateFormating(data);
+      }
+
+      apiTestData.headers["x-api-key"] = import.meta.env.VITE_API_TOKEN_KEY;
       const result = await instance.post(
         selectedOption != null
           ? selectedOption.url
@@ -174,7 +185,6 @@ const DashBoard = () => {
               : selectedOption.headers,
         }
       );
-
       let validResultData =
         result != null ? (result.data != null ? result.data : result) : {};
       setDownloadResponse(validResultData);

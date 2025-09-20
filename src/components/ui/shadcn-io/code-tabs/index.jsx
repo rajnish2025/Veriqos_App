@@ -60,7 +60,7 @@ function CodeTabsContent({
     <>
       <TabsList
         data-slot="install-tabs-list"
-        className="bg-black text-white w-full relative justify-between rounded-none h-10 border-b border-border/75 dark:border-border/50 py-0 px-4"
+        className="bg-[#043758] text-white w-full relative justify-between rounded-none h-10 border-b border-border/75 dark:border-border/50 py-0 px-4"
         activeClassName="rounded-none shadow-none bg-transparent after:content-[''] after:absolute after:inset-x-0 after:h-0.5 after:bottom-0 dark:after:bg-white after:bg-black after:rounded-t-full"
       >
         <div className="flex gap-x-3 h-full">
@@ -68,7 +68,7 @@ function CodeTabsContent({
             <TabsTrigger
               key={code}
               value={code}
-              className="text-muted-foreground data-[state=active]:text-current px-0"
+              className="text-gray-300 data-[state=active]:text-white px-0"
             >
               {code}
             </TabsTrigger>
@@ -139,7 +139,7 @@ function CodeTabs({
     <Tabs
       data-slot="install-tabs"
       className={cn(
-        "w-full gap-0 bg-black text-white rounded-xl border overflow-hidden",
+        "w-full gap-0 bg-[#043758] text-white rounded-xl border overflow-hidden",
         className
       )}
       {...tabsProps}
