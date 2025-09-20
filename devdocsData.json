@@ -321,5 +321,2491 @@
                 "message": "{\"success\": false, \"message\": \"Source Down\"}"
             }
         ]
+    },
+    {
+        "id": "docs_pan_verification_006",
+        "name": "PAN Number Verification API",
+        "overview": "The PAN Verification API is used to validate an individual’s or entity’s Permanent Account Number (PAN). It helps businesses, financial institutions, and platforms verify the authenticity of PAN details in real-time to ensure compliance, reduce fraud, and streamline customer onboarding.",
+        "endpoint": "https://dev-api.innowave.solutions/pan/pan-verification",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pan/pan-verification' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"holderName\": \"MANOJ PATIDAR\",\n    \"panType\": \"PAN\",\n    \"panNumber\": \"HCEPP8169Q\",\n    \"verification\": \"VALID\"\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "No Record Found",
+                "message": "{\"message\": \"No Record Found\", \"responseId\": 1002}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_pan_advance_v2_007",
+        "name": "PAN Advance v2 API",
+        "overview": "Fetches additional attributes: Father name, Aadhaar linkage, masked Aadhaar, DOB, gender.",
+        "endpoint": "https://dev-api.innowave.solutions/pan/panadvance-v2",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pan/panadvance-v2' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"panNumber\": \"HCEPP8169Q\",\n    \"full_name\": \"MANOJ PATIDAR\",\n    \"father_name\": \"RAJESH PATIDAR\",\n    \"dob\": \"2000-08-15\",\n    \"gender\": \"M\",\n    \"masked_aadhaar\": \"XXXXXXXX2773\",\n    \"aadhaar_linked\": true\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "Invalid PAN",
+                "message": "{\"message\": \"Invalid PAN\", \"responseId\": 1002}"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "No",
+                "description": "Inactive PAN",
+                "message": "{\"message\": \"Inactive PAN\", \"responseId\": 1003}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_pan_comprehensive_verification_008",
+        "name": "PAN Comprehensive Verification API",
+        "overview": "Fetch all possible details for a PAN holder (identity, address, Aadhaar, father name).",
+        "endpoint": "https://dev-api.innowave.solutions/pan/comprehensive-verification",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pan/comprehensive-verification' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"userCategory\": \"Person\",\n    \"panNumber\": \"ABCPD1234E\",\n    \"personName\": \"RAM SINGH\",\n    \"gender\": \"M\",\n    \"dob\": \"1999-01-01\",\n    \"linkedAadhaar\": \"XXXXXXXX1234\",\n    \"isAadhaarMapped\": true,\n    \"contact_Info\": {\n      \"phone\": null,\n      \"mail\": null\n    },\n    \"residential_Info\": {\n      \"address_line1\": \"\",\n      \"address_line2\": \"\",\n      \"address_line3\": \"\",\n      \"addressline_line4\": \"\",\n      \"address_line5\": \"\",\n      \"postalCode\": \"\",\n      \"province\": \"\"\n    }\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "Invalid PAN",
+                "message": "{\"message\": \"Invalid PAN\", \"responseId\": 1002}"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "No",
+                "description": "Inactive PAN",
+                "message": "{\"message\": \"Inactive PAN\", \"responseId\": 1003}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_pan_complete_profile_009",
+        "name": "PAN Complete Profile API",
+        "overview": "Pulls a full profile including name, DOB, father name, Aadhaar link, address, contact details.",
+        "endpoint": "https://dev-api.innowave.solutions/pan/complete-profile",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pan/complete-profile' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseCode\": 1001,\n  \"result\": {\n    \"personal_details\": {\n      \"name\": \"MANOJ PATIDAR\",\n      \"dob\": \"2000-08-15\",\n      \"gender\": \"Male\",\n      \"panNumber\": \"HCEPP8169Q\",\n      \"category_type\": \"Individual\"\n    },\n    \"aadhaar_details\": {\n      \"is_aadhaar_linked\": true,\n      \"masked_id\": \"XXXXXXXX2773\"\n    },\n    \"contact_details\": {\n      \"mobile_number\": \"62XXXXXX89\",\n      \"email_id\": \"ef********97@gmail.com\"\n    },\n    \"residential_details\": {\n      \"address_line1\": \"MAKAN NO. 156 WARD NO.-07\",\n      \"address_line2\": \"HOLI CHOUK PATIDAR MOHALLA DHAKANI\",\n      \"street_area\": \"Nalkheda B.O\",\n      \"city_name\": \"Dhakani\",\n      \"state_name\": \"Madhya Pradesh\",\n      \"country_name\": \"India\",\n      \"postal_code\": \"458113\",\n      \"complete_address\": \"MAKAN NO. 156 WARD NO.-07 HOLI CHOUK PATIDAR MOHALLA DHAKANI Nalkheda B.O Dhakani Madhya Pradesh INDIA 458113\"\n    },\n    \"tax_status\": {\n      \"is_taxpayer\": true\n    },\n    \"professional_details\": {\n      \"basic_access\": false,\n      \"director_details\": {\n        \"exists\": false,\n        \"company_records\": []\n      },\n      \"proprietor_details\": {\n        \"exists\": false,\n        \"business_records\": []\n      },\n      \"din_details\": {\n        \"din_number\": \"\",\n        \"date_of_allocation\": \"\",\n        \"associated_companies\": []\n      }\n    }\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "Invalid PAN",
+                "message": "{\"message\": \"Invalid PAN\", \"responseId\": 1002}"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "No",
+                "description": "Inactive PAN",
+                "message": "{\"message\": \"Inactive PAN\", \"responseId\": 1003}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_pan_demographic_data_fetch_010",
+        "name": "PAN Demographic Data Fetch API",
+        "overview": "Retrieve demographic information linked to PAN (address, state, pincode).",
+        "endpoint": "https://dev-api.innowave.solutions/pan/demographic-data-fetch",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pan/demographic-data-fetch' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8dd169Q\", \"pan_holder_name\":\"manoj patidar\", \"dob\":\"15/08/2000\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"panNumber\": \"ABCDE1234F\",\n    \"seeding_status\": \"Y\",\n    \"pan_status\": \"E\",\n    \"Pan_holder_name\": \"Y\",\n    \"dob\": \"Y\",\n    \"pan_type\": \"Person\"\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "Invalid PAN",
+                "message": "{\"message\": \"Invalid PAN\", \"responseId\": 1002}"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "No",
+                "description": "Inactive PAN",
+                "message": "{\"message\": \"Inactive PAN\", \"responseId\": 1003}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_pan_validate_011",
+        "name": "PAN Validate API",
+        "overview": "Quick check if a PAN is valid, invalid, or inactive.",
+        "endpoint": "https://dev-api.innowave.solutions/pan/validate",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pan/validate' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\"}'",
+        "response": "{\n  \"message\": \"Valid PAN\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"panNumber\": \"HCEPP8169Q\",\n    \"panstatus\": \"Active\"\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Valid PAN\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "Invalid PAN",
+                "message": "{\"message\": \"Invalid PAN\", \"responseId\": 1002}"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "No",
+                "description": "Inactive PAN",
+                "message": "{\"message\": \"Inactive PAN\", \"responseId\": 1003}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_pan_demographic_advance_012",
+        "name": "PAN Demographic Advance API",
+        "overview": "Provides extended demographic info including multiple addresses if available.",
+        "endpoint": "https://dev-api.innowave.solutions/pan/demographic-advance",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pan/demographic-advance' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\", \"date_of_birth\":\"2000-08-15\", \"panHolder_name\":\"MANOJ PATIDAR\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"id_type\": \"PAN\",\n    \"name_match_status\": \"MATCH\",\n    \"dob_match_status\": \"MATCH\",\n    \"is_aadhaar_linked\": true,\n    \"status\": \"E\"\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "Invalid PAN",
+                "message": "{\"message\": \"Invalid PAN\", \"responseId\": 1002}"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "No",
+                "description": "Inactive PAN",
+                "message": "{\"message\": \"Inactive PAN\", \"responseId\": 1003}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_pan_father_name_lookup_013",
+        "name": "PAN to Father’s Name Lookup API",
+        "overview": "Retrieve father’s name linked to PAN.",
+        "endpoint": "https://dev-api.innowave.solutions/pan/father-name-lookup",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pan/father-name-lookup' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"father_name\": \"RAJESH PATIDAR\",\n    \"panNumber\": \"HCEPP8169Q\"\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "Invalid PAN",
+                "message": "{\"message\": \"Invalid PAN\", \"responseId\": 1002}"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "No",
+                "description": "Inactive PAN",
+                "message": "{\"message\": \"Inactive PAN\", \"responseId\": 1003}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_pan_name_dob_lookup_014",
+        "name": "PAN to Name & DOB Lookup API",
+        "overview": "Fetches PAN holder’s name and date of birth.",
+        "endpoint": "https://dev-api.innowave.solutions/pan/name-and-dob-lookup",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pan/name-and-dob-lookup' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"full_name\": \"MANOJ PATIDAR\",\n    \"panholder_firstName\": \"MANOJ\",\n    \"panholder_midName\": \"\",\n    \"panholder_lastName\": \"PATIDAR\",\n    \"panNumber\": \"HCEPP8169Q\",\n    \"dob\": \"15-08-2000\",\n    \"category\": \"person\"\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "Invalid PAN",
+                "message": "{\"message\": \"Invalid PAN\", \"responseId\": 1002}"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "No",
+                "description": "Inactive PAN",
+                "message": "{\"message\": \"Inactive PAN\", \"responseId\": 1003}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_pan_account_linkage_v1_015",
+        "name": "PAN to Account Linkage API",
+        "overview": "Validates whether a PAN number is linked with a given bank account using the account number and IFSC code. It helps in confirming compliance with regulatory requirements and verifying account ownership.",
+        "endpoint": "https://dev-api.innowave.solutions/pan-account-linkage/v1",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pan-account-linkage/v1' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\"bank_account_number\": \"12345670098765\", \"ifsc_code\": \"AZXS0MQASW\", \"pan_number\": \"ABCPD1234E\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"is_linked\": true,\n    \"remarks\": \"PAN and Account number are linked\",\n    \"pan_number\": \"ABCPD1234E\",\n    \"bank_account\": {\n      \"acc_no\": \"12345670098765\",\n      \"ifsc\": \"AZXS0MQASW\",\n      \"acc_type\": \"SAVINGS\",\n      \"acc_nature\": \"SINGLE\",\n      \"holder_type\": \"PRIMARY\",\n      \"beneficiary\": \"RAM SINGH\"\n    }\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "Not Linked",
+                "message": "{\"message\": \"The PAN is valid but not linked to the required identifier. Please complete the linking process.\", \"responseId\": 1002}"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "No",
+                "description": "Invalid PAN Format",
+                "message": "{\"message\": \"Invalid PAN format\", \"responseId\": 1003}"
+            },
+            {
+                "code": 200,
+                "responseId": 1004,
+                "billable": "No",
+                "description": "Invalid IFSC Number",
+                "message": "{\"message\": \"Invalid IFSC/account number\", \"responseId\": 1004}"
+            },
+            {
+                "code": 200,
+                "responseId": 1005,
+                "billable": "No",
+                "description": "Invalid Account Number Format",
+                "message": "{\"message\": \"Invalid IFSC/account number\", \"responseId\": 1005}"
+            },
+            {
+                "code": 200,
+                "responseId": 1006,
+                "billable": "No",
+                "description": "Bank not Supported",
+                "message": "{\"message\": \"Bank not supported. The requested bank is currently not integrated or available for processing.\", \"responseId\": 1006}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_lpg_verification_mobile_016",
+        "name": "LPG Verification (Mobile) API",
+        "overview": "Verifies LPG (Indane/HP/Bharat Gas) consumer details using a registered mobile number. Returns consumer, distributor, and connection details linked with the given number.",
+        "endpoint": "https://dev-api.innowave.solutions/mobile-number/LPG-verification",
+        "request": "curl --location 'https://dev-api.innowave.solutions/mobile-number/LPG-verification' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"mobile_number\": \"9977XXXXXX\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": [\n    {\n      \"provider_name\": \"Indane Gas\",\n      \"consumer_info\": {\n        \"full_name\": \"RAM KUMAR\",\n        \"mobile_no\": \"6789999999\",\n        \"connection_id\": \"7500000001234567\",\n        \"connection_type\": \"Single Bottle Connection\",\n        \"connection_status\": \"ACTIVE\",\n        \"residential_address\": \"123 ABC Colony XYZ\"\n      },\n      \"distributor_info\": {\n        \"code\": \"000987654\",\n        \"name\": \"GAYATRI INDANE SERVICE\",\n        \"contact_no\": \"1800987654\",\n        \"location\": \"456 MNOP Marg XYZ\"\n      }\n    },\n    {\n      \"provider_name\": \"Bharat Gas\",\n      \"consumer_info\": {\n        \"full_name\": \"Sham Kumar\",\n        \"mobile_no\": \"\",\n        \"connection_id\": \"1234567890\",\n        \"connection_type\": \"\",\n        \"connection_status\": \"\",\n        \"residential_address\": \"123 ABC Colony XYZ\"\n      },\n      \"distributor_info\": {\n        \"code\": \"1234567\",\n        \"name\": \"CHANDAN GAS SERVICE\",\n        \"contact_no\": \"\",\n        \"location\": \"\"\n      }\n    },\n    {\n      \"provider_name\": \"HP Gas\",\n      \"consumer_info\": {\n        \"full_name\": \"Sham Kumar\",\n        \"mobile_no\": \"\",\n        \"connection_id\": \"\",\n        \"connection_type\": \"\",\n        \"connection_status\": \"\",\n        \"residential_address\": \"1XX ABC Colony GXXXX 123456\"\n      },\n      \"distributor_info\": {\n        \"code\": \"1234567\",\n        \"name\": \"CHITRA GAS SERVICE\",\n        \"contact_no\": \"\",\n        \"location\": \"\"\n      }\n    }\n  ]\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "No Record Found",
+                "message": "{\"message\": \"No Record Found\", \"responseId\": 1002}"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "Yes",
+                "description": "Invalid Input",
+                "message": "{\"message\": \"Invalid input provided. Please check the request parameters and try again.\", \"responseId\": 1003}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_challan_details_api_017",
+        "name": "Challan Details API",
+        "overview": "Retrieves challan details for a vehicle, including challan number, status, date, location, offenses, accused information, and document URLs.",
+        "endpoint": "https://dev-api.innowave.solutions/rc/challan-details",
+        "request": "curl --location 'https://dev-api.innowave.solutions/rc/challan-details' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\"vehicle_number\": \"DL3SFF1234\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": [\n    {\n      \"challan_info\": {\n        \"challan_number\": \"UP173997231123456789\",\n        \"challan_status\": \"Pending\",\n        \"is_court_challan\": true,\n        \"challan_date_time\": \"2022-12-23 11:11:11\",\n        \"location\": {\n          \"challan_place\": null,\n          \"rto\": null,\n          \"state_code\": \"UP\"\n        },\n        \"offense\": {\n          \"description\": \"Driving Two-wheeled without helmets\",\n          \"penalty_amount\": 1000\n        }\n      },\n      \"accused_info\": {\n        \"accused_name\": \"RAM KUMAR SHAM\"\n      },\n      \"documents\": {\n        \"pdf_url\": \"https://echallan.parivahan.gov.in/mparivahan-api/print-page?challan_no=...\",\n        \"receipt_url\": \"\"\n      },\n      \"serial_number\": 1\n    }\n  ]\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "No challan/record found",
+                "message": "{\"message\": \"No challan/Record Found\", \"responseId\": 1002}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_chassis_rc_lite_v1_018",
+        "name": "Chassis RC Lite v1 API",
+        "overview": "Fetches registration number details based on the provided chassis number. Minimal response containing only the registration number.",
+        "endpoint": "https://dev-api.innowave.solutions/rc/lite/chassis/v1",
+        "request": "curl --location 'https://dev-api.innowave.solutions/rc/lite/chassis/v1' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\"chassis_number\": \"MBLJAW123MNB12345\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"vehicle_details\": {\"reg_info\": \"DL01H1234\"}\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "No",
+                "description": "No Record Found",
+                "message": "{\"message\": \"No Record Found\", \"responseId\": 1002}"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "No",
+                "description": "Invalid Chassis Number Format",
+                "message": "{\"message\": \"Invalid chassis number format.\", \"responseId\": 1003}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid, missing/ you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_chassis_rc_lite_v2_019",
+        "name": "Chassis RC Lite v2 API",
+        "overview": "Fetches registration number details based on chassis number with improved error handling compared to v1.",
+        "endpoint": "https://dev-api.innowave.solutions/rc/lite/chassis/v2",
+        "request": "curl --location 'https://dev-api.innowave.solutions/rc/lite/chassis/v2' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\"chassis_number\": \"MBLJAW123MNB12345\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"vehicle_details\": {\"registration_number\": \"DL01H1234\"}\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "No Record Found",
+                "message": "{\"message\": \"No Record Found\", \"responseId\": 1002}"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "No",
+                "description": "Invalid Chassis Number Format",
+                "message": "{\"message\": \"Invalid chassis number format.\", \"responseId\": 1003}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid, missing/ you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_chassis_rc_advance_v1_020",
+        "name": "Chassis to RC Advance v1 API",
+        "overview": "Fetches detailed vehicle, ownership, insurance, permit, pollution, tax, and status information using the chassis number.",
+        "endpoint": "https://dev-api.innowave.solutions/rc/chassis-advance/v1",
+        "request": "curl --location 'https://dev-api.innowave.solutions/rc/chassis-advance/v1' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\"chassis_number\": \"MA3EWB22SJEXXXXXX\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": { /* detailed vehicle, owner, insurer, status data */ }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "No Record Found",
+                "message": "{\"message\": \"No Record Found\", \"responseId\": 1002}"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "Yes",
+                "description": "Invalid Input",
+                "message": "{\"message\": \"Invalid input provided.\", \"responseId\": 1003}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid, missing/ you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_chassis_rc_advance_v2_021",
+        "name": "Chassis to RC Advance v2 API",
+        "overview": "Enhanced version of Chassis to RC Advance API with improved error handling. Fetches detailed vehicle, ownership, insurance, permit, tax, pollution, and status details.",
+        "endpoint": "https://dev-api.innowave.solutions/rc/chassis-advance/v2",
+        "request": "curl --location 'https://dev-api.innowave.solutions/rc/chassis-advance/v2' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\"chassis_number\": \"MBLJAW141MHC21171\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": { /* detailed vehicleData, ownerInfo, insuranceInfo, statusInfo */ }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "No Record Found",
+                "message": "{\"message\": \"No Record Found\", \"responseId\": 1002}"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "No",
+                "description": "Invalid Chassis Format",
+                "message": "{\"message\": \"Invalid chassis number format.\", \"responseId\": 1003}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid, missing/ you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_fastag_details_022",
+        "name": "Fastag Details API",
+        "overview": "Provides Fastag details of a vehicle, including tag identifiers, status, issue date, issuing bank, and associated vehicle details.",
+        "endpoint": "https://dev-api.innowave.solutions/rc/fastag-details",
+        "request": "curl --location 'https://dev-api.innowave.solutions/rc/fastag-details' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\"vehicle_number\": \"DL3SFF1234\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": [\n    {\n      \"cardInfo\": {\"id\": \"1234XXXXXXXXXXXXXXXXAB00\", \"activatedOn\": \"2020-09-01\", \"currentState\": \"ACTIVE\"},\n      \"bankInfo\": {\"provider\": \"ABCD Bank\"},\n      \"vehInfo\": {\"regNo\": \"DL3SFF1234\", \"classCode\": \"VC4\"}\n    },\n    {\n      \"vehInfo\": {\"regNo\": \"DL3SFF1234\", \"classCode\": \"XYZ\"},\n      \"cardInfo\": {\"id\": \"1234XXXXXXXXXXXXXXXXAB11\", \"activatedOn\": \"2020-09-01\", \"currentState\": \"INACTIVE\"},\n      \"bankInfo\": {\"provider\": \"ABCD Bank\"}\n    }\n  ]\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "No Record Found",
+                "message": "{\"message\": \"No Record Found\", \"responseId\": 1002}"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "No",
+                "description": "Invalid Vehicle Number Format",
+                "message": "{\"message\": \"Invalid Vehicle Number Format\", \"responseId\": 1003}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid, missing/ you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_vehicle_tax_transaction_023",
+        "name": "Vehicle Tax by Transaction ID API",
+        "overview": "Provides vehicle tax payment details for a given transaction ID, including vehicle info, payment info, and payment status.",
+        "endpoint": "https://dev-api.innowave.solutions/rc/vehicle-tax/by-transaction-id",
+        "request": "curl --location 'https://dev-api.innowave.solutions/rc/vehicle-tax/by-transaction-id' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\"transaction_number\": \"ABY2501018739876\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"transaction_number\": \"ABY2501018739876\",\n    \"paymentRecords\": [\n      {\n        \"recordId\": \"1\",\n        \"txnDetails\": {\n          \"txnRef\": \"ABY2501018731234\",\n          \"appNo\": \"ABY2501018739876\",\n          \"vehNo\": \"AB08FP9865\"\n        },\n        \"feeDetails\": {\n          \"txnId\": \"AB8T250100000001\",\n          \"gateway\": \"IFMS\",\n          \"govtRcptNo\": \"15251324\",\n          \"cinNo\": \"22020123689\",\n          \"bankRef\": \"CHS0132435\",\n          \"amt\": \"6000\",\n          \"statusInfo\": {\"statusCode\": \"Success\", \"statusMsg\": \"successfully completed\"},\n          \"timestamps\": {\"confirmedAt\": \"01-01-2025 10:59 AM\", \"initiatedAt\": \"01-01-2025 10:58 AM\"}\n        }\n      }\n    ]\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "No Record Found",
+                "message": "{\"message\": \"No Record Found\", \"responseId\": 1002}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid, missing/ you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_company_cin_lookup_v1_024",
+        "name": "CIN Number Lookup API (v1)",
+        "overview": "Retrieves company details and key personnel information using the Corporate Identification Number (CIN).",
+        "endpoint": "https://dev-api.innowave.solutions/company-cin-lookup/v1",
+        "request": "curl --location 'https://dev-api.innowave.solutions/company-cin-lookup/v1' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\"cin_number\": \"U32100UP2022PTC123456\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\"company_profile\": {...}, \"key_personnel\": [...]}\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "No Record Found",
+                "message": "{\"message\": \"No Record Found\", \"responseId\": 1002}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid, missing/ you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_cin_lookup_advanced_v2_025",
+        "name": "CIN Lookup Advanced API (v2)",
+        "overview": "Enhanced CIN lookup providing company information, directors, associations, and compliance details.",
+        "endpoint": "https://dev-api.innowave.solutions/cin-lookup-advanced/",
+        "request": "curl --location 'https://dev-api.innowave.solutions/cin-lookup-advanced' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\"cin_number\": \"U32100UP2022PTC1234\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\"company_info\": {...}, \"directors\": [...]} \n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "No Record Found",
+                "message": "{\"message\": \"No Record Found\", \"responseId\": 1002}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid, missing/ you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_pan_to_udyam_026",
+        "name": "PAN to Udyam API",
+        "overview": "Verifies if a PAN number is linked with a registered Udyam (MSME) certificate and fetches associated business details.",
+        "endpoint": "https://dev-api.innowave.solutions/pantoudyam/check",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pantoudyam/check' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"pan_number\": \"ABCPD1234E\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\"pan_number\": \"ABCPD1234E\", \"udyam_details\": [...]}\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "No Record Found",
+                "message": "{\"message\": \"No Record Found\", \"responseId\": 1002}"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "No",
+                "description": "Unable to fetch",
+                "message": "{\"message\": \"Unable to fetch data\", \"responseId\": 1003}"
+            },
+            {
+                "code": 200,
+                "responseId": 1004,
+                "billable": "Yes",
+                "description": "Invalid PAN",
+                "message": "{\"message\": \"Invalid pan number\", \"responseId\": 1004}"
+            },
+            {
+                "code": 200,
+                "responseId": 1005,
+                "billable": "Yes",
+                "description": "Inactive PAN",
+                "message": "{\"message\": \"The provided PAN is inactive. Please verify and try again with an active PAN\", \"responseId\": 1005}"
+            },
+            {
+                "code": 200,
+                "responseId": 1006,
+                "billable": "No",
+                "description": "Invalid PAN Format",
+                "message": "{\"message\": \"Invalid PAN format\", \"responseId\": 1006}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid, missing/ you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_pan_to_cin_027",
+        "name": "PAN to CIN API",
+        "overview": "Retrieves the list of CIN numbers and corresponding company names associated with a given PAN number. Supports compliance and corporate verification use cases.",
+        "endpoint": "https://dev-api.innowave.solutions/pantocin/v1",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pantocin/v1' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\"pan_number\": \"ABCPD1234D\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\"cin_list\": [...], \"cin_only\": [...]}\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "Invalid PAN",
+                "message": "{\"message\": \"Invalid pan number\", \"responseId\": 1002}"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "Yes",
+                "description": "Inactive PAN",
+                "message": "{\"message\": \"The provided PAN is inactive. Please verify and try again with an active PAN.\", \"responseId\": 1003}"
+            },
+            {
+                "code": 200,
+                "responseId": 1004,
+                "billable": "No",
+                "description": "Unable to Fetch",
+                "message": "{\"message\": \"Unable to fetch data\", \"responseId\": 1004}"
+            },
+            {
+                "code": 200,
+                "responseId": 1005,
+                "billable": "Yes",
+                "description": "No Record Found",
+                "message": "{\"message\": \"No Record Found\", \"responseId\": 1005}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid, missing/ you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_udin_verification_028",
+        "name": "UDIN Verification API",
+        "overview": "Verifies ICAI-issued UDINs to ensure authenticity of documents certified by Chartered Accountants.",
+        "endpoint": "https://dev-api.innowave.solutions/udin/verification",
+        "request": "curl --location 'https://dev-api.innowave.solutions/udin/verification' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\"udin_number\": \"24123456AAAAAA1234\", \"company_name\": \"ABC Private Limited\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\"udin_info\": {...}, \"member_info\": {...}, \"document_info\": {...}, \"financials\": {...}}\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "No record found"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "Yes",
+                "description": "Invalid UDIN"
+            },
+            {
+                "code": 200,
+                "responseId": 1004,
+                "billable": "No",
+                "description": "Missing verifier name"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error"
+            }
+        ]
+    },
+    {
+        "id": "docs_bank_account_verification_penny_drop_029",
+        "name": "Bank Account Verification API – Penny Drop",
+        "overview": "Verifies ownership of a bank account by initiating a minimal transaction (Penny Drop). Validates account number, IFSC, and holder details.",
+        "endpoint": "https://dev-api.innowave.solutions/pennydrop/bank-account-verification",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pennydrop/bank-account-verification' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"account_number\": \"308317961234\", \"IFSC_code\":\"FDRL1234567\", \"account_holder_name\":\"RAM KUMAR\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {...}\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "Invalid Account Number"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "Yes",
+                "description": "Invalid IFSC Number"
+            },
+            {
+                "code": 200,
+                "responseId": 1004,
+                "billable": "No",
+                "description": "Invalid Input"
+            },
+            {
+                "code": 200,
+                "responseId": 1005,
+                "billable": "Yes",
+                "description": "Account Blocked"
+            },
+            {
+                "code": 200,
+                "responseId": 1006,
+                "billable": "Yes",
+                "description": "Failed at Bank"
+            },
+            {
+                "code": 200,
+                "responseId": 1007,
+                "billable": "Yes",
+                "description": "NPCI Unavailable"
+            },
+            {
+                "code": 200,
+                "responseId": 1008,
+                "billable": "Yes",
+                "description": "Connection timeout from Bank"
+            },
+            {
+                "code": 200,
+                "responseId": 1009,
+                "billable": "Yes",
+                "description": "Source Bank declined"
+            },
+            {
+                "code": 200,
+                "responseId": 1010,
+                "billable": "Yes",
+                "description": "IMPS mode Failed"
+            },
+            {
+                "code": 200,
+                "responseId": 1011,
+                "billable": "Yes",
+                "description": "Beneficiary Bank offline"
+            },
+            {
+                "code": 200,
+                "responseId": 1012,
+                "billable": "Yes",
+                "description": "Fraud activity detected for this account"
+            },
+            {
+                "code": 200,
+                "responseId": 1013,
+                "billable": "No",
+                "description": "Rate limit exceeded"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error"
+            }
+        ]
+    },
+    {
+        "id": "docs_bank_account_verification_pennyless_030",
+        "name": "Bank Account Verification API – Pennyless",
+        "overview": "Validates bank account ownership without performing any transaction. Verifies account number, IFSC, and holder name instantly.",
+        "endpoint": "https://dev-api.innowave.solutions/pennyless/bank-account-verification",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pennyless/bank-account-verification' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"account_number\": \"1254212536521351\", \"IFSC_code\":\"FDRL0001001\", \"account_holder_Name\":\"RAM\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {...}\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "Invalid Account"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error"
+            }
+        ]
+    },
+    {
+        "id": "docs_pan_206ab_check_031",
+        "name": "206AB PAN Check",
+        "overview": "Checks whether a PAN falls under Section 206AB for higher TDS deduction applicability.",
+        "endpoint": "https://dev-api.innowave.solutions/pan/206ab-check",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pan/206ab-check' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\"}'",
+        "response": "{\n  \"status\": \"success\",\n  \"responseId\": 1001,\n  \"panDetails\": {\n    \"pan_status\": \"Operative\",\n    \"allotment_date\": \"2022-09-09\",\n    \"panNumber\": \"HCEPP8169Q\",\n    \"panHolder_masked_name\": \"MXXXJ PXXXXXR\",\n    \"is_specified_person\": false\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{\"status\": \"success\", \"responseId\": 1001}"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "Invalid PAN",
+                "message": "{\"message\": \"Invalid PAN\", \"responseId\": 1002}"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "No",
+                "description": "Inactive PAN",
+                "message": "{\"message\": \"Inactive PAN\", \"responseId\": 1003}"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{\"success\": false, \"message\": \"Auth key invalid, missing/ you do not have access to this api\"}"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source Down/Internal Server Error",
+                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+            }
+        ]
+    },
+    {
+        "id": "docs_vehicle_rc_advanced_v1_032",
+        "overview": "The RC Advance API provides detailed vehicle registration information, including ownership details, insurance, hypothecation, PUCC, and registration validity.",
+        "name": "Vehicle RC Advanced V1",
+        "endpoint": "https://dev-api.innowave.solutions/rc/vehicle-advanced",
+        "request": "curl --location 'https://dev-api.innowave.solutions/rc/vehicle-advanced' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\"vehicle_number\": \"DL3SFF1234\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"vehicleInfo\": { ... },\n    \"loanDetail\": { ... },\n    \"registrationInfo\": { ... },\n    \"pollutionCertificate\": { ... },\n    \"insuranceInfo\": { ... },\n    \"registeredOwner\": \"HARMEET SINGH REKHI\"\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "Invalid ID number or combination of inputs"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "No",
+                "description": "Multiple records found"
+            },
+            {
+                "code": 200,
+                "responseId": 1004,
+                "billable": "No",
+                "description": "Partial record found"
+            },
+            {
+                "code": 200,
+                "responseId": 1005,
+                "billable": "No",
+                "description": "Duplicate transaction detected"
+            },
+            {
+                "code": 200,
+                "responseId": 1006,
+                "billable": "No",
+                "description": "Number of inputs exceeded"
+            },
+            {
+                "code": 400,
+                "billable": "No",
+                "description": "Bad Request"
+            },
+            {
+                "code": 403,
+                "billable": "No",
+                "description": "Forbidden"
+            },
+            {
+                "code": 402,
+                "billable": "No",
+                "description": "Payment Required"
+            },
+            {
+                "code": 500,
+                "billable": "No",
+                "description": "Source down/Internal server error"
+            }
+        ]
+    },
+    {
+        "id": "docs_vehicle_rc_advanced_v2_032",
+        "overview": "The RC Advance V2 API fetches extended vehicle details including owner, registration, insurance, fitness, finance, challans, and pollution certificate information using vehicle number and chassis number.",
+        "name": "Vehicle RC Advanced V2",
+        "endpoint": "https://dev-api.innowave.solutions/rc/vehicle-advanced/v2",
+        "request": "curl --location 'https://dev-api.innowave.solutions/rc/vehicle-advanced/v2' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\"vehicle_number\":\"DL3SFF1234\",\"chasis_number\":\"M5ECHAMCR12345678\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"personal_details\": { ... },\n    \"registration_info\": { ... },\n    \"vehicle_specs\": { ... },\n    \"fitness_and_tax\": { ... },\n    \"permit_details\": { ... },\n    \"insurance_info\": { ... },\n    \"pollution_info\": { ... },\n    \"finance_info\": { ... },\n    \"age_and_misc\": { ... },\n    \"challans\": [ ... ]\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "No Record Found"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "Yes",
+                "description": "Vehicle found in more than one RTO"
+            },
+            {
+                "code": 200,
+                "responseId": 1004,
+                "billable": "Yes",
+                "description": "Invalid vehicle number"
+            },
+            {
+                "code": 400,
+                "billable": "No",
+                "description": "Bad Request"
+            },
+            {
+                "code": 403,
+                "billable": "No",
+                "description": "Forbidden"
+            },
+            {
+                "code": 402,
+                "billable": "No",
+                "description": "Payment Required"
+            },
+            {
+                "code": 500,
+                "billable": "No",
+                "description": "Source down/Internal server error"
+            }
+        ]
+    },
+    {
+        "id": "docs_vehicle_rc_advanced_v3_033",
+        "overview": "The RC Advance V3 API provides the latest and most detailed RC data, including personal, registration, vehicle, finance, taxation, insurance, permit, dealer, and sale details.",
+        "name": "Vehicle RC Advanced V3 API",
+        "endpoint": "https://dev-api.innowave.solutions/rc/vehicle-advanced/v3",
+        "request": "curl --location 'https://dev-api.innowave.solutions/rc/vehicle-advanced/v3' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\"vehicle_number\": \"DL1ABC1234\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"ownerInfo\": { ... },\n    \"regInfo\": { ... },\n    \"insuranceInfo\": { ... },\n    \"fitnessInfo\": { ... },\n    \"vehicleInfo\": { ... },\n    \"financeInfo\": { ... },\n    \"dealerInfo\": { ... },\n    \"taxInfo\": { ... },\n    \"puccInfo\": { ... },\n    \"saleInfo\": { ... },\n    \"permitInfo\": { ... },\n    \"statusInfo\": { ... }\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "No record found"
+            },
+            {
+                "code": 400,
+                "billable": "No",
+                "description": "Bad Request"
+            },
+            {
+                "code": 403,
+                "billable": "No",
+                "description": "Forbidden"
+            },
+            {
+                "code": 402,
+                "billable": "No",
+                "description": "Payment Required"
+            },
+            {
+                "code": 500,
+                "billable": "No",
+                "description": "Source down/Internal server error"
+            }
+        ]
+    },
+    {
+        "id": "docs_rc_verification_v2_033",
+        "name": "RC Verification V2 API",
+        "overview": "The RC (Registration Certificate) V2 API provides detailed information about a vehicle based on its registration number. It returns ownership details, registration validity, insurance, permit, and technical specifications such as engine, chassis, dimensions, and manufacturer details.",
+        "endpoint": "POST https://dev-api.innowave.solutions/rc/v2",
+        "request": "curl --location 'https://dev-api.innowave.solutions/rc/v2' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{ \"vehicle_number\": \"WB31A1454\" }'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"vehicleDetails\": {\n    \"registrationInfo\": {\n      \"registrationDate\": \"2018-10-05\",\n      \"rcStatus\": \"ACTIVE\",\n      \"fitnessUpto\": \"2026-10-02\",\n      \"taxUpto\": \"2025-10-02\",\n      \"taxPaidUpto\": \"2025-07-02\",\n      \"puccUpto\": \"2026-05-30\",\n      \"puccNumber\": \"WB02900650010661\",\n      \"insuranceUpto\": \"2025-09-09\"\n    },\n    \"engineInfo\": {\n      \"engineNumber\": \"JBPZ131946\",\n      \"chassisNumber\": \"MB1KACHD0JPBE2413\",\n      \"fuelType\": \"DIESEL\",\n      \"cubicCapacity\": \"5759\"\n    },\n    \"vehicleInfo\": {\n      \"vehicleNumber\": \"WB31A1454\",\n      \"vehicleCategory\": \"HGV\",\n      \"vehicleClass\": \"Goods Carrier\",\n      \"color\": \"BROWN WHT\",\n      \"bodyType\": \"NA\",\n      \"normsType\": \"BHARAT STAGE IV\"\n    },\n    \"dimensions\": {\n      \"vehicleGrossWeight\": \"35000\",\n      \"unladenWeight\": \"7360\",\n      \"noCylinders\": \"6\",\n      \"seatCapacity\": \"2\",\n      \"sleeperCapacity\": \"0\",\n      \"standingCapacity\": \"0\",\n      \"wheelbase\": \"6100\"\n    },\n    \"permitInfo\": {\n      \"permitNumber\": \"WB/31/NP/MG/2018/4\",\n      \"permitIssueDate\": null,\n      \"permitValidFrom\": \"2023-10-09\",\n      \"permitValidUpto\": \"2028-10-08\",\n      \"permitType\": \"National Permit [HEAVY GOODS VEHICLE]\",\n      \"nationalPermitNumber\": null,\n      \"nationalPermitUpto\": null,\n      \"nationalPermitIssuedBy\": null,\n      \"nonUseStatus\": null,\n      \"nonUseFrom\": null,\n      \"nonUseTo\": null,\n      \"blacklistStatus\": null\n    }\n  },\n  \"ownerDetails\": {\n    \"ownerName\": \"SK SABIR\",\n    \"fatherName\": \"AYANAL SEK\",\n    \"permanentAddress\": \"PARAMANDACHAK, HALDIA, HALDIA, Purba Medinipur, West Bengal, \",\n    \"presentAddress\": \"PARAMANDACHAK, HALDIA, HALDIA, Purba Medinipur, West Bengal, \",\n    \"mobileNumber\": \"\",\n    \"ownerCount\": \"2\",\n    \"maskedName\": false\n  },\n  \"manufacturer\": {\n    \"maker\": \"ASHOK LEYLAND LTD\",\n    \"model\": \"3118 BSIV\",\n    \"manufacturingDate\": \"7/2018\"\n  },\n  \"insuranceDetails\": {\n    \"insuranceCompany\": \"National Insurance Co. Ltd.\",\n    \"insurancePolicyNumber\": \"15030031246360002452\",\n    \"insuranceUpto\": \"2025-09-09\",\n    \"financed\": true,\n    \"financer\": \"INDOSTAR CAPITAL FINANCE LTD\"\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{ \"message\": \"Success\", \"responseId\": 1001 }"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "No record found",
+                "message": "{ \"responseId\": 1002, \"message\": \"No Record Found\" }"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{ \"success\": false, \"message\": \"Invalid request parameters\" }"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{ \"success\": false, \"message\": \"Auth key invalid, missing/ you do not have access to this api\" }"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{ \"success\": false, \"message\": \"Credit Exahusted\" }"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source down/internal server error",
+                "message": "{ \"success\": false, \"message\": \"Source Down\" }"
+            }
+        ]
+    },
+    {
+        "id": "docs_lookup_basics_034",
+        "name": "Lookup Basics API",
+        "overview": "The Lookup Basics API retrieves the basic telecom information of a mobile number including operator type (prepaid/postpaid), service provider, and telecom circle (region).",
+        "endpoint": "POST https://dev-api.innowave.solutions/telco/lookup-basic",
+        "request": "curl --location 'https://dev-api.innowave.solutions/telco/lookup-basic' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"mobile_number\":\"980161XXXX\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"is_postpaid\": false,\n    \"service_provider\": \"Airtel\",\n    \"region\": \"Bihar Jharkhand\"\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{ \"message\" : \"Success\", \"responseId\" : 1001 }"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "No record found",
+                "message": "{ \"message\": \"No Record Found\", \"responseId\": 1002 }"
+            },
+            {
+                "code": 301,
+                "responseId": null,
+                "billable": "No",
+                "description": "Parameter missing",
+                "message": "{ \"message\": \"Parameter missing\" }"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{ \"success\": false, \"message\": \"Invalid request parameters\" }"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{ \"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\" }"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{ \"success\": false, \"message\": \"Credit Exahusted\" }"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source down/internal server error",
+                "message": "{ \"success\": false, \"message\": \"Source Down\" }"
+            }
+        ]
+    },
+    {
+        "id": "docs_lookup_advanced_035",
+        "name": "Lookup Advanced API",
+        "overview": "The Lookup Advanced API fetches detailed telecom information including roaming/porting status, delivery status, number info, current/original operator details, and porting history.",
+        "endpoint": "POST https://dev-api.innowave.solutions/telco/lookup-advanced",
+        "request": "curl --location 'https://dev-api.innowave.solutions/telco/lookup-advanced' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"mobile_number\":\"800640XXXX\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"data\": {\n      \"valid_number\": true,\n      \"roaming_status\": false,\n      \"ported_status\": true,\n      \"last_ported\": null,\n      \"user_status\": \"CONNECTED\",\n      \"number_type\": \"postpaid\",\n      \"delivery_status\": { \"code\": \"DELIVERED\", \"error_id\": \"\" },\n      \"number_info\": { \"country_code\": \"IN\", \"phone_number\": \"+918006401234\", \"number_type\": \"MOBILE\", \"mobile_network_code\": \"97\", \"mobile_country_code\": \"404\", \"imsi_number\": \"404978006401234\", \"mcc_mnc_combined\": \"40497\" },\n      \"current_operator\": { \"prefix\": \"99973\", \"provider\": \"Airtel\", \"region\": \"UP-West\", \"mcc\": \"404\", \"mnc\": \"97\", \"dialing_code\": \"+91\", \"iso_code\": \"IN\", \"country\": \"India\" },\n      \"original_operator\": { \"prefix\": \"80064\", \"provider\": \"Vodafone\", \"region\": \"UP-West\", \"mcc\": \"\", \"mnc\": \"\", \"dialing_code\": \"+91\", \"iso_code\": \"IN\", \"country\": \"India\" },\n      \"roaming_operator\": { \"prefix\": \"\", \"provider\": \"\", \"region\": \"\", \"mcc\": \"\", \"mnc\": \"\", \"dialing_code\": \"\", \"iso_code\": \"\", \"country\": \"\" },\n      \"port_history\": []\n    }\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{ \"message\": \"Success\", \"responseId\": 1001 }"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "No record found",
+                "message": "{ \"message\": \"No Record Found\", \"responseId\": 1002 }"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "No",
+                "description": "Invalid Mobile Format",
+                "message": "{ \"message\": \"Invalid Mobile Format\", \"responseId\": 1003 }"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{ \"success\": false, \"message\": \"Invalid request parameters\" }"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{ \"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\" }"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{ \"success\": false, \"message\": \"Credit Exahusted\" }"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source down/internal server error",
+                "message": "{ \"success\": false, \"message\": \"Source Down\" }"
+            }
+        ]
+    },
+    {
+        "id": "docs_telco_send_otp_036",
+        "name": "Telco Advance OTP - Send OTP",
+        "overview": "The Telco OTP API allows initiating an OTP request to verify ownership of a mobile number.",
+        "endpoint": "POST https://dev-api.innowave.solutions/telco/send-otp",
+        "request": "curl --location 'https://dev-api.innowave.solutions/telco/send-otp' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"mobile_number\":\"800640XXXX\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"client_Id\": \"telecom_pymrvApiogthkxlprXMi\",\n    \"phone_number\": \"8285231234\",\n    \"delivery_status\": \"Success\"\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{ \"message\": \"Success\", \"responseId\": 1001 }"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "Daily OTP limit exceeded",
+                "message": "{ \"message\": \"Daily OTP limit exceeded\", \"responseId\": 1002 }"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "No",
+                "description": "Incorrect Mobile Number",
+                "message": "{ \"message\": \"Incorrect Mobile Number\", \"responseId\": 1003 }"
+            },
+            {
+                "code": 200,
+                "responseId": 1004,
+                "billable": "No",
+                "description": "Rate Limited",
+                "message": "{ \"message\": \"Rate Limited\", \"responseId\": 1004 }"
+            },
+            {
+                "code": 200,
+                "responseId": 1005,
+                "billable": "No",
+                "description": "Operator - BSNL",
+                "message": "{ \"message\": \"Operator - BSNL\", \"responseId\": 1005 }"
+            },
+            {
+                "code": 200,
+                "responseId": 1006,
+                "billable": "No",
+                "description": "Operator - MTNL",
+                "message": "{ \"message\": \"Operator - MTNL\", \"responseId\": 1006 }"
+            },
+            {
+                "code": 200,
+                "responseId": 1007,
+                "billable": "No",
+                "description": "Other Operator",
+                "message": "{ \"message\": \"Other Operator\", \"responseId\": 1007 }"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{ \"success\": false, \"message\": \"Invalid request parameters\" }"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{ \"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\" }"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{ \"success\": false, \"message\": \"Credit Exahusted\" }"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source down/internal server error",
+                "message": "{ \"success\": false, \"message\": \"Source Down\" }"
+            }
+        ]
+    },
+    {
+        "id": "docs_telco_verify_otp_037",
+        "name": "Telco Advance OTP - Verify OTP",
+        "overview": "The Verify OTP API confirms whether the OTP sent to a mobile number is correct and retrieves KYC details like name, DOB, address, operator, and plan type.",
+        "endpoint": "POST https://dev-api.innowave.solutions/telco/verify-otp",
+        "request": "curl --location 'https://dev-api.innowave.solutions/telco/verify-otp' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"client_Id\":\"telecom_acNgnzzbzFlbidkpuAmb\",\"otp\":\"9479\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"client_id\": \"telecom_acNgnzzbzFlbidkpuAmb\",\n    \"enterprise_user\": false,\n    \"date_of_birth\": \"01-01-1992\",\n    \"postal_code\": \"110012\",\n    \"city_name\": \"West\",\n    \"email\": \"ramesh@gmail.com\",\n    \"verification_status\": \"Success\",\n    \"phone_number\": \"8285231234\",\n    \"primary_address\": \"C-302 Sharda Puri, Ramesh Nagar, West Delhi, 110012\",\n    \"full_name\": \"Ramesh\",\n    \"state_name\": \"Delhi\",\n    \"telecom_operator\": \"airtel\",\n    \"alt_contact\": \"8447371234\",\n    \"plan_type\": \"prepaid\"\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{ \"message\":\"Success\", \"responseId\": 1001 }"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "Daily OTP limit exceeded",
+                "message": "{ \"message\": \"Daily OTP limit exceeded\", \"responseId\": 1002 }"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{ \"success\": false, \"message\": \"Invalid request parameters\" }"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{ \"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\" }"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{ \"success\": false, \"message\": \"Credit Exahusted\" }"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Source down/internal server error",
+                "message": "{ \"success\": false, \"message\": \"Source Down\" }"
+            }
+        ]
+    },
+    {
+        "id": "docs_district_list_038",
+        "name": "Gujarat Land Verification - District List API",
+        "overview": "Fetches the list of all districts in Gujarat.",
+        "endpoint": "POST https://dev-api.innowave.solutions/land-verification/gujrat/district-list",
+        "request": "curl --location 'https://dev-api.innowave.solutions/land-verification/gujrat/district-list' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data ''",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"districts_name\": [\"ahmadabad\", \"amreli\", \"anand\", \"arvalli\", \"banaskantha\"]\n}"
+    },
+    {
+        "id": "docs_taluka_list_039",
+        "name": "Gujarat Land Verification - Taluka List API",
+        "overview": "Fetches talukas for a given district in Gujarat.",
+        "endpoint": "POST https://dev-api.innowave.solutions/land-verification/gujrat/taluka-list",
+        "request": "curl --location 'https://dev-api.innowave.solutions/land-verification/gujrat/taluka-list' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{ \"district_name\":\"ahmadabad\" }'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"district_details\": {\n    \"district_name\": \"ahmadabad\",\n    \"talukas_name\": [\"mandal\", \"viramgam\", \"sanand\", \"daskroi\"]\n  }\n}"
+    },
+    {
+        "id": "docs_village_list_040",
+        "name": "Gujarat Land Verification - Village List API",
+        "overview": "Fetches villages for a given district and taluka.",
+        "endpoint": "POST https://dev-api.innowave.solutions/land-verification/gujrat/village-list",
+        "request": "curl --location 'https://dev-api.innowave.solutions/land-verification/gujrat/village-list' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{ \"district_name\": \"ahmadabad\", \"taluka_name\": \"sanand\" }'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"location_details\": {\n    \"district_name\": \"ahmadabad\",\n    \"taluka_name\": \"sanand\",\n    \"villages_name\": [\"anadej\", \"aniyali\", \"bakrana\", \"changodar\", \"chekhla\"]\n  }\n}"
+    },
+    {
+        "id": "docs_block_list_041",
+        "name": "Gujarat Land Verification - Block List API",
+        "overview": "Fetches block numbers for a given district, taluka, and village.",
+        "endpoint": "POST https://dev-api.innowave.solutions/land-verification/gujrat/block-list",
+        "request": "curl --location 'https://dev-api.innowave.solutions/land-verification/gujrat/block-list' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key:<apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{ \"district_name\": \"ahmadabad\", \"taluka_name\": \"sanand\", \"village_name\": \"garodiya\" }'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"location_info\": {\n    \"district_name\": \"ahmadabad\",\n    \"taluka_name\": \"sanand\",\n    \"village_name\": \"garodiya\",\n    \"blocks\": [\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"8\",\"9\",\"10/1\",\"11\"]\n  }\n}"
+    },
+    {
+        "id": "docs_land_verification_042",
+        "name": "Gujarat Land Verification - Owner Verification API",
+        "overview": "Verifies land ownership for a specific district, taluka, village, and block using the owner's name.",
+        "endpoint": "POST https://dev-api.innowave.solutions/land-verification/gujrat/verification",
+        "request": "curl --location 'https://dev-api.innowave.solutions/land-verification/gujrat/verification' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{ \"district_name\": \"bhavnagar\", \"taluka_name\": \"vallabhipur\", \"village_name\": \"bhojpara\", \"block\": \"26\", \"owner_name\": \"ashaben thakarshibhai lakhani\" }'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"land_verification\": {\n    \"location\": {\n      \"district_name\": \"bhavnagar\",\n      \"taluka_name\": \"vallabhipur\",\n      \"village_name\": \"bhojpara\",\n      \"block_number\": \"26\"\n    },\n    \"search_parameters\": {\n      \"searched_owner_name\": \"ashaben thakarshibhai lakhani\"\n    },\n    \"ownership_records\": [\n      {\n        \"khata_number\": \"206\",\n        \"owner_name\": \"Ashaben Thakarshibhai Lakhani\",\n        \"owner_name_gujarati\": \"આશાબેન ઠાકરશીભાઈ લખાણી\",\n        \"name_match_score\": 100\n      },\n      {\n        \"khata_number\": \"206\",\n        \"owner_name\": \"Kantaben Thakarshibhai Lakhani\",\n        \"owner_name_gujarati\": \"કાંતાબેન ઠાકરશીભાઈ લખાણી\",\n        \"name_match_score\": 92\n      }\n    ],\n    \"land_summary\": {\n      \"total_land_area\": \"2-73-16\",\n      \"annual_assessment\": \"10.12\"\n    }\n  }\n}"
+    },
+    {
+        "id": "docs_mp_district_list_043",
+        "name": "Madhya Pradesh Land Verification - District List API",
+        "overview": "The MP Land Verification APIs allow fetching district details for Madhya Pradesh.",
+        "endpoint": "POST https://dev-api.innowave.solutions/land-verification/mp/district-list",
+        "request": "curl --location 'https://dev-api.innowave.solutions/land-verification/mp/district-list' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data ''",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"districts_name\": [\"agar-malwa\",\"alirajpur\",\"anuppur\",\"ashoknagar\",\"balaghat\",\"barwani\",\"bhopal\",\"datia\",\"gwalior\",\"indore\",\"jabalpur\",\"rewa\",\"sagar\",\"ujjain\",\"vidisha\"]\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{ \"message\": \"Success\", \"responseId\": 1001 }"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{ \"success\": false, \"message\": \"Invalid request parameters\" }"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{ \"success\": false, \"message\": \"Auth key invalid or missing\" }"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{ \"success\": false, \"message\": \"Credit Exhausted\" }"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Internal Server Error",
+                "message": "{ \"success\": false, \"message\": \"Source Down\" }"
+            }
+        ]
+    },
+    {
+        "id": "docs_mp_tehsil_list_044",
+        "name": "Madhya Pradesh Land Verification - Tehsil (Taluka) List API",
+        "overview": "Fetches tehsil (taluka) names under a selected district in Madhya Pradesh.",
+        "endpoint": "POST https://dev-api.innowave.solutions/land-verification/mp/taluka-list",
+        "request": "curl --location 'https://dev-api.innowave.solutions/land-verification/mp/taluka-list' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"district_name\":\"agar-malwa\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"location_info\": {\n    \"district_name\": \"agar-malwa\",\n    \"tehsils_name\": [\"agar\",\"badod\",\"nalkheda\",\"soyatkala\",\"susner\"]\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{ \"message\": \"Success\", \"responseId\": 1001 }"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{ \"success\": false, \"message\": \"Invalid request parameters\" }"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{ \"success\": false, \"message\": \"Auth key invalid or missing\" }"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{ \"success\": false, \"message\": \"Credit Exhausted\" }"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Internal Server Error",
+                "message": "{ \"success\": false, \"message\": \"Source Down\" }"
+            }
+        ]
+    },
+    {
+        "id": "docs_mp_village_list_045",
+        "name": "Madhya Pradesh Land Verification - Village List API",
+        "overview": "Fetches villages under a specific district and tehsil in Madhya Pradesh.",
+        "endpoint": "POST https://dev-api.innowave.solutions/land-verification/mp/village-list",
+        "request": "curl --location 'https://dev-api.innowave.solutions/land-verification/mp/village-list' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"district_name\":\"agar-malwa\",\"tehsil_name\":\"nalkheda\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"location_details\": {\n    \"district_name\": \"agar-malwa\",\n    \"taluka_name\": \"nalkheda\",\n    \"villages_name\": [\"anandikhedi\",\"bagawad\",\"bhandawad\",\"dharola\",\"nalkheda\",\"rojadi\",\"siya\",\"tolakya khedi\"]\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{ \"message\": \"Success\", \"responseId\": 1001 }"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{ \"success\": false, \"message\": \"Invalid request parameters\" }"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{ \"success\": false, \"message\": \"Auth key invalid or missing\" }"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{ \"success\": false, \"message\": \"Credit Exhausted\" }"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Internal Server Error",
+                "message": "{ \"success\": false, \"message\": \"Source Down\" }"
+            }
+        ]
+    },
+    {
+        "id": "docs_mp_khasra_list_046",
+        "name": "Madhya Pradesh Land Verification - Khasra List API",
+        "overview": "Fetches khasra (land parcel) numbers under a specific district, tehsil, and village in Madhya Pradesh.",
+        "endpoint": "POST https://dev-api.innowave.solutions/land-verification/mp/khasara-list",
+        "request": "curl --location 'https://dev-api.innowave.solutions/land-verification/mp/khasara-list' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"district_name\":\"agar-malwa\",\"tehsil_name\":\"nalkheda\",\"village_name\":\"anandikhedi\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"data\": {\n    \"khasra_list\": [\"1\",\"2\",\"3\",\"7/1\",\"7/2\",\"32/1\",\"32/2\",\"115/1/1\",\"140/1/2\",\"260/1\",\"363/1\",\"376/3\"]\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{ \"message\": \"Success\", \"responseId\": 1001 }"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{ \"success\": false, \"message\": \"Invalid request parameters\" }"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{ \"success\": false, \"message\": \"Auth key invalid or missing\" }"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{ \"success\": false, \"message\": \"Credit Exhausted\" }"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Internal Server Error",
+                "message": "{ \"success\": false, \"message\": \"Source Down\" }"
+            }
+        ]
+    },
+    {
+        "id": "docs_mp_land_verification_047",
+        "name": "Madhya Pradesh Land Verification - Owner Verification API",
+        "overview": "Verifies land ownership and fetches land parcel details based on district, tehsil, village, and khasra number in Madhya Pradesh.",
+        "endpoint": "POST https://dev-api.innowave.solutions/land-verification/mp/verification",
+        "request": "curl --location 'https://dev-api.innowave.solutions/land-verification/mp/verification' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"district_name\":\"datia\",\"tehsil_name\":\"seondha\",\"village_name\":\"badokhari\",\"khasra_number\":\"48\"}'",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"land_verification\": {\n    \"location\": {\n      \"district_name\": \"datia\",\n      \"tehsil_name\": \"seondha\",\n      \"village_name\": \"badokhari\",\n      \"khasra_number\": \"48\"\n    },\n    \"owners\": [\n      {\"name\": \"Durgaprasad\", \"name_local\": \"दुर्गाप्रसाद\", \"guardian_name\": \"हरकिशुन\", \"residence\": \"बडोखरी सेवड़ा दतिया मध्य प्रदेश\", \"ownership\": \"भूमि स्वामी\", \"khata_share\": \"1/6\"},\n      {\"name\": \"Sitarani\", \"name_local\": \"सीतारानी\", \"guardian_name\": \"हरकिशुन\", \"residence\": \"बडोखरी सेवड़ा दतिया मध्य प्रदेश\", \"ownership\": \"भूमि स्वामी\", \"khata_share\": \"1/6\"}\n    ],\n    \"plots\": [\n      {\"parcel_id\": \"1058569525\", \"ulpin\": \"841NT5DBNM1KH0\", \"block_no\": \"48\", \"type\": \"निजी\", \"year_range\": \"2005-2025\", \"area_ha\": \"0.0800\", \"land_use\": \"कृषि\", \"tax_amount\": \"1.00\"},\n      {\"parcel_id\": \"1166079587\", \"ulpin\": \"841YF9DBNM5ZH0\", \"block_no\": \"156\", \"type\": \"निजी\", \"year_range\": \"2005-2025\", \"area_ha\": \"0.5600\", \"land_use\": \"कृषि\", \"tax_amount\": \"6.84\"}\n    ]\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{ \"message\": \"Success\", \"responseId\": 1001 }"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{ \"success\": false, \"message\": \"Invalid request parameters\" }"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{ \"success\": false, \"message\": \"Auth key invalid or missing\" }"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{ \"success\": false, \"message\": \"Credit Exhausted\" }"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Internal Server Error",
+                "message": "{ \"success\": false, \"message\": \"Source Down\" }"
+            }
+        ]
+    },
+    {
+        "id": "docs_karnataka_district_list_048",
+        "name": "Karnataka Land Verification - District List API",
+        "overview": "Provides the complete list of districts in Karnataka for land verification.",
+        "endpoint": "POST https://dev-api.innowave.solutions/land-verification/karnataka/district-list",
+        "request": "curl --location 'https://dev-api.innowave.solutions/land-verification/karnataka/district-list' \\\n--header 'x-api-key: <apikey>' \\\n--data ''",
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"districts_name\": [\"belgaum\",\"bagalkote\",\"bijapur\",\"gulbarga\",\"bidar\",\"raichur\",\"koppal\",\"gadag\",\"dharwad\",\"uttar kannada\",\"haveri\",\"bellary\",\"chitradurga\",\"davanagere\",\"shimoga\",\"udupi\",\"chikmagalur\",\"tumkur\",\"kolar\",\"bangalore urban\",\"bangalore rural\",\"mandya\",\"hassan\",\"dakshina kannada\",\"kodagu\",\"mysore\",\"chamarajanagara\",\"chikkaballapur\",\"ramanagara\",\"yadagir\",\"vijayanagara\"]\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{ \"message\": \"Success\", \"responseId\": 1001 }"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{ \"success\": false, \"message\": \"Invalid request parameters\" }"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{ \"success\": false, \"message\": \"Auth key invalid or missing\" }"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{ \"success\": false, \"message\": \"Credit Exhausted\" }"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Internal Server Error",
+                "message": "{ \"success\": false, \"message\": \"Source Down\" }"
+            }
+        ]
+    },
+    {
+        "id": "docs_karnataka_block_list_049",
+        "name": "Karnataka Land Verification - Block List API",
+        "overview": "Fetches talukas, hoblis, and villages under a selected district in Karnataka.",
+        "endpoint": "POST https://dev-api.innowave.solutions/land-verification/karnataka/block-list",
+        "request": "curl --location 'https://dev-api.innowave.solutions/land-verification/karnataka/block-list' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"district_name\":\"belgaum\"}'",
+        "response": "{\n  \"message\": \"success\",\n  \"responseId\": \"1001\",\n  \"result\": {\n    \"district_name\": \"belgaum\",\n    \"taluka_list\": [ ... ]\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "Success",
+                "message": "{ \"message\": \"Success\", \"responseId\": 1001 }"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{ \"success\": false, \"message\": \"Invalid request parameters\" }"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{ \"success\": false, \"message\": \"Auth key invalid or missing\" }"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{ \"success\": false, \"message\": \"Credit Exhausted\" }"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Internal Server Error",
+                "message": "{ \"success\": false, \"message\": \"Source Down\" }"
+            }
+        ]
+    },
+    {
+        "id": "docs_karnataka_land_verification_050",
+        "name": "Karnataka Land Verification - Owner Verification API",
+        "overview": "Provides ownership and land parcel details for a given location in Karnataka based on district, taluka, hobli, and village.",
+        "endpoint": "POST https://dev-api.innowave.solutions/land-verification/karnataka/verification",
+        "request": "curl --location 'https://dev-api.innowave.solutions/land-verification/karnataka/verification' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"district_name\":\"belgaum\",\"khata_number\":\"1\",\"hobli_name\":\"chikkodi\",\"taluka_name\":\"chikkodi\",\"village_name\":\"chikkodi\"}'",
+        "response": "{\n  \"land_verification\": {\n    \"client_reference_id\": \"karnataka_land_verification_xxxxx\",\n    \"location\": {\n      \"state\": \"karnataka\",\n      \"district_name\": \"Bengaluru Urban\",\n      \"taluka_name\": \"Bengaluru South\",\n      \"hobli_name\": \"Begur\",\n      \"village_name\": \"Hulimavu\",\n      \"khata_number\": \"12345\"\n    },\n    \"search_parameters\": {\n      \"searched_owner_name\": \"Ramesh Kumar\"\n    },\n    \"land_parcels\": [\n      {\"order_no\": \"1\", \"hissa_no\": \"A1\", \"owner_name\": \"Ramesh Kumar\", \"land_area\": \"2.5 Acre\", \"shape_area\": \"2.45 Acre\", \"local_tax\": \"₹500\", \"health_care_tax\": \"₹200\", \"education_tax\": \"₹300\", \"total_tax\": \"₹1000\"},\n      {\"order_no\": \"2\", \"hissa_no\": \"B3\", \"owner_name\": \"Suresh Kumar\", \"land_area\": \"1.2 Acre\", \"shape_area\": \"1.18 Acre\", \"local_tax\": \"₹300\", \"health_care_tax\": \"₹100\", \"education_tax\": \"₹200\", \"total_tax\": \"₹600\"}\n    ],\n    \"land_summary\": {\n      \"total_land_area\": \"3.7 Acre\",\n      \"total_shape_area\": \"3.63 Acre\",\n      \"total_local_tax\": \"₹800\",\n      \"total_health_care_tax\": \"₹300\",\n      \"total_education_tax\": \"₹500\",\n      \"grand_total_tax\": \"₹1600\"\n    }\n  }\n}",
+        "statusCodes": [
+            {
+                "code": 200,
+                "responseId": 1001,
+                "billable": "Yes",
+                "description": "OK",
+                "message": "{ \"message\": \"Success\", \"responseId\": 1001 }"
+            },
+            {
+                "code": 200,
+                "responseId": 1002,
+                "billable": "Yes",
+                "description": "Created",
+                "message": "{ \"message\": \"Resource successfully created\", \"responseId\": 1002 }"
+            },
+            {
+                "code": 200,
+                "responseId": 1003,
+                "billable": "No",
+                "description": "Accepted",
+                "message": "{ \"message\": \"Asynchronous Request. Response will be sent to configured Webhook.\", \"responseId\": 1003 }"
+            },
+            {
+                "code": 200,
+                "responseId": 1004,
+                "billable": "No",
+                "description": "No Content",
+                "message": "{ \"message\": \"Successful with no Response\", \"responseId\": 1004 }"
+            },
+            {
+                "code": 400,
+                "responseId": null,
+                "billable": "No",
+                "description": "Bad Request",
+                "message": "{ \"success\": false, \"message\": \"Invalid request parameters\" }"
+            },
+            {
+                "code": 403,
+                "responseId": null,
+                "billable": "No",
+                "description": "Forbidden",
+                "message": "{ \"success\": false, \"message\": \"Auth key invalid or missing\" }"
+            },
+            {
+                "code": 402,
+                "responseId": null,
+                "billable": "No",
+                "description": "Payment Required",
+                "message": "{ \"success\": false, \"message\": \"Credit Exhausted\" }"
+            },
+            {
+                "code": 500,
+                "responseId": null,
+                "billable": "No",
+                "description": "Internal Server Error",
+                "message": "{ \"success\": false, \"message\": \"Source Down\" }"
+            }
+        ]
     }
 ]

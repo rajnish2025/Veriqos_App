@@ -82,6 +82,7 @@
                 {
                     "apiName": "PAN Number Verification API",
                     "id": "panverificationapi5566",
+                    "devDocsId": "docs_pan_verification_006",
                     "label": "PAN Verification API",
                     "url": "/api/pan/pan-verification",
                     "serverUrl": "/pan/pan-verification",
@@ -127,6 +128,7 @@
                 {
                     "apiName": "PAN Advance v2",
                     "id": "panadvancev2api9012",
+                    "devDocsId": "docs_pan_advance_v2_007",
                     "label": "PAN Advance v2",
                     "url": "/api/pan/panadvance-v2",
                     "serverUrl": "/pan/panadvance-v2",
@@ -149,6 +151,7 @@
                 {
                     "apiName": "PAN Comprehensive Verification API",
                     "id": "pancomprehensiveapi7890",
+                    "devDocsId": "docs_pan_comprehensive_verification_008",
                     "label": "PAN Comprehensive Verification API",
                     "url": "/api/pan/comprehensive-verification",
                     "serverUrl": "/pan/comprehensive-verification",
@@ -171,6 +174,7 @@
                 {
                     "apiName": "PAN Complete Profile API",
                     "id": "completeprofileapi9988",
+                    "devDocsId": "docs_pan_complete_profile_009",
                     "label": "Complete Profile",
                     "url": "/api/pan/complete-profile",
                     "serverUrl": "/pan/complete-profile",
@@ -193,6 +197,7 @@
                 {
                     "apiName": "PAN Demographic Data Fetch API",
                     "id": "demographicdatafetchapi3456",
+                    "devDocsId": "docs_pan_demographic_data_fetch_010",
                     "label": "Demographic Data Fetch",
                     "url": "/api/pan/demographic-data-fetch",
                     "serverUrl": "/pan/demographic-data-fetch",
@@ -218,6 +223,7 @@
                 {
                     "apiName": "PAN Validate",
                     "id": "panvalidateapi4321",
+                    "devDocsId": "docs_pan_validate_011",
                     "label": "PAN Validate",
                     "url": "/api/pan/validate",
                     "serverUrl": "/pan/validate",
@@ -240,6 +246,7 @@
                 {
                     "apiName": "PAN Demographic Advance API",
                     "id": "demographicadvanceapi7891",
+                    "devDocsId": "docs_pan_demographic_advance_012",
                     "label": "Demographic Advance",
                     "url": "/api/pan/demographic-advance",
                     "serverUrl": "/pan/demographic-advance",
@@ -265,6 +272,7 @@
                 {
                     "apiName": "PAN to Father’s Name Lookup API",
                     "id": "fathernamelookupapi8765",
+                    "devDocsId": "docs_pan_father_name_lookup_013",
                     "label": "Father Name Lookup",
                     "url": "/api/pan/father-name-lookup",
                     "serverUrl": "/pan/father-name-lookup",
@@ -287,6 +295,7 @@
                 {
                     "apiName": "PAN to Name & DOB Lookup API",
                     "id": "namedoblookupapi6543",
+                    "devDocsId": "docs_pan_name_dob_lookup_014",
                     "label": "Name & DOB Lookup",
                     "url": "/api/pan/name-and-dob-lookup",
                     "serverUrl": "/pan/name-and-dob-lookup",
@@ -309,6 +318,7 @@
                 {
                     "apiName": "PAN to Account Linkage API",
                     "id": "panaccountlinkagev1",
+                    "devDocsId": "docs_pan_account_linkage_v1_015",
                     "label": "PAN to Account Linkage",
                     "url": "/api/pan-account-linkage/v1",
                     "serverUrl": "/pan-account-linkage/v1",
@@ -397,6 +407,7 @@
                 {
                     "apiName": "LPG Verification (Mobile) API",
                     "id": "lpgverificationmobile001",
+                    "devDocsId": "docs_lpg_verification_mobile_016",
                     "label": "LPG Verification by Mobile Number",
                     "url": "/api/mobile-number/LPG-verification",
                     "serverUrl": "/mobile-number/LPG-verification",
@@ -446,6 +457,7 @@
                 {
                     "apiName": "Challan Detials API",
                     "id": "bhqecj4p",
+                    "devDocsId": "docs_challan_details_api_017",
                     "label": "Challan API",
                     "url": "/api/rc/challan-details",
                     "serverUrl": "/rc/challan-details",
@@ -496,7 +508,9 @@
                 {
                     "apiName": "Company CIN Lookup V1 API",
                     "id": "companycinlookupv1001",
+                    "devDocsId": "docs_company_cin_lookup_v1_024",
                     "label": "Company CIN Lookup V1",
+                    "overview": "Retrieves company details and key personnel information using the Corporate Identification Number (CIN).",
                     "url": "/api/company-cin-lookup/v1",
                     "serverUrl": "/company-cin-lookup/v1",
                     "method": "POST",
@@ -517,7 +531,9 @@
                 {
                     "apiName": "CIN Lookup Advance V2 API",
                     "id": "cinlookupv2001",
+                    "devDocsId": "docs_cin_lookup_advanced_v2_025",
                     "label": "CIN Lookup Advanced API",
+                    "overview": "Enhanced CIN lookup providing company information, directors, associations, and compliance details.",
                     "url": "/api/cin-lookup-advanced",
                     "serverUrl": "/cin-lookup-advanced",
                     "method": "POST",
@@ -538,7 +554,9 @@
                 {
                     "apiName": "PAN to CIN Mapping API",
                     "id": "pantocin_v1",
+                    "devDocsId": "docs_pan_to_cin_027",
                     "label": "PAN to CIN Lookup",
+                    "overview": "Retrieves the list of CIN numbers and corresponding company names associated with a given PAN number. Supports compliance and corporate verification use cases.",
                     "url": "/api/pantocin/v1",
                     "serverUrl": "/pantocin/v1",
                     "method": "POST",
@@ -678,7 +696,9 @@
                 {
                     "apiName": "PAN to Udyam Mapping API",
                     "id": "pantoudyam001",
+                    "devDocsId": "docs_pan_to_udyam_026",
                     "label": "PAN to Udyam",
+                    "overview": "Verifies if a PAN number is linked with a registered Udyam (MSME) certificate and fetches associated business details.",
                     "url": "/api/pantoudyam/check",
                     "serverUrl": "/pantoudyam/check",
                     "method": "POST",
@@ -709,7 +729,9 @@
                 {
                     "apiName": "206AB Check API",
                     "id": "check206abapi2233",
+                    "devDocsId": "docs_pan_206ab_check_031",
                     "label": "206AB Check",
+                    "overview": "Checks whether a PAN falls under Section 206AB for higher TDS deduction applicability.",
                     "url": "/api/pan/206ab-check",
                     "serverUrl": "/pan/206ab-check",
                     "method": "POST",
@@ -730,7 +752,9 @@
                 {
                     "apiName": "UDIN Verification API",
                     "id": "udin_verification_v1",
+                    "devDocsId": "docs_udin_verification_028",
                     "label": "UDIN Verification",
+                    "overview": "Verifies ICAI-issued UDINs to ensure authenticity of documents certified by Chartered Accountants.",
                     "url": "/api/udin/verification",
                     "serverUrl": "/udin/verification",
                     "method": "POST",
@@ -763,7 +787,9 @@
                 {
                     "apiName": "Bank Account Verification (penny Drop) API",
                     "id": "pennydrop_bank_account_verification",
+                    "devDocsId": "docs_bank_account_verification_penny_drop_029",
                     "label": "Bank Account Verification",
+                    "overview": "Verifies ownership of a bank account by initiating a minimal transaction (Penny Drop). Validates account number, IFSC, and holder details.",
                     "url": "/api/pennydrop/bank-account-verification",
                     "serverUrl": "/pennydrop/bank-account-verification",
                     "method": "POST",
@@ -786,7 +812,9 @@
                 {
                     "apiName": "Bank Account Verification (penny Less) API",
                     "id": "pennyless_bank_account_verification",
+                    "devDocsId": "docs_bank_account_verification_pennyless_030",
                     "label": "Bank Account Verification",
+                    "overview": "Validates bank account ownership without performing any transaction. Verifies account number, IFSC, and holder name instantly.",
                     "url": "/api/pennyless/bank-account-verification",
                     "serverUrl": "/pennyless/bank-account-verification",
                     "method": "POST",
@@ -820,7 +848,9 @@
                 {
                     "apiName": "Vehicle RC Advanced(/rc/vehicle-advanced) API",
                     "id": "rc_vehicle_advanced",
+                    "devDocsId": "docs_vehicle_rc_advanced_v1_032",
                     "label": "RC Verification",
+                    "overview": "The RC Advance API provides detailed vehicle registration information, including ownership details, insurance, hypothecation, PUCC, and registration validity.",
                     "url": "/api/rc/vehicle-advanced",
                     "serverUrl": "/rc/vehicle-advanced",
                     "method": "POST",
@@ -841,7 +871,9 @@
                 {
                     "apiName": "Vehicle RC Advanced V3",
                     "id": "vehicle_rc_advanced_v3",
+                    "devDocsId": "docs_vehicle_rc_advanced_v3_033",
                     "label": "RC Verification",
+                    "overview": "The RC Advance V3 API provides the latest and most detailed RC data, including personal, registration, vehicle, finance, taxation, insurance, permit, dealer, and sale details.",
                     "url": "/api/rc/vehicle-advanced/v3",
                     "serverUrl": "/rc/vehicle-advanced/v3",
                     "method": "POST",
@@ -862,7 +894,9 @@
                 {
                     "apiName": "Vehicle RC Advanced V2 API",
                     "id": "vehicle_rc_advanced_v2",
+                    "devDocsId": "docs_vehicle_rc_advanced_v2_032",
                     "label": "RC Verification",
+                    "overview": "The RC Advance V2 API fetches extended vehicle details including owner, registration, insurance, fitness, finance, challans, and pollution certificate information using vehicle number and chassis number.",
                     "url": "/api/rc/vehicle-advanced/v2",
                     "serverUrl": "/rc/vehicle-advanced/v2",
                     "method": "POST",
@@ -882,9 +916,11 @@
                     ]
                 },
                 {
-                    "apiName": "Vehicle RC Advanced V2",
+                    "apiName": "RC Verification V2 API",
                     "id": "m5gr84i9",
+                    "devDocsId": "docs_rc_verification_v2_033",
                     "label": "Vehicle RC V2 API",
+                    "overview": "The RC (Registration Certificate) V2 API provides detailed information about a vehicle based on its registration number. It returns ownership details, registration validity, insurance, permit, and technical specifications such as engine, chassis, dimensions, and manufacturer details.",
                     "url": "/api/rc/v2",
                     "serverUrl": "/rc/v2",
                     "method": "POST",
@@ -905,6 +941,7 @@
                 {
                     "apiName": "Chassis RC Lite (v1) API",
                     "id": "chassis_rc_lite_v1",
+                    "devDocsId": "docs_chassis_rc_lite_v1_018",
                     "label": "Fetch Registration Number by Chassis",
                     "overview": "This API fetches registration number details based on the provided chassis number. It provides a minimal response containing only the registration number.",
                     "url": "/api/rc/lite/chassis/v1",
@@ -930,6 +967,7 @@
                 {
                     "apiName": "Chassis RC Lite (v2) API",
                     "id": "chassis_rc_lite_v2",
+                    "devDocsId": "docs_chassis_rc_lite_v2_019",
                     "label": "Fetch Registration Number by Chassis (v2)",
                     "overview": "This API fetches registration number details based on the provided chassis number (version 2). It improves error handling compared to v1.",
                     "url": "/api/rc/lite/chassis/v2",
@@ -952,6 +990,7 @@
                 {
                     "apiName": "Chassis to RC Advance V1 API",
                     "id": "chassis_to_rc_advance_v1",
+                    "devDocsId": "docs_chassis_rc_advance_v1_020",
                     "label": "Fetch Detailed Vehicle Information by Chassis",
                     "overview": "This API fetches detailed vehicle, ownership, insurance, permit, pollution, tax, and status information using the chassis number.",
                     "url": "/api/rc/chassis-advance/v1",
@@ -974,6 +1013,7 @@
                 {
                     "apiName": "Chassis to RC Advance (v2) API",
                     "id": "chassis_to_rc_advance_v2",
+                    "devDocsId": "docs_chassis_rc_advance_v2_021",
                     "label": "Fetch Detailed Vehicle Information by Chassis (v2)",
                     "overview": "This is the enhanced version of Chassis to RC Advance API. It fetches detailed vehicle, ownership, insurance, permit, tax, pollution, and status details with improved error handling.",
                     "url": "/api/rc/chassis-advance/v2",
@@ -996,6 +1036,7 @@
                 {
                     "apiName": "Fastag Details API",
                     "id": "3u1reuv4",
+                    "devDocsId": "docs_fastag_details_022",
                     "label": "Fastag API",
                     "url": "/api/rc/fastag-details",
                     "serverUrl": "/rc/fastag-details",
@@ -1018,6 +1059,7 @@
                 {
                     "apiName": "Vehicle Tax by Transaction ID",
                     "id": "vehicle_tax_by_transaction_id",
+                    "devDocsId": "docs_vehicle_tax_transaction_023",
                     "label": "Vehicle Tax Payment Details",
                     "overview": "This API provides vehicle tax payment details for a given transaction ID, including vehicle info, payment info, and payment status.",
                     "url": "/api/rc/vehicle-tax/by-transaction-id",
@@ -1051,7 +1093,9 @@
                 {
                     "apiName": "Lookup Basics API (Telecom API)",
                     "id": "lookupbasicsapi7722",
+                    "devDocsId": "docs_lookup_basics_034",
                     "label": "Lookup Basics API",
+                    "overview": "The Lookup Basics API retrieves the basic telecom information of a mobile number including operator type (prepaid/postpaid), service provider, and telecom circle (region).",
                     "url": "/api/telco/lookup-basic",
                     "serverUrl": "/telco/lookup-basic",
                     "method": "POST",
@@ -1072,7 +1116,9 @@
                 {
                     "apiName": "Telco lookup (Advance) API",
                     "id": "telcolookupadvancedapi6633",
+                    "devDocsId": "docs_lookup_advanced_035",
                     "label": "Telco Lookup Advanced",
+                    "overview": "The Lookup Advanced API fetches detailed telecom information including roaming/porting status, delivery status, number info, current/original operator details, and porting history.",
                     "url": "/api/telco/lookup-advanced",
                     "serverUrl": "/telco/lookup-advanced",
                     "method": "POST",
@@ -1093,7 +1139,9 @@
                 {
                     "apiName": "Telco Advance (OTP Based, Send OTP) API",
                     "id": "telcoadvanceotp001",
+                    "devDocsId": "docs_telco_send_otp_036",
                     "label": "Telco Send OTP API",
+                    "overview": "The Telco OTP API allows initiating an OTP request to verify ownership of a mobile number.",
                     "url": "/api/telco/send-otp",
                     "serverUrl": "/telco/send-otp",
                     "method": "POST",
@@ -1114,7 +1162,9 @@
                 {
                     "apiName": "Telco Advance (OTP Based, Verify OTP) API",
                     "id": "telcoadvanceotpverify001",
+                    "devDocsId": "docs_telco_verify_otp_037",
                     "label": "Telco Verify OTP API",
+                    "overview": "The Verify OTP API confirms whether the OTP sent to a mobile number is correct and retrieves KYC details like name, DOB, address, operator, and plan type.",
                     "url": "/api/telco/verify-otp",
                     "serverUrl": "/telco/verify-otp",
                     "method": "POST",
@@ -1178,6 +1228,7 @@
                 {
                     "apiName": "Gujarat Land Verification - District List API",
                     "id": "gujarat_land_verification_district_list",
+                    "devDocsId": "docs_district_list_038",
                     "label": "Fetch Gujarat District List",
                     "overview": "This API provides the list of districts in Gujarat for land verification purposes. It is the first step in fetching hierarchical land details such as taluka, village, and block information.",
                     "url": "/api/land-verification/gujrat/district-list",
@@ -1198,6 +1249,7 @@
                 {
                     "apiName": "Gujarat Land Verification - Taluka List API",
                     "id": "gujarat_land_verification_taluka_list",
+                    "devDocsId": "docs_taluka_list_039",
                     "label": "Fetch Taluka List by District",
                     "overview": "This API provides the list of talukas in a specified district of Gujarat for land verification purposes.",
                     "url": "/api/land-verification/gujrat/taluka-list",
@@ -1221,6 +1273,7 @@
                 {
                     "apiName": "Gujarat Land Verification - Village List API",
                     "id": "gujarat_land_verification_village_list",
+                    "devDocsId": "docs_village_list_040",
                     "label": "Fetch Village List by District and Taluka",
                     "overview": "This API provides the list of villages in a specified taluka of a district in Gujarat for land verification purposes.",
                     "url": "/api/land-verification/gujrat/village-list",
@@ -1245,6 +1298,7 @@
                 {
                     "apiName": "Gujarat Land Verification - Block List API",
                     "id": "gujarat_land_verification_block_list",
+                    "devDocsId": "docs_block_list_041",
                     "label": "Fetch Block List by District, Taluka, and Village",
                     "overview": "This API provides the list of blocks in a specified village of a taluka in Gujarat for land verification purposes.",
                     "url": "/api/land-verification/gujrat/block-list",
@@ -1270,6 +1324,7 @@
                 {
                     "apiName": "Gujarat Land Verification - Owner Verification API",
                     "id": "gujarat_land_verification_owner_verification",
+                    "devDocsId": "docs_land_verification_042",
                     "label": "Verify Land Ownership by Details",
                     "overview": "This API allows verification of land ownership in Gujarat based on district, taluka, village, block, and owner name against government records.",
                     "url": "/api/land-verification/gujrat/verification",
@@ -1297,6 +1352,7 @@
                 {
                     "apiName": "MP Land Verification - District List API",
                     "id": "mp_land_verification_district_list",
+                    "devDocsId": "docs_mp_district_list_043",
                     "label": "Fetch MP District List",
                     "overview": "This API provides the list of districts in Madhya Pradesh for land verification purposes.",
                     "url": "/api/land-verification/mp/district-list",
@@ -1317,6 +1373,7 @@
                 {
                     "apiName": "MP Land Verification - Tehsil List API",
                     "id": "mp_land_verification_tehsil_list",
+                    "devDocsId": "docs_mp_tehsil_list_044",
                     "label": "Fetch Tehsil List by District",
                     "overview": "This API provides the list of tehsils (talukas) in a specified district of Madhya Pradesh for land verification purposes.",
                     "url": "/api/land-verification/mp/taluka-list",
@@ -1340,6 +1397,7 @@
                 {
                     "apiName": "MP Land Verification - Village List API",
                     "id": "mp_land_verification_village_list",
+                    "devDocsId": "docs_mp_village_list_045",
                     "label": "Fetch Village List by District and Tehsil",
                     "overview": "This API provides the list of villages in a specified tehsil of a district in Madhya Pradesh for land verification purposes.",
                     "url": "/api/land-verification/mp/village-list",
@@ -1364,6 +1422,7 @@
                 {
                     "apiName": "MP Land Verification - Khasra List API",
                     "id": "mp_land_verification_khasra_list",
+                    "devDocsId": "docs_mp_khasra_list_046",
                     "label": "Fetch Khasra List by District, Tehsil, and Village",
                     "overview": "This API provides the list of khasra numbers in a specified village of a tehsil in Madhya Pradesh for land verification purposes.",
                     "url": "/api/land-verification/mp/khasara-list",
@@ -1389,6 +1448,7 @@
                 {
                     "apiName": "MP Land Verification - Owner Verification API",
                     "id": "mp_land_verification_owner_verification",
+                    "devDocsId": "docs_mp_land_verification_047",
                     "label": "Verify Land Ownership by Khasra Number",
                     "overview": "This API allows verification of land ownership in Madhya Pradesh based on district, tehsil, village, and khasra number against government records.",
                     "url": "/api/land-verification/mp/verification",
@@ -1415,6 +1475,7 @@
                 {
                     "apiName": "Karnataka Land Verification - District List API",
                     "id": "karnataka_land_verification_district_list",
+                    "devDocsId": "docs_karnataka_district_list_048",
                     "label": "Fetch Karnataka District List",
                     "overview": "This API provides the complete list of districts in Karnataka. It is the entry point for land verification queries, as district selection is required to drill down further into blocks, talukas, and zones.",
                     "url": "/api/land-verification/karnataka/district-list",
@@ -1434,6 +1495,7 @@
                 {
                     "apiName": "Karnataka Land Verification - Block List API",
                     "id": "karnataka_land_verification_block_list",
+                    "devDocsId": "docs_karnataka_block_list_049",
                     "label": "Fetch Block List by District",
                     "overview": "This API provides the list of blocks in a specified district of Karnataka for land verification purposes.",
                     "url": "/api/land-verification/karnataka/block-list",
@@ -1456,6 +1518,7 @@
                 {
                     "apiName": "Karnataka Land Verification - Owner Verification API",
                     "id": "karnataka_land_verification_owner_verification",
+                    "devDocsId": "docs_karnataka_land_verification_050",
                     "label": "Fetch Land Ownership Details",
                     "overview": "This API provides detailed ownership and land parcel information for locations in Karnataka. It includes khata number, owner details, land area, tax information, and more.",
                     "url": "/api/land-verification/karnataka/verification",
