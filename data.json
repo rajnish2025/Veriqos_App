@@ -248,8 +248,8 @@
                     "id": "demographicadvanceapi7891",
                     "devDocsId": "docs_pan_demographic_advance_012",
                     "label": "Demographic Advance",
-                    "url": "/pan/demographic-advance",
-                    "serverUrl": "/pan/demographic-advance",
+                    "url": "/pan/demographicadvance",
+                    "serverUrl": "/pan/demographicadvance",
                     "date_format": "yyyy-MM-dd",
                     "overview": "This API provides extended demographic information linked to a PAN, including multiple addresses if available. It is useful for thorough identity checks, KYC, and compliance workflows.",
                     "method": "POST",
@@ -259,13 +259,13 @@
                     },
                     "body": {
                         "panNumber": "text",
-                        "date_of_birth": "date",
-                        "panHolder_name": "text"
+                        "dob": "date",
+                        "name": "text"
                     },
                     "code": [
                         {
-                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan/demographic-advance' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"panNumber\": \"<PanNumber>\",\n  \"date_of_birth\": \"<DOB>\",\n  \"panHolder_name\": \"<PanHolderName>\"\n}'",
-                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/pan/demographic-advance\",\n  {\n    panNumber: \"<PanNumber>\",\n    date_of_birth: \"<DOB>\",\n    panHolder_name: \"<PanHolderName>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan/demographicadvance' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"panNumber\": \"<PanNumber>\",\n  \"dob\": \"<yyyy-MM-dd>\",\n  \"name\": \"<PanHolderName>\"\n}'",
+                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/pan/demographicadvance\",\n  {\n    panNumber: \"<PanNumber>\",\n    dob: \"<yyyy-MM-dd>\",\n    name: \"<PanHolderName>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
                         }
                     ]
                 },
