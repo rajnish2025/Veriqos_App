@@ -43,6 +43,8 @@ const Navbar = () => {
       setCurrentHeading("Support");
     } else if (location.pathname.match("/devApi/test")) {
       setCurrentHeading("Test");
+    } else if (location.pathname.match("/devdocs/")) {
+      setCurrentHeading("Documentation");
     }
   }, [location.pathname]);
 

@@ -274,8 +274,8 @@
                     "id": "fathernamelookupapi8765",
                     "devDocsId": "docs_pan_father_name_lookup_013",
                     "label": "Father Name Lookup",
-                    "url": "/pan/father-name-lookup",
-                    "serverUrl": "/pan/father-name-lookup",
+                    "url": "/pan/fname-lookup",
+                    "serverUrl": "/pan/fname-lookup",
                     "overview": "This API retrieves the father’s name linked to a PAN, enabling businesses and institutions to verify identity details, support KYC processes, enhance onboarding accuracy, and reduce fraud risks efficiently.",
                     "method": "POST",
                     "headers": {
