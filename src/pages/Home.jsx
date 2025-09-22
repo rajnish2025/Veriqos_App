@@ -32,12 +32,12 @@ const Home = () => {
       </div>
       <div className="w-[90%] flex flex-wrap gap-2 mt-10 mx-auto h-full">
         <Tabs defaultValue="onboarding" className="flex-row">
-          <TabsList className="bg-background flex-col rounded-none border-l p-0 pr-5 h-[75vh] border-r border-r-gray-400">
+          <TabsList className="bg-background flex-col rounded-none border-l p-0 pr-5 h-[750px] border-r border-r-gray-400">
             {tabs.map((tab) => (
               <TabsTrigger
                 key={tab.value}
                 value={tab.value}
-                className="h-[12vh] bg-background data-[state=active]:border-primary dark:data-[state=active]:border-primary w-full justify-start rounded-none border-0 border-l-2 border-transparent data-[state=active]:shadow-none"
+                className="h-[120px] bg-background data-[state=active]:border-primary dark:data-[state=active]:border-primary w-full justify-start rounded-none border-0 border-l-2 border-transparent data-[state=active]:shadow-none"
               >
                 {tab.name}
               </TabsTrigger>
@@ -48,7 +48,7 @@ const Home = () => {
             <TabsContent
               key={tab.value}
               value={tab.value}
-              className="flex flex-wrap gap-3 items-start justify-start pl-10 max-h-fit"
+              className="flex flex-wrap gap-3 items-start justify-start pl-10 max-h-fit h-[750px] overflow-y-auto pt-5 scroll-thin"
             >
               {tab.content.map((item, idx) => (
                 <Link
@@ -63,7 +63,7 @@ const Home = () => {
                   <Card
                     className={`${
                       item.id ? "border-blue-500" : "border-[#c8dddc]"
-                    } lg:w-60 sm:w-44 h-[10vh] text-center max-w-sm shadow-lg border-1 bg-[#fff] hover:scale-[1.03] transition-transform duration-200 flex justify-center items-center`}
+                    } lg:w-60 sm:w-44 h-[100px] text-center max-w-sm shadow-lg border-1 bg-[#fff] hover:scale-[1.03] transition-transform duration-200 flex justify-center items-center`}
                   >
                     <CardContent className="pt-5">{item.apiName}</CardContent>
                   </Card>

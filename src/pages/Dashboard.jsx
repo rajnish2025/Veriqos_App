@@ -171,22 +171,26 @@ const DashBoard = () => {
       }
 
       apiTestData.headers["x-api-key"] = import.meta.env.VITE_API_TOKEN_KEY;
-      const result = await instance.post(
+
+      const apiUrl =
         selectedOption != null
           ? selectedOption.url
           : import.meta.env.VITE_PRODUCTION === "false"
           ? apiTestData.url
-          : apiTestData.serverUrl,
-        data,
-        {
-          headers:
-            selectedOption == null
-              ? apiTestData.headers
-              : selectedOption.headers,
-        }
-      );
-      let validResultData =
-        result != null ? (result.data != null ? result.data : result) : {};
+          : apiTestData.serverUrl;
+
+      const result = await instance({
+        method:
+          apiTestData !== null ? apiTestData.method : selectedOption.method,
+        url: apiUrl,
+        data: data,
+        headers:
+          selectedOption == null ? apiTestData.headers : selectedOption.headers,
+      }).catch((error) => {
+        throw error;
+      });
+
+      const validResultData = result?.data ?? result;
       setDownloadResponse(validResultData);
 
       setResponse(
@@ -196,15 +200,30 @@ const DashBoard = () => {
             : result.data
           : result.data
       );
-      toast.success("Data fetched Successfully.");
+
+      toast.success(result.data.message || "Request successful");
     } catch (error) {
-      let message = "an error occured";
-      if (error.response && error.response.data) {
+      let message = "An error occurred";
+
+      if (error.code === "ERR_NETWORK") {
         message =
-          error.response.data.message || JSON.stringify(error.response.data);
+          "There was a network error. Please check your connection or server status.";
+        console.error("Network Error:", error);
+      } else if (error.response) {
+        if (error.response.status === 400) {
+          message = error.response.data.message || "Invalid request parameters";
+        } else if (error.response.status === 404) {
+          message = "API endpoint not found.";
+        } else {
+          message =
+            error.response.data.message || JSON.stringify(error.response.data);
+        }
       } else if (error.message) {
         message = error.message;
       }
+
+      console.log("Full error details:", error);
+
       toast.error(message);
     } finally {
       setShowLoader(false);
@@ -459,13 +478,18 @@ const DashBoard = () => {
               {response ? (
                 renderTable(
                   Object.fromEntries(
-                    Object.entries(response).filter(
-                      ([key]) =>
-                        key !== "message" &&
-                        key !== "responseId" &&
+                    Object.entries(response).filter(([key]) => {
+                      const responseId =
+                        response.responseId ?? response.response_id;
+                      if (key === "message" && responseId === 1001) {
+                        return false;
+                      }
+                      return (
                         key !== "status" &&
+                        key !== "responseId" &&
                         key !== "response_id"
-                    )
+                      );
+                    })
                   )
                 )
               ) : (

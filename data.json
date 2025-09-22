@@ -74,8 +74,8 @@
                     },
                     "code": [
                         {
-                            "Curl": "curl --location 'https://dev-api.innowave.solutions/api/pan/pan-to-aadhaar' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n    \"pan\": \"AAAAP0267H\",\n    \"aadhaar\": \"596754462773\"\n}'",
-                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/api/pan/pan-to-aadhaar', {\n  pan: 'AAAAP0267H',\n  aadhaar: '596754462773'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan/pan-to-aadhaar' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n    \"pan\": \"AAAAP0267H\",\n    \"aadhaar\": \"596754462773\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/pan/pan-to-aadhaar', {\n  pan: 'AAAAP0267H',\n  aadhaar: '596754462773'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
                         }
                     ]
                 },
@@ -225,8 +225,8 @@
                     "id": "panvalidateapi4321",
                     "devDocsId": "docs_pan_validate_011",
                     "label": "PAN Validate",
-                    "url": "/pan/validate",
-                    "serverUrl": "/pan/validate",
+                    "url": "/pan/panvalidate",
+                    "serverUrl": "/pan/panvalidate",
                     "overview": "Quick check if a PAN is valid, invalid, or inactive.",
                     "method": "POST",
                     "headers": {
@@ -238,8 +238,8 @@
                     },
                     "code": [
                         {
-                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan/validate' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"<PanNumber>\"}'",
-                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/pan/validate\",\n  {\n    panNumber: \"<PanNumber>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan/panvalidate' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"<PanNumber>\"}'",
+                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/pan/panvalidate\",\n  {\n    panNumber: \"<PanNumber>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
                         }
                     ]
                 },
@@ -331,7 +331,7 @@
                     "body": {
                         "bank_account_number": "text",
                         "ifsc_code": "text",
-                        "panNumber": "text"
+                        "pan_number": "text"
                     },
                     "code": [
                         {
@@ -370,10 +370,10 @@
                     ]
                 },
                 {
-                    "apiName": "PAN Supreme v1",
+                    "apiName": "PAN v1",
                     "id": "panv1api1234",
                     "devDocsId": "docs_panv1_002",
-                    "label": "PAN Supreme v1",
+                    "label": "PAN v1",
                     "url": "/pan/panv1",
                     "serverUrl": "/pan/panv1",
                     "overview": "This API verifies a PAN and fetches the holder’s name, gender, date of birth, Aadhaar linkage status, and category for KYC and compliance purposes.",
@@ -565,7 +565,7 @@
                         "x-api-key": "<apikey>"
                     },
                     "body": {
-                        "panNumber": "text"
+                        "pan_number": "text"
                     },
                     "code": [
                         {
@@ -600,8 +600,8 @@
                     },
                     "code": [
                         {
-                            "Curl": "curl --location 'https://dev-api.innowave.solutions/api/gstin/search' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n    \"gstin\": \"29AAAAP0267H1ZK\"\n}'",
-                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/api/gstin/search', {\n  gstin: '29AAAAP0267H1ZK'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/gstin/search' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n    \"gstin\": \"29AAAAP0267H1ZK\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/gstin/search', {\n  gstin: '29AAAAP0267H1ZK'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
                         }
                     ]
                 },
@@ -622,8 +622,8 @@
                     },
                     "code": [
                         {
-                            "Curl": "curl --location 'https://dev-api.innowave.solutions/api/gst-to-name' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n    \"gstin\": \"29AAAAP0267H1ZK\"\n}'",
-                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/api/gst-to-name', {\n  gstin: '29AAAAP0267H1ZK'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/gst-to-name' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n    \"gstin\": \"29AAAAP0267H1ZK\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/gst-to-name', {\n  gstin: '29AAAAP0267H1ZK'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
                         }
                     ]
                 },
@@ -644,8 +644,8 @@
                     },
                     "code": [
                         {
-                            "Curl": "curl --location 'https://dev-api.innowave.solutions/api/gst-to-hsn' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n    \"gstin\": \"29AAAAP0267H1ZK\"\n}'",
-                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/api/gst-to-hsn', {\n  gstin: '29AAAAP0267H1ZK'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/gst-to-hsn' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n    \"gstin\": \"29AAAAP0267H1ZK\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/gst-to-hsn', {\n  gstin: '29AAAAP0267H1ZK'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
                         }
                     ]
                 },
@@ -666,8 +666,8 @@
                     },
                     "code": [
                         {
-                            "Curl": "curl --location 'https://dev-api.innowave.solutions/api/pan-to-gstin' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n    \"pan\": \"AAAAP0267H\"\n}'",
-                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/api/pan-to-gstin', {\n  pan: 'AAAAP0267H'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan-to-gstin' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n    \"pan\": \"AAAAP0267H\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/pan-to-gstin', {\n  pan: 'AAAAP0267H'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
                         }
                     ]
                 },
@@ -688,8 +688,8 @@
                     },
                     "code": [
                         {
-                            "Curl": "curl --location 'https://dev-api.innowave.solutions/api/hsn/search' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n    \"code\": \"01011010\"\n}'",
-                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/api/hsn/search', {\n  code: '01011010'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/hsn/search' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n    \"code\": \"01011010\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/hsn/search', {\n  code: '01011010'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
                         }
                     ]
                 },
@@ -1464,12 +1464,12 @@
                         "district_name": "text",
                         "tehsil_name": "text",
                         "village_name": "text",
-                        "khasra_no": "text"
+                        "khasra_number": "text"
                     },
                     "code": [
                         {
-                            "Curl": "curl --location 'https://dev-api.innowave.solutions/land-verification/mp/verification' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"district_name\": \"datia\",\n  \"tehsil_name\": \"seondha\",\n  \"village_name\": \"badokhari\",\n  \"khasra_no\": \"48\"\n}'",
-                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/land-verification/mp/verification', {\n  district_name: 'datia',\n  tehsil_name: 'seondha',\n  village_name: 'badokhari',\n  khasra_no: '48'\n}, {\n  headers: {\n    'Authorization': 'application/json',\n    'x-api-key': '<apikey>',\n    'Content-Type': 'application/json'\n  }\n});"
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/land-verification/mp/verification' \\\n--header 'Authorization: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"district_name\": \"datia\",\n  \"tehsil_name\": \"seondha\",\n  \"village_name\": \"badokhari\",\n  \"khasra_number\": \"48\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/land-verification/mp/verification', {\n  district_name: 'datia',\n  tehsil_name: 'seondha',\n  village_name: 'badokhari',\n  khasra_number: '48'\n}, {\n  headers: {\n    'Authorization': 'application/json',\n    'x-api-key': '<apikey>',\n    'Content-Type': 'application/json'\n  }\n});"
                         }
                     ]
                 },
@@ -1530,15 +1530,15 @@
                     },
                     "body": {
                         "district_name": "text",
+                        "khata_number": "text",
+                        "hobli_name": "text",
                         "taluka_name": "text",
-                        "zone_name": "text",
-                        "locality_name": "text",
-                        "zone_id": "text"
+                        "village_name": "text"
                     },
                     "code": [
                         {
-                            "Curl": "curl --location 'https://dev-api.innowave.solutions/land-verification/karnataka/verification' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"district_name\": \"belgaum\",\n  \"taluka_name\": \"chikkodi\",\n  \"zone_name\": \"chikkodi\",\n  \"locality_name\": \"chikkodi\",\n  \"zone_id\": \"1\"\n}'",
-                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/land-verification/karnataka/verification', {\n  district_name: 'belgaum',\n  taluka_name: 'chikkodi',\n  zone_name: 'chikkodi',\n  locality_name: 'chikkodi',\n  zone_id: '1'\n}, {\n  headers: {\n    'x-api-key': '<apikey>',\n    'Content-Type': 'application/json'\n  }\n});"
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/land-verification/karnataka/verification' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n  \"district_name\": \"belgaum\",\n  \"khata_number\": \"1\",\n  \"hobli_name\": \"chikkodi\",\n  \"taluka_name\": \"chikkodi\",\n  \"village_name\": \"chikkodi\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/land-verification/karnataka/verification', {\n  district_name: 'belgaum',\n  khata_number: '1',\n  hobli_name: 'chikkodi',\n  taluka_name: 'chikkodi',\n  village_name: 'chikkodi'\n}, {\n  headers: {\n    'x-api-key': '<apikey>',\n    'Content-Type': 'application/json'\n  }\n});"
                         }
                     ]
                 }
