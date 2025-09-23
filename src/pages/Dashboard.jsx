@@ -57,11 +57,11 @@ const DashBoard = () => {
     {
       value: "1",
       label: "Vehicle RC V2 API",
-      url: "/api/rc/v2",
+      url: "/rc/v2",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": "0iFX0CHjYL6gm3zZ7eeyd89LYBOPrUHq6QiqvpEv",
+        "x-api-key": "<api_key>",
       },
       body: { vehicle_number: "text" },
       code: {
@@ -85,11 +85,11 @@ const DashBoard = () => {
     {
       value: "2",
       label: "Fastag API",
-      url: "/api/rc/fastag-details",
+      url: "/rc/fastag-details",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": "0iFX0CHjYL6gm3zZ7eeyd89LYBOPrUHq6QiqvpEv",
+        "x-api-key": "<api_key>",
       },
       body: { vehicle_number: "text" },
       code: {
@@ -112,11 +112,11 @@ const DashBoard = () => {
     {
       value: "3",
       label: "Challan API",
-      url: "/api/rc/challan-details",
+      url: "/rc/challan-details",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": "0iFX0CHjYL6gm3zZ7eeyd89LYBOPrUHq6QiqvpEv",
+        "x-api-key": "<api_key>",
       },
       body: { vehicle_number: "text" },
       code: {
@@ -166,11 +166,15 @@ const DashBoard = () => {
     try {
       setShowLoader(true);
 
-      if (apiTestData["date_format"] !== null) {
-        DateFormating(data);
+      if (apiTestData !== null) {
+        if (apiTestData["date_format"] !== null) {
+          DateFormating(data);
+        }
+        apiTestData.headers["x-api-key"] = import.meta.env.VITE_API_TOKEN_KEY;
+      } else {
+        selectedOption.headers["x-api-key"] =
+          import.meta.env.VITE_API_TOKEN_KEY;
       }
-
-      apiTestData.headers["x-api-key"] = import.meta.env.VITE_API_TOKEN_KEY;
 
       const apiUrl =
         selectedOption != null
@@ -211,12 +215,18 @@ const DashBoard = () => {
         console.error("Network Error:", error);
       } else if (error.response) {
         if (error.response.status === 400) {
-          message = error.response.data.message || "Invalid request parameters";
+          message =
+            error.response.data.message ||
+            error.message ||
+            error.response.message ||
+            "Invalid request parameters";
         } else if (error.response.status === 404) {
           message = "API endpoint not found.";
         } else {
           message =
-            error.response.data.message || JSON.stringify(error.response.data);
+            error.response.data.message ||
+            error.message ||
+            JSON.stringify(error.response.data);
         }
       } else if (error.message) {
         message = error.message;

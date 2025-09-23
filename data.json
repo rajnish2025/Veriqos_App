@@ -63,6 +63,7 @@
                     "label": "Check PAN-Aadhaar Link Status",
                     "overview": "This API checks whether a given PAN is linked to a specific Aadhaar number. Useful for compliance verification, KYC processes, and identity validation.",
                     "url": "/pan/pan-to-aadhaar",
+                    "serverUrl": "/pan/pan-to-aadhaar",
                     "method": "POST",
                     "headers": {
                         "Content-Type": "application/json",
@@ -732,20 +733,20 @@
                     "devDocsId": "docs_pan_206ab_check_031",
                     "label": "206AB Check",
                     "overview": "Checks whether a PAN falls under Section 206AB for higher TDS deduction applicability.",
-                    "url": "/pan/206ab-check",
-                    "serverUrl": "/pan/206ab-check",
+                    "url": "/pan/206AB-check",
+                    "serverUrl": "/pan/206AB-check",
                     "method": "POST",
                     "headers": {
                         "Content-Type": "application/json",
                         "x-api-key": "<api_key>"
                     },
                     "body": {
-                        "pan_Number": "text"
+                        "panNumber": "text"
                     },
                     "code": [
                         {
-                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan/206ab-check' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"<PanNumber>\"}'",
-                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/pan/206ab-check\",\n  {\n    panNumber: \"<PanNumber>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan/206AB-check' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"<PanNumber>\"}'",
+                            "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/pan/206AB-check\",\n  {\n    panNumber: \"<PanNumber>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
                         }
                     ]
                 },
