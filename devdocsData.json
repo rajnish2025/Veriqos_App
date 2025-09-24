@@ -114,119 +114,332 @@
     },
     {
         "id": "docs_panv1_002",
-        "name": "PAN Supreme v1",
-        "overview": "Verifies PAN and fetches name, gender, DOB, Aadhaar linkage, category.",
+        "name": "PAN v1 API",
+        "overview": "The PAN v1 API is designed to validate and fetch essential details of a Permanent Account Number (PAN) holder. It verifies the authenticity of the PAN in real-time and retrieves the PAN holder’s full name, date of birth, gender and category (Individual/Company/Entity).\n\nThis API is particularly useful for:\n\n- **KYC (Know Your Customer) Compliance** – Ensures PAN details provided by a customer match government records.\n- **Fraud Prevention & Risk Management** – Detects invalid, inactive, or fraudulent PANs before onboarding.\n- **Financial Onboarding** – Helps banks, NBFCs, payment gateways, and fintech platforms verify customer identity seamlessly.\n- **Aadhaar-PAN Validation** – Confirms whether a PAN is linked to Aadhaar for compliance with government mandates.\n\nBy integrating the PAN v1 API, businesses can automate identity verification workflows, reduce manual document checks, and ensure faster, more secure customer onboarding.",
         "endpoint": "https://dev-api.innowave.solutions/pan/panv1",
-        "request": "curl --location 'https://dev-api.innowave.solutions/pan/panv1' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\"}'",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pan/panv1' \\\n --header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\"}'",
+        "request_parameters": [
+            {
+                "id": "panv1_req_001",
+                "name": "PAN Number",
+                "field": "panNumber",
+                "mandatory": "Yes",
+                "type": "String",
+                "description": "Valid PAN number of the individual/entity."
+            }
+        ],
         "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"full_name\": \"MANOJ PATIDAR\",\n    \"panNumber\": \"HCEPP8169Q\",\n    \"aadhaar\": \"XXXXXXXX2773\",\n    \"gender\": \"M\",\n    \"dob\": \"2000-08-15\",\n    \"category\": \"Person\"\n  }\n}",
+        "response_parameters": [
+            {
+                "id": "panv1_res_001",
+                "name": "Response Message",
+                "field": "message",
+                "type": "String",
+                "description": "Response message (e.g., Success, Invalid PAN)."
+            },
+            {
+                "id": "panv1_res_002",
+                "name": "Response ID",
+                "field": "responseId",
+                "type": "Number",
+                "description": "Response identifier code."
+            },
+            {
+                "id": "panv1_res_003",
+                "name": "Full Name",
+                "field": "result.full_name",
+                "type": "String",
+                "description": "PAN holder’s full name."
+            },
+            {
+                "id": "panv1_res_004",
+                "name": "PAN Number",
+                "field": "result.panNumber",
+                "type": "String",
+                "description": "PAN number."
+            },
+            {
+                "id": "panv1_res_005",
+                "name": "Aadhaar",
+                "field": "result.aadhaar",
+                "type": "String",
+                "description": "Masked Aadhaar number (if linked)."
+            },
+            {
+                "id": "panv1_res_006",
+                "name": "Gender",
+                "field": "result.gender",
+                "type": "String",
+                "description": "Gender of PAN holder (M/F/O)."
+            },
+            {
+                "id": "panv1_res_007",
+                "name": "Date of Birth",
+                "field": "result.dob",
+                "type": "Date",
+                "description": "Date of birth (YYYY-MM-DD)."
+            },
+            {
+                "id": "panv1_res_008",
+                "name": "Category",
+                "field": "result.category",
+                "type": "String",
+                "description": "PAN category (Person, Company, etc.)."
+            }
+        ],
         "statusCodes": [
             {
                 "code": 200,
                 "responseId": 1001,
                 "billable": "Yes",
                 "description": "Success",
-                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+                "message": "{\n \"message\": \"Success\", \n \"responseId\": 1001 \n}"
             },
             {
                 "code": 200,
                 "responseId": 1002,
                 "billable": "Yes",
                 "description": "Invalid PAN",
-                "message": "{\"message\": \"Invalid PAN\", \"responseId\": 1002}"
+                "message": "{\n \"message\": \"Invalid PAN\", \n \"responseId\": 1002 \n}"
             },
             {
                 "code": 200,
                 "responseId": 1003,
                 "billable": "No",
                 "description": "Inactive PAN",
-                "message": "{\"message\": \"Inactive PAN\", \"responseId\": 1003}"
+                "message": "{\n \"message\": \"Inactive PAN\", \n \"responseId\": 1003 \n}"
             },
             {
                 "code": 400,
                 "responseId": null,
                 "billable": "No",
                 "description": "Bad Request",
-                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+                "message": "{\n \"success\": false, \n \"message\": \"Invalid request parameters\" \n}"
             },
             {
                 "code": 403,
                 "responseId": null,
                 "billable": "No",
                 "description": "Forbidden",
-                "message": "{\"success\": false, \"message\": \"Auth key invalid, missing / you do not have access to this api\"}"
+                "message": "{\n \"success\": false, \n \"message\": \"Auth key invalid,missing/ you do not have access to this api\" \n}"
             },
             {
                 "code": 402,
                 "responseId": null,
                 "billable": "No",
                 "description": "Payment Required",
-                "message": "{\"success\": false, \"message\": \"Credit Exhausted\"}"
+                "message": "{\n \"success\": false, \n\"message\": \"Credit Exahusted\" \n}"
             },
             {
                 "code": 500,
                 "responseId": null,
                 "billable": "No",
                 "description": "Source Down/Internal Server Error",
-                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+                "message": "{\n \"success\": false, \n\"message\": \"Source Down\" \n}"
             }
         ]
     },
     {
         "id": "docs_identitymatch_003",
         "name": "Identity Match API",
-        "overview": "Fetch identity details including name, email, phone, gender, DOB, Aadhaar linkage, and address.",
+        "overview": "The Identity Match API fetches identity details including name, email, phone, gender, date of birth, Aadhaar linkage, and address.\n\nThis API enables businesses, banks, fintechs, and verification platforms to seamlessly validate customer identity by retrieving core demographic details linked to a PAN.",
         "endpoint": "https://dev-api.innowave.solutions/pan/identity-match",
         "request": "curl --location 'https://dev-api.innowave.solutions/pan/identity-match' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\"}'",
+        "request_parameters": [
+            {
+                "id": "idm_req_001",
+                "name": "PAN Number",
+                "field": "panNumber",
+                "mandatory": "Yes",
+                "type": "String",
+                "description": "Valid PAN number of the individual."
+            }
+        ],
         "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"pan_number\": \"HCEPP8169Q\",\n    \"name\": \"MANOJ PATIDAR\",\n    \"dob\": \"2000-08-15\",\n    \"mail_id\": \"ef********97@gmail.com\",\n    \"mobile\": \"62XXXXXX89\",\n    \"gender\": \"M\",\n    \"is_aadhaar_linked\": true,\n    \"aadhaar_mask\": \"XXXXXXXX2773\",\n    \"entity_type\": \"person\",\n    \"residence\": {\n      \"addr_line1\": \"MAKAN NO. 156 WARD NO.-07\",\n      \"addr_line2\": \"HOLI CHOUK PATIDAR MOHALLA DHAKANI\",\n      \"zip_code\": \"458113\",\n      \"city_name\": \"Dhakani\",\n      \"region\": \"Madhya Pradesh\",\n      \"nation\": \"INDIA\",\n      \"street\": \"Nalkheda B.O\",\n      \"complete_address\": \"MAKAN NO. 156 WARD NO.-07 HOLI CHOUK...\"\n    }\n  }\n}",
+        "response_parameters": [
+            {
+                "id": "idm_res_001",
+                "name": "Response Message",
+                "field": "message",
+                "type": "String",
+                "description": "Response message (e.g., Success, Invalid PAN)."
+            },
+            {
+                "id": "idm_res_002",
+                "name": "Response ID",
+                "field": "responseId",
+                "type": "Number",
+                "description": "Response identifier code."
+            },
+            {
+                "id": "idm_res_003",
+                "name": "PAN Number",
+                "field": "result.pan_number",
+                "type": "String",
+                "description": "PAN number."
+            },
+            {
+                "id": "idm_res_004",
+                "name": "Full Name",
+                "field": "result.name",
+                "type": "String",
+                "description": "Full name of PAN holder."
+            },
+            {
+                "id": "idm_res_005",
+                "name": "Date of Birth",
+                "field": "result.dob",
+                "type": "Date",
+                "description": "Date of birth (YYYY-MM-DD)."
+            },
+            {
+                "id": "idm_res_006",
+                "name": "Email",
+                "field": "result.mail_id",
+                "type": "String",
+                "description": "Masked email address."
+            },
+            {
+                "id": "idm_res_007",
+                "name": "Mobile",
+                "field": "result.mobile",
+                "type": "String",
+                "description": "Masked mobile number."
+            },
+            {
+                "id": "idm_res_008",
+                "name": "Gender",
+                "field": "result.gender",
+                "type": "String",
+                "description": "Gender (M/F/O)."
+            },
+            {
+                "id": "idm_res_009",
+                "name": "Aadhaar Linked",
+                "field": "result.is_aadhaar_linked",
+                "type": "Boolean",
+                "description": "Aadhaar linkage flag."
+            },
+            {
+                "id": "idm_res_010",
+                "name": "Masked Aadhaar",
+                "field": "result.aadhaar_mask",
+                "type": "String",
+                "description": "Masked Aadhaar number."
+            },
+            {
+                "id": "idm_res_011",
+                "name": "Entity Type",
+                "field": "result.entity_type",
+                "type": "String",
+                "description": "Type of entity (Person/Company)."
+            },
+            {
+                "id": "idm_res_012",
+                "name": "Address Line 1",
+                "field": "result.residence.addr_line1",
+                "type": "String",
+                "description": "Address Line 1."
+            },
+            {
+                "id": "idm_res_013",
+                "name": "Address Line 2",
+                "field": "result.residence.addr_line2",
+                "type": "String",
+                "description": "Address Line 2."
+            },
+            {
+                "id": "idm_res_014",
+                "name": "Zip Code",
+                "field": "result.residence.zip_code",
+                "type": "String",
+                "description": "Postal code."
+            },
+            {
+                "id": "idm_res_015",
+                "name": "City",
+                "field": "result.residence.city_name",
+                "type": "String",
+                "description": "City name."
+            },
+            {
+                "id": "idm_res_016",
+                "name": "Region",
+                "field": "result.residence.region",
+                "type": "String",
+                "description": "State/Region."
+            },
+            {
+                "id": "idm_res_017",
+                "name": "Country",
+                "field": "result.residence.nation",
+                "type": "String",
+                "description": "Country name."
+            },
+            {
+                "id": "idm_res_018",
+                "name": "Street",
+                "field": "result.residence.street",
+                "type": "String",
+                "description": "Street/Locality."
+            },
+            {
+                "id": "idm_res_019",
+                "name": "Complete Address",
+                "field": "result.residence.complete_address",
+                "type": "String",
+                "description": "Full formatted address."
+            }
+        ],
         "statusCodes": [
             {
                 "code": 200,
                 "responseId": 1001,
                 "billable": "Yes",
                 "description": "Success",
-                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+                "message": "{\n \"message\": \"Success\", \n \"responseId\": 1001 \n}"
             },
             {
                 "code": 200,
                 "responseId": 1002,
                 "billable": "Yes",
                 "description": "Invalid PAN",
-                "message": "{\"message\": \"Invalid PAN\", \"responseId\": 1002}"
+                "message": "{\n \"message\": \"Invalid PAN\", \n \"responseId\": 1002 \n}"
             },
             {
                 "code": 200,
                 "responseId": 1003,
                 "billable": "No",
                 "description": "Inactive PAN",
-                "message": "{\"message\": \"Inactive PAN\", \"responseId\": 1003}"
+                "message": "{\n \"message\": \"Inactive PAN\", \n \"responseId\": 1003 \n}"
             },
             {
                 "code": 400,
                 "responseId": null,
                 "billable": "No",
                 "description": "Bad Request",
-                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+                "message": "{\n \"success\": false, \n \"message\": \"Invalid request parameters\" \n}"
             },
             {
                 "code": 403,
                 "responseId": null,
                 "billable": "No",
                 "description": "Forbidden",
-                "message": "{\"success\": false, \"message\": \"Auth key invalid, missing / you do not have access to this api\"}"
+                "message": "{\n \"success\": false, \n \"message\": \"Auth key invalid,missing/ you do not have access to this api\" \n}"
             },
             {
                 "code": 402,
                 "responseId": null,
                 "billable": "No",
                 "description": "Payment Required",
-                "message": "{\"success\": false, \"message\": \"Credit Exhausted\"}"
+                "message": "{\n \"success\": false, \n\"message\": \"Credit Exahusted\" \n}"
             },
             {
                 "code": 500,
                 "responseId": null,
                 "billable": "No",
                 "description": "Source Down/Internal Server Error",
-                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+                "message": "{\n \"success\": false, \n\"message\": \"Source Down\" \n}"
             }
         ]
     },
@@ -431,472 +644,1069 @@
     {
         "id": "docs_pan_advance_v2_007",
         "name": "PAN Advance v2 API",
-        "overview": "Fetches additional attributes: Father name, Aadhaar linkage, masked Aadhaar, DOB, gender.",
+        "overview": "The PAN Advance v2 API enhances standard PAN verification by fetching additional attributes of the PAN holder. Along with the core details, it provides father’s name, Aadhaar linkage status, masked Aadhaar number, date of birth, and gender.\n\nThis API is valuable for:\n\n- **KYC & Compliance** – Enables businesses to capture extended demographic and relational information for regulatory needs.\n- **Fraud Detection** – Adds another layer of identity verification by cross-checking father’s name and Aadhaar linkage.\n- **Financial & Telecom Onboarding** – Helps institutions like banks, NBFCs, telecom operators, and insurance firms validate customer details in real-time.\n- **Risk Mitigation** – Prevents duplicate or fraudulent account openings by verifying multiple attributes from government records.\n\nBy integrating this API, organizations can strengthen identity verification processes with richer customer insights.",
         "endpoint": "https://dev-api.innowave.solutions/pan/panadvance-v2",
-        "request": "curl --location 'https://dev-api.innowave.solutions/pan/panadvance-v2' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\"}'",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pan/panadvance-v2' \\\n--header 'x-api-key: <API Key>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n    \"panNumber\":\"HCEPP8d169Q\"\n}'",
+        "request_parameters": [
+            {
+                "id": "panadv2_req_001",
+                "name": "PAN Number",
+                "field": "panNumber",
+                "mandatory": "Yes",
+                "type": "String",
+                "description": "Valid PAN number of the individual."
+            }
+        ],
         "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"panNumber\": \"HCEPP8169Q\",\n    \"full_name\": \"MANOJ PATIDAR\",\n    \"father_name\": \"RAJESH PATIDAR\",\n    \"dob\": \"2000-08-15\",\n    \"gender\": \"M\",\n    \"masked_aadhaar\": \"XXXXXXXX2773\",\n    \"aadhaar_linked\": true\n  }\n}",
+        "response_parameters": [
+            {
+                "id": "panadv2_res_001",
+                "name": "Response Message",
+                "field": "message",
+                "type": "String",
+                "description": "Response message (e.g., Success, Invalid PAN)."
+            },
+            {
+                "id": "panadv2_res_002",
+                "name": "Response ID",
+                "field": "responseId",
+                "type": "Number",
+                "description": "Response identifier code."
+            },
+            {
+                "id": "panadv2_res_003",
+                "name": "PAN Number",
+                "field": "result.panNumber",
+                "type": "String",
+                "description": "PAN number."
+            },
+            {
+                "id": "panadv2_res_004",
+                "name": "Full Name",
+                "field": "result.full_name",
+                "type": "String",
+                "description": "PAN holder’s full name."
+            },
+            {
+                "id": "panadv2_res_005",
+                "name": "Father's Name",
+                "field": "result.father_name",
+                "type": "String",
+                "description": "Father’s name."
+            },
+            {
+                "id": "panadv2_res_006",
+                "name": "Date of Birth",
+                "field": "result.dob",
+                "type": "Date",
+                "description": "Date of birth (YYYY-MM-DD)."
+            },
+            {
+                "id": "panadv2_res_007",
+                "name": "Gender",
+                "field": "result.gender",
+                "type": "String",
+                "description": "Gender of PAN holder (M/F/O)."
+            },
+            {
+                "id": "panadv2_res_008",
+                "name": "Masked Aadhaar",
+                "field": "result.masked_aadhaar",
+                "type": "String",
+                "description": "Masked Aadhaar number (e.g., XXXXXXXX2773)."
+            },
+            {
+                "id": "panadv2_res_009",
+                "name": "Aadhaar Linked",
+                "field": "result.aadhaar_linked",
+                "type": "Boolean",
+                "description": "Aadhaar linkage flag (true/false)."
+            }
+        ],
         "statusCodes": [
             {
                 "code": 200,
                 "responseId": 1001,
                 "billable": "Yes",
                 "description": "Success",
-                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+                "message": "{\n \"message\": \"Success\", \n \"responseId\": 1001 \n}"
             },
             {
                 "code": 200,
                 "responseId": 1002,
                 "billable": "Yes",
                 "description": "Invalid PAN",
-                "message": "{\"message\": \"Invalid PAN\", \"responseId\": 1002}"
+                "message": "{\n \"message\": \"Invalid PAN\", \n \"responseId\": 1002 \n}"
             },
             {
                 "code": 200,
                 "responseId": 1003,
                 "billable": "No",
                 "description": "Inactive PAN",
-                "message": "{\"message\": \"Inactive PAN\", \"responseId\": 1003}"
+                "message": "{\n \"message\": \"Inactive PAN\", \n \"responseId\": 1003 \n}"
             },
             {
                 "code": 400,
                 "responseId": null,
                 "billable": "No",
                 "description": "Bad Request",
-                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+                "message": "{\n \"success\": false, \n \"message\": \"Invalid request parameters\" \n}"
             },
             {
                 "code": 403,
                 "responseId": null,
                 "billable": "No",
                 "description": "Forbidden",
-                "message": "{\"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\"}"
+                "message": "{\n \"success\": false, \n \"message\": \"Auth key invalid,missing/ you do not have access to this api\" \n}"
             },
             {
                 "code": 402,
                 "responseId": null,
                 "billable": "No",
                 "description": "Payment Required",
-                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+                "message": "{\n \"success\": false, \n\"message\": \"Credit Exahusted\" \n}"
             },
             {
                 "code": 500,
                 "responseId": null,
                 "billable": "No",
                 "description": "Source Down/Internal Server Error",
-                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+                "message": "{\n \"success\": false, \n\"message\": \"Source Down\" \n}"
             }
         ]
     },
     {
         "id": "docs_pan_comprehensive_verification_008",
         "name": "PAN Comprehensive Verification API",
-        "overview": "Fetch all possible details for a PAN holder (identity, address, Aadhaar, father name).",
+        "overview": "The PAN Comprehensive Verification API provides a complete set of details for a PAN holder by consolidating identity, contact, Aadhaar linkage, and residential information into one response.\n\nThis API is particularly beneficial for:\n\n- **End-to-End KYC Verification** – Pulls all available identity and demographic attributes in a single request.\n- **Fraud Prevention** – Ensures authenticity of PAN records and validates against inactive/invalid numbers.\n- **Financial Services** – Used by banks, NBFCs, insurance providers, and fintechs for account opening, lending, and compliance.\n- **Customer Profiling** – Provides enriched data including personal info, Aadhaar mapping, and address details for a complete profile view.\n\nBy integrating this API, organizations can achieve single-step comprehensive verification, reducing the need for multiple API calls and streamlining customer onboarding.",
         "endpoint": "https://dev-api.innowave.solutions/pan/comprehensive-verification",
         "request": "curl --location 'https://dev-api.innowave.solutions/pan/comprehensive-verification' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\"}'",
-        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"userCategory\": \"Person\",\n    \"panNumber\": \"ABCPD1234E\",\n    \"personName\": \"RAM SINGH\",\n    \"gender\": \"M\",\n    \"dob\": \"1999-01-01\",\n    \"linkedAadhaar\": \"XXXXXXXX1234\",\n    \"isAadhaarMapped\": true,\n    \"contact_Info\": {\n      \"phone\": null,\n      \"mail\": null\n    },\n    \"residential_Info\": {\n      \"address_line1\": \"\",\n      \"address_line2\": \"\",\n      \"address_line3\": \"\",\n      \"addressline_line4\": \"\",\n      \"address_line5\": \"\",\n      \"postalCode\": \"\",\n      \"province\": \"\"\n    }\n  }\n}",
+        "request_parameters": [
+            {
+                "id": "pancomp_req_001",
+                "name": "PAN Number",
+                "field": "panNumber",
+                "mandatory": "Yes",
+                "type": "String",
+                "description": "Valid PAN number of the individual."
+            }
+        ],
+        "response": "{\n \"message\": \"Success\",\n \"responseId\": 1001,\n \"result\": {\n  \"userCategory\": \"Person\",\n  \"panNumber\": \"HCEPP8169Q\",\n  \"personName\": \"MANOJ PATIDAR\",\n  \"gender\": \"M\",\n  \"dob\": \"1999-01-01\",\n  \"linkedAadhaar\": \"XXXXXXXX1234\",\n  \"isAadhaarMapped\": true,\n  \"contact_Info\": {\n    \"phone\": null,\n    \"mail\": null\n  },\n  \"residential_Info\": {\n    \"address_line1\": \"\",\n    \"address_line2\": \"\",\n    \"address_line3\": \"\",\n    \"address_line4\": \"\",\n    \"address_line5\": \"\",\n    \"postalCode\": \"\",\n    \"province\": \"\"\n  }\n }\n}",
+        "response_parameters": [
+            {
+                "id": "pancomp_res_001",
+                "name": "Response Message",
+                "field": "message",
+                "type": "String",
+                "description": "Response message (e.g., Success, Invalid PAN)."
+            },
+            {
+                "id": "pancomp_res_002",
+                "name": "Response ID",
+                "field": "responseId",
+                "type": "Number",
+                "description": "Response identifier code."
+            },
+            {
+                "id": "pancomp_res_003",
+                "name": "User Category",
+                "field": "result.userCategory",
+                "type": "String",
+                "description": "Type of user (Person, Company, etc.)."
+            },
+            {
+                "id": "pancomp_res_004",
+                "name": "PAN Number",
+                "field": "result.panNumber",
+                "type": "String",
+                "description": "PAN number."
+            },
+            {
+                "id": "pancomp_res_005",
+                "name": "Person Name",
+                "field": "result.personName",
+                "type": "String",
+                "description": "PAN holder’s full name."
+            },
+            {
+                "id": "pancomp_res_006",
+                "name": "Gender",
+                "field": "result.gender",
+                "type": "String",
+                "description": "Gender (M/F/O)."
+            },
+            {
+                "id": "pancomp_res_007",
+                "name": "Date of Birth",
+                "field": "result.dob",
+                "type": "Date",
+                "description": "Date of birth (YYYY-MM-DD)."
+            },
+            {
+                "id": "pancomp_res_008",
+                "name": "Linked Aadhaar",
+                "field": "result.linkedAadhaar",
+                "type": "String",
+                "description": "Masked Aadhaar number if linked."
+            },
+            {
+                "id": "pancomp_res_009",
+                "name": "Aadhaar Mapped Flag",
+                "field": "result.isAadhaarMapped",
+                "type": "Boolean",
+                "description": "Aadhaar linkage flag."
+            },
+            {
+                "id": "pancomp_res_010",
+                "name": "Registered Phone",
+                "field": "result.contact_Info.phone",
+                "type": "String",
+                "description": "Registered phone number (if available)."
+            },
+            {
+                "id": "pancomp_res_011",
+                "name": "Registered Email",
+                "field": "result.contact_Info.mail",
+                "type": "String",
+                "description": "Registered email ID (if available)."
+            },
+            {
+                "id": "pancomp_res_012",
+                "name": "Address Line 1",
+                "field": "result.residential_Info.address_line1",
+                "type": "String",
+                "description": "Address Line 1."
+            },
+            {
+                "id": "pancomp_res_013",
+                "name": "Address Line 2",
+                "field": "result.residential_Info.address_line2",
+                "type": "String",
+                "description": "Address Line 2."
+            },
+            {
+                "id": "pancomp_res_014",
+                "name": "Address Line 3",
+                "field": "result.residential_Info.address_line3",
+                "type": "String",
+                "description": "Address Line 3."
+            },
+            {
+                "id": "pancomp_res_015",
+                "name": "Address Line 4",
+                "field": "result.residential_Info.address_line4",
+                "type": "String",
+                "description": "Address Line 4."
+            },
+            {
+                "id": "pancomp_res_016",
+                "name": "Address Line 5",
+                "field": "result.residential_Info.address_line5",
+                "type": "String",
+                "description": "Address Line 5."
+            },
+            {
+                "id": "pancomp_res_017",
+                "name": "Postal Code",
+                "field": "result.residential_Info.postalCode",
+                "type": "String",
+                "description": "Postal code."
+            },
+            {
+                "id": "pancomp_res_018",
+                "name": "Province",
+                "field": "result.residential_Info.province",
+                "type": "String",
+                "description": "State/Province."
+            }
+        ],
         "statusCodes": [
             {
                 "code": 200,
                 "responseId": 1001,
                 "billable": "Yes",
                 "description": "Success",
-                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+                "message": "{\n \"message\": \"success\", \n \"responseId\": 1001 \n}"
             },
             {
                 "code": 200,
                 "responseId": 1002,
                 "billable": "Yes",
                 "description": "Invalid PAN",
-                "message": "{\"message\": \"Invalid PAN\", \"responseId\": 1002}"
+                "message": "{\n \"message\": \"Invalid PAN\", \n \"responseId\": 1002 \n}"
             },
             {
                 "code": 200,
                 "responseId": 1003,
                 "billable": "No",
                 "description": "Inactive PAN",
-                "message": "{\"message\": \"Inactive PAN\", \"responseId\": 1003}"
+                "message": "{\n \"message\": \"Inactive PAN\", \n \"responseId\": 1003 \n}"
             },
             {
                 "code": 400,
                 "responseId": null,
                 "billable": "No",
                 "description": "Bad Request",
-                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+                "message": "{\n \"success\": false, \n \"message\": \"Invalid request parameters\" \n}"
             },
             {
                 "code": 403,
                 "responseId": null,
                 "billable": "No",
                 "description": "Forbidden",
-                "message": "{\"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\"}"
+                "message": "{\n \"success\": false, \n \"message\": \"Auth key invalid,missing/ you do not have access to this api\" \n}"
             },
             {
                 "code": 402,
                 "responseId": null,
                 "billable": "No",
                 "description": "Payment Required",
-                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+                "message": "{\n \"success\": false, \n\"message\": \"Credit Exahusted\" \n}"
             },
             {
                 "code": 500,
                 "responseId": null,
                 "billable": "No",
                 "description": "Source Down/Internal Server Error",
-                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+                "message": "{\n \"success\": false, \n\"message\": \"Source Down\" \n}"
             }
         ]
     },
     {
         "id": "docs_pan_complete_profile_009",
         "name": "PAN Complete Profile API",
-        "overview": "Pulls a full profile including name, DOB, father name, Aadhaar link, address, contact details.",
+        "overview": "The Complete Profile API pulls a comprehensive profile of a PAN holder. It includes personal details, Aadhaar linkage, contact information, residential address, tax status, and professional details such as director/proprietor information.\n\nThis API is particularly beneficial for:\n\n- **End-to-End KYC Verification** – Retrieves all personal and demographic attributes in one response.\n- **Fraud Prevention** – Validates PAN authenticity and active status.\n- **Financial & Regulatory Compliance** – Useful for banks, NBFCs, insurance providers, and fintechs.\n- **Customer Profiling** – Provides a complete profile including professional and tax details.",
         "endpoint": "https://dev-api.innowave.solutions/pan/complete-profile",
         "request": "curl --location 'https://dev-api.innowave.solutions/pan/complete-profile' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\"}'",
-        "response": "{\n  \"message\": \"Success\",\n  \"responseCode\": 1001,\n  \"result\": {\n    \"personal_details\": {\n      \"name\": \"MANOJ PATIDAR\",\n      \"dob\": \"2000-08-15\",\n      \"gender\": \"Male\",\n      \"panNumber\": \"HCEPP8169Q\",\n      \"category_type\": \"Individual\"\n    },\n    \"aadhaar_details\": {\n      \"is_aadhaar_linked\": true,\n      \"masked_id\": \"XXXXXXXX2773\"\n    },\n    \"contact_details\": {\n      \"mobile_number\": \"62XXXXXX89\",\n      \"email_id\": \"ef********97@gmail.com\"\n    },\n    \"residential_details\": {\n      \"address_line1\": \"MAKAN NO. 156 WARD NO.-07\",\n      \"address_line2\": \"HOLI CHOUK PATIDAR MOHALLA DHAKANI\",\n      \"street_area\": \"Nalkheda B.O\",\n      \"city_name\": \"Dhakani\",\n      \"state_name\": \"Madhya Pradesh\",\n      \"country_name\": \"India\",\n      \"postal_code\": \"458113\",\n      \"complete_address\": \"MAKAN NO. 156 WARD NO.-07 HOLI CHOUK PATIDAR MOHALLA DHAKANI Nalkheda B.O Dhakani Madhya Pradesh INDIA 458113\"\n    },\n    \"tax_status\": {\n      \"is_taxpayer\": true\n    },\n    \"professional_details\": {\n      \"basic_access\": false,\n      \"director_details\": {\n        \"exists\": false,\n        \"company_records\": []\n      },\n      \"proprietor_details\": {\n        \"exists\": false,\n        \"business_records\": []\n      },\n      \"din_details\": {\n        \"din_number\": \"\",\n        \"date_of_allocation\": \"\",\n        \"associated_companies\": []\n      }\n    }\n  }\n}",
+        "request_parameters": [
+            {
+                "id": "pancomplete_req_001",
+                "name": "PAN Number",
+                "field": "panNumber",
+                "mandatory": "Yes",
+                "type": "String",
+                "description": "Valid PAN number of the individual."
+            }
+        ],
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"personal_details\": {\n      \"name\": \"MANOJ PATIDAR\",\n      \"dob\": \"2000-08-15\",\n      \"gender\": \"Male\",\n      \"panNumber\": \"HCEPP8169Q\",\n      \"category_type\": \"Individual\"\n    },\n    \"aadhaar_details\": {\n      \"is_aadhaar_linked\": true,\n      \"masked_id\": \"XXXXXXXX2773\"\n    },\n    \"contact_details\": {\n      \"mobile_number\": \"62XXXXXX89\",\n      \"email_id\": \"ef********97@gmail.com\"\n    },\n    \"residential_details\": {\n      \"address_line1\": \"MAKAN NO. 156 WARD NO.-07\",\n      \"address_line2\": \"HOLI CHOUK PATIDAR MOHALLA DHAKANI\",\n      \"street_area\": \"Nalkheda B.O\",\n      \"city_name\": \"Dhakani\",\n      \"state_name\": \"Madhya Pradesh\",\n      \"country_name\": \"India\",\n      \"postal_code\": \"458113\",\n      \"complete_address\": \"MAKAN NO. 156 WARD NO.-07 HOLI CHOUK PATIDAR MOHALLA DHAKANI Nalkheda B.O Dhakani Madhya Pradesh INDIA 458113\"\n    },\n    \"tax_status\": {\n      \"is_taxpayer\": true\n    },\n    \"professional_details\": {\n      \"basic_access\": false,\n      \"director_details\": {\n        \"exists\": false,\n        \"company_records\": []\n      },\n      \"proprietor_details\": {\n        \"exists\": false,\n        \"business_records\": []\n      },\n      \"din_details\": {\n        \"din_number\": \"\",\n        \"date_of_allocation\": \"\",\n        \"associated_companies\": []\n      }\n    }\n  }\n}",
+        "response_parameters": [
+            {
+                "id": "pancomplete_res_001",
+                "name": "Response Message",
+                "field": "message",
+                "type": "String",
+                "description": "Response message (e.g., Success, Invalid PAN, Valid PAN)."
+            },
+            {
+                "id": "pancomplete_res_002",
+                "name": "Response ID",
+                "field": "responseId",
+                "type": "Number",
+                "description": "Response identifier code."
+            },
+            {
+                "id": "pancomplete_res_003",
+                "name": "Personal Details",
+                "field": "result.personal_details",
+                "type": "Object",
+                "description": "Contains full name, DOB, gender, PAN number, and category type."
+            },
+            {
+                "id": "pancomplete_res_004",
+                "name": "Aadhaar Details",
+                "field": "result.aadhaar_details",
+                "type": "Object",
+                "description": "Aadhaar linkage status and masked Aadhaar number."
+            },
+            {
+                "id": "pancomplete_res_005",
+                "name": "Contact Details",
+                "field": "result.contact_details",
+                "type": "Object",
+                "description": "Masked mobile number and email address."
+            },
+            {
+                "id": "pancomplete_res_006",
+                "name": "Residential Details",
+                "field": "result.residential_details",
+                "type": "Object",
+                "description": "Address lines, street, city, state, country, postal code, and complete concatenated address."
+            },
+            {
+                "id": "pancomplete_res_007",
+                "name": "Tax Status",
+                "field": "result.tax_status",
+                "type": "Object",
+                "description": "Indicates taxpayer status."
+            },
+            {
+                "id": "pancomplete_res_008",
+                "name": "Professional Details",
+                "field": "result.professional_details",
+                "type": "Object",
+                "description": "Contains director, proprietor, and DIN details."
+            }
+        ],
         "statusCodes": [
             {
                 "code": 200,
                 "responseId": 1001,
                 "billable": "Yes",
                 "description": "Success",
-                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+                "message": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001\n}"
             },
             {
                 "code": 200,
                 "responseId": 1002,
                 "billable": "Yes",
                 "description": "Invalid PAN",
-                "message": "{\"message\": \"Invalid PAN\", \"responseId\": 1002}"
+                "message": "{\n  \"message\": \"Invalid PAN\",\n  \"responseId\": 1002\n}"
             },
             {
                 "code": 200,
                 "responseId": 1003,
                 "billable": "No",
                 "description": "Inactive PAN",
-                "message": "{\"message\": \"Inactive PAN\", \"responseId\": 1003}"
+                "message": "{\n  \"message\": \"Inactive PAN\",\n  \"responseId\": 1003\n}"
             },
             {
                 "code": 400,
                 "responseId": null,
                 "billable": "No",
                 "description": "Bad Request",
-                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+                "message": "{\n  \"success\": false,\n  \"message\": \"Invalid request parameters\"\n}"
             },
             {
                 "code": 403,
                 "responseId": null,
                 "billable": "No",
                 "description": "Forbidden",
-                "message": "{\"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\"}"
+                "message": "{\n  \"success\": false,\n  \"message\": \"Auth key invalid, missing/ you do not have access to this api\"\n}"
             },
             {
                 "code": 402,
                 "responseId": null,
                 "billable": "No",
                 "description": "Payment Required",
-                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+                "message": "{\n  \"success\": false,\n  \"message\": \"Credit Exahusted\"\n}"
             },
             {
                 "code": 500,
                 "responseId": null,
                 "billable": "No",
                 "description": "Source Down/Internal Server Error",
-                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+                "message": "{\n  \"success\": false,\n  \"message\": \"Source Down\"\n}"
             }
         ]
     },
     {
         "id": "docs_pan_demographic_data_fetch_010",
-        "name": "PAN Demographic Data Fetch API",
-        "overview": "Retrieve demographic information linked to PAN (address, state, pincode).",
+        "name": "Demographic Data Fetch API",
+        "overview": "The Demographic Data Fetch API retrieves demographic information linked to a PAN, including address, state, and pincode. It helps organizations verify identity details by checking Aadhaar seeding, PAN status, and matching PAN holder information.",
         "endpoint": "https://dev-api.innowave.solutions/pan/demographic-data-fetch",
-        "request": "curl --location 'https://dev-api.innowave.solutions/pan/demographic-data-fetch' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8dd169Q\", \"pan_holder_name\":\"manoj patidar\", \"dob\":\"15/08/2000\"}'",
-        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"panNumber\": \"ABCDE1234F\",\n    \"seeding_status\": \"Y\",\n    \"pan_status\": \"E\",\n    \"Pan_holder_name\": \"Y\",\n    \"dob\": \"Y\",\n    \"pan_type\": \"Person\"\n  }\n}",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pan/demographic-data-fetch' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\n\"panNumber\":\"HCEPP8169Q\",\n\"pan_holder_name\":\"Manoj Patidar\",\n\"dob\":\"15/08/2000\"\n}'",
+        "request_parameters": [
+            {
+                "id": "demog_req_001",
+                "name": "PAN Number",
+                "field": "panNumber",
+                "mandatory": "Yes",
+                "type": "String",
+                "description": "Valid PAN number of the individual."
+            },
+            {
+                "id": "demog_req_002",
+                "name": "PAN Holder Name",
+                "field": "pan_holder_name",
+                "mandatory": "Yes",
+                "type": "String",
+                "description": "Full name of the PAN holder (as per PAN records)."
+            },
+            {
+                "id": "demog_req_003",
+                "name": "Date of Birth",
+                "field": "dob",
+                "mandatory": "Yes",
+                "type": "String",
+                "description": "Date of Birth (DD/MM/YYYY)."
+            }
+        ],
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"panNumber\": \"HCEPP8169Q\",\n    \"seeding_status\": \"Y\",\n    \"pan_status\": \"E\",\n    \"Pan_holder_name\": \"Y\",\n    \"dob\": \"Y\",\n    \"pan_type\": \"Person\"\n  }\n}",
+        "response_parameters": [
+            {
+                "id": "demog_res_001",
+                "name": "Response Message",
+                "field": "message",
+                "type": "String",
+                "description": "Response message (e.g., Success, Invalid PAN)."
+            },
+            {
+                "id": "demog_res_002",
+                "name": "Response ID",
+                "field": "responseId",
+                "type": "Number",
+                "description": "Response identifier code."
+            },
+            {
+                "id": "demog_res_003",
+                "name": "PAN Number",
+                "field": "result.panNumber",
+                "type": "String",
+                "description": "PAN number."
+            },
+            {
+                "id": "demog_res_004",
+                "name": "Aadhaar Seeding Status",
+                "field": "result.seeding_status",
+                "type": "String",
+                "description": "Aadhaar seeding status (Y/N)."
+            },
+            {
+                "id": "demog_res_005",
+                "name": "PAN Status",
+                "field": "result.pan_status",
+                "type": "String",
+                "description": "PAN status (E = Existing/Active, I = Inactive)."
+            },
+            {
+                "id": "demog_res_006",
+                "name": "PAN Holder Name Match",
+                "field": "result.Pan_holder_name",
+                "type": "String",
+                "description": "Name match result (Y/N)."
+            },
+            {
+                "id": "demog_res_007",
+                "name": "DOB Match",
+                "field": "result.dob",
+                "type": "String",
+                "description": "DOB match result (Y/N)."
+            },
+            {
+                "id": "demog_res_008",
+                "name": "PAN Type",
+                "field": "result.pan_type",
+                "type": "String",
+                "description": "Type of PAN holder (Person, Company, etc.)."
+            }
+        ],
         "statusCodes": [
             {
                 "code": 200,
                 "responseId": 1001,
                 "billable": "Yes",
                 "description": "Success",
-                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+                "message": "{\n \"message\": \"Success\", \n \"responseId\": 1001 \n}"
             },
             {
                 "code": 200,
                 "responseId": 1002,
                 "billable": "Yes",
                 "description": "Invalid PAN",
-                "message": "{\"message\": \"Invalid PAN\", \"responseId\": 1002}"
+                "message": "{\n \"message\": \"Invalid PAN\", \n \"responseId\": 1002 \n}"
             },
             {
                 "code": 200,
                 "responseId": 1003,
                 "billable": "No",
                 "description": "Inactive PAN",
-                "message": "{\"message\": \"Inactive PAN\", \"responseId\": 1003}"
+                "message": "{\n \"message\": \"Inactive PAN\", \n \"responseId\": 1003 \n}"
             },
             {
                 "code": 400,
                 "responseId": null,
                 "billable": "No",
                 "description": "Bad Request",
-                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+                "message": "{\n \"success\": false, \n \"message\": \"Invalid request parameters\" \n}"
             },
             {
                 "code": 403,
                 "responseId": null,
                 "billable": "No",
                 "description": "Forbidden",
-                "message": "{\"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\"}"
+                "message": "{\n \"success\": false, \n \"message\": \"Auth key invalid,missing/ you do \n not have access to this api\" \n}"
             },
             {
                 "code": 402,
                 "responseId": null,
                 "billable": "No",
                 "description": "Payment Required",
-                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+                "message": "{\n \"success\": false, \n\"message\": \"Credit Exahusted\" \n}"
             },
             {
                 "code": 500,
                 "responseId": null,
                 "billable": "No",
                 "description": "Source Down/Internal Server Error",
-                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+                "message": "{\n \"success\": false, \n\"message\": \"Source Down\" \n}"
             }
         ]
     },
     {
         "id": "docs_pan_validate_011",
         "name": "PAN Validate API",
-        "overview": "Quick check if a PAN is valid, invalid, or inactive.",
-        "endpoint": "https://dev-api.innowave.solutions/pan/validate",
-        "request": "curl --location 'https://dev-api.innowave.solutions/pan/validate' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\"}'",
+        "overview": "The PAN Validate API is designed to verify the validity and active status of a PAN (Permanent Account Number) in real time. It checks whether the PAN is genuine, valid, and active as per government records, ensuring that organizations only accept legitimate PANs.\n\nThis API is particularly useful for:\n\n- **Basic PAN Validation** – Quickly confirms if a PAN is valid before performing deeper KYC checks.\n- **Fraud Prevention** – Identifies fake, inactive, or structurally incorrect PANs.\n- **Onboarding Workflows** – Ensures clean customer data by validating PANs at the very first stage.\n- **Regulatory Compliance** – Supports RBI, SEBI, and government requirements for mandatory PAN verification.\n\nBy integrating this API, businesses can reduce fraud, speed up customer onboarding, and maintain compliance with Indian financial regulations.",
+        "endpoint": "https://dev-api.innowave.solutions/pan/panvalidate",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pan/panvalidate' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\"}'",
+        "request_parameters": [
+            {
+                "id": "panval_req_001",
+                "name": "PAN Number",
+                "field": "panNumber",
+                "mandatory": "Yes",
+                "type": "String",
+                "description": "PAN number to be validated."
+            }
+        ],
         "response": "{\n  \"message\": \"Valid PAN\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"panNumber\": \"HCEPP8169Q\",\n    \"panstatus\": \"Active\"\n  }\n}",
+        "response_parameters": [
+            {
+                "id": "panval_res_001",
+                "name": "Response Message",
+                "field": "message",
+                "type": "String",
+                "description": "Response message (e.g., Valid PAN, Invalid PAN)."
+            },
+            {
+                "id": "panval_res_002",
+                "name": "Response ID",
+                "field": "responseId",
+                "type": "Number",
+                "description": "Response identifier code."
+            },
+            {
+                "id": "panval_res_003",
+                "name": "PAN Number",
+                "field": "result.panNumber",
+                "type": "String",
+                "description": "PAN number being validated."
+            },
+            {
+                "id": "panval_res_004",
+                "name": "PAN Status",
+                "field": "result.panstatus",
+                "type": "String",
+                "description": "Status of the PAN (e.g., Active, Inactive, Invalid)."
+            }
+        ],
         "statusCodes": [
             {
                 "code": 200,
                 "responseId": 1001,
                 "billable": "Yes",
                 "description": "Success",
-                "message": "{\"message\": \"Valid PAN\", \"responseId\": 1001}"
+                "message": "{\n \"message\": \"Valid PAN\", \n \"responseId\": 1001 \n}"
             },
             {
                 "code": 200,
                 "responseId": 1002,
                 "billable": "Yes",
                 "description": "Invalid PAN",
-                "message": "{\"message\": \"Invalid PAN\", \"responseId\": 1002}"
+                "message": "{\n \"message\": \"Invalid PAN\", \n \"responseId\": 1002 \n}"
             },
             {
                 "code": 200,
                 "responseId": 1003,
                 "billable": "No",
                 "description": "Inactive PAN",
-                "message": "{\"message\": \"Inactive PAN\", \"responseId\": 1003}"
+                "message": "{\n \"message\": \"Inactive PAN\", \n \"responseId\": 1003 \n}"
             },
             {
                 "code": 400,
                 "responseId": null,
                 "billable": "No",
                 "description": "Bad Request",
-                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+                "message": "{\n \"success\": false, \n \"message\": \"Invalid request parameters\" \n}"
             },
             {
                 "code": 403,
                 "responseId": null,
                 "billable": "No",
                 "description": "Forbidden",
-                "message": "{\"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\"}"
+                "message": "{\n \"success\": false, \n \"message\": \"Auth key invalid,missing/ you do not have access to this api\" \n}"
             },
             {
                 "code": 402,
                 "responseId": null,
                 "billable": "No",
                 "description": "Payment Required",
-                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+                "message": "{\n \"success\": false, \n\"message\": \"Credit Exahusted\" \n}"
             },
             {
                 "code": 500,
                 "responseId": null,
                 "billable": "No",
                 "description": "Source Down/Internal Server Error",
-                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+                "message": "{\n \"success\": false, \n\"message\": \"Source Down\" \n}"
             }
         ]
     },
     {
         "id": "docs_pan_demographic_advance_012",
         "name": "PAN Demographic Advance API",
-        "overview": "Provides extended demographic info including multiple addresses if available.",
-        "endpoint": "https://dev-api.innowave.solutions/pan/demographic-advance",
-        "request": "curl --location 'https://dev-api.innowave.solutions/pan/demographic-advance' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\", \"date_of_birth\":\"2000-08-15\", \"panHolder_name\":\"MANOJ PATIDAR\"}'",
+        "overview": "The PAN Demographic Advance API provides extended demographic information of a PAN holder, including verification of PAN holder’s name and date of birth against government records. It also checks if the PAN is linked to Aadhaar and returns the current PAN status.\n\nThis API is especially useful for:\n\n- **KYC & Compliance** – Ensures submitted name and DOB match official records.\n- **Fraud Prevention** – Detects fraudulent submissions using mismatched details.\n- **Financial & Telecom Onboarding** – Used by banks, NBFCs, insurers, and telecoms for quick demographic verification.\n- **Identity Assurance** – Adds Aadhaar linkage and PAN status validation for higher confidence.",
+        "endpoint": "https://dev-api.innowave.solutions/pan/demographicadvance",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pan/demographicadvance' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\": \"HCEPP8169Q\", \"dob\": \"2000-08-15\", \"name\": \"manoj patidar\"}'",
+        "request_parameters": [
+            {
+                "id": "pandemo_req_001",
+                "name": "PAN Number",
+                "field": "panNumber",
+                "mandatory": "Yes",
+                "type": "String",
+                "description": "Valid PAN number of the individual."
+            },
+            {
+                "id": "pandemo_req_002",
+                "name": "Date of Birth",
+                "field": "dob",
+                "mandatory": "Yes",
+                "type": "Date",
+                "description": "Date of birth (YYYY-MM-DD)."
+            },
+            {
+                "id": "pandemo_req_003",
+                "name": "Name",
+                "field": "name",
+                "mandatory": "Yes",
+                "type": "String",
+                "description": "Full name of the PAN holder."
+            }
+        ],
         "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"id_type\": \"PAN\",\n    \"name_match_status\": \"MATCH\",\n    \"dob_match_status\": \"MATCH\",\n    \"is_aadhaar_linked\": true,\n    \"status\": \"E\"\n  }\n}",
+        "response_parameters": [
+            {
+                "id": "pandemo_res_001",
+                "name": "Response Message",
+                "field": "message",
+                "type": "String",
+                "description": "Response message (e.g., Success, Invalid PAN, Valid PAN)."
+            },
+            {
+                "id": "pandemo_res_002",
+                "name": "Response ID",
+                "field": "responseId",
+                "type": "Number",
+                "description": "Response identifier code."
+            },
+            {
+                "id": "pandemo_res_003",
+                "name": "ID Type",
+                "field": "result.id_type",
+                "type": "String",
+                "description": "Identifier type (e.g., PAN)."
+            },
+            {
+                "id": "pandemo_res_004",
+                "name": "Name Match Status",
+                "field": "result.name_match_status",
+                "type": "String",
+                "description": "Status of name verification (MATCH/MISMATCH)."
+            },
+            {
+                "id": "pandemo_res_005",
+                "name": "DOB Match Status",
+                "field": "result.dob_match_status",
+                "type": "String",
+                "description": "Status of DOB verification (MATCH/MISMATCH)."
+            },
+            {
+                "id": "pandemo_res_006",
+                "name": "Aadhaar Linked",
+                "field": "result.is_aadhaar_linked",
+                "type": "Boolean",
+                "description": "Aadhaar linkage flag (true/false)."
+            },
+            {
+                "id": "pandemo_res_007",
+                "name": "PAN Status",
+                "field": "result.status",
+                "type": "String",
+                "description": "PAN status (E = Existing/Active, I = Inactive)."
+            }
+        ],
         "statusCodes": [
             {
                 "code": 200,
                 "responseId": 1001,
                 "billable": "Yes",
                 "description": "Success",
-                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+                "message": "{\n \"message\": \"Success\", \n \"responseId\": 1001 \n}"
             },
             {
                 "code": 200,
                 "responseId": 1002,
                 "billable": "Yes",
                 "description": "Invalid PAN",
-                "message": "{\"message\": \"Invalid PAN\", \"responseId\": 1002}"
+                "message": "{\n \"message\": \"Invalid PAN\", \n \"responseId\": 1002 \n}"
             },
             {
                 "code": 200,
                 "responseId": 1003,
                 "billable": "No",
                 "description": "Inactive PAN",
-                "message": "{\"message\": \"Inactive PAN\", \"responseId\": 1003}"
+                "message": "{\n \"message\": \"Inactive PAN\", \n \"responseId\": 1003 \n}"
             },
             {
                 "code": 400,
                 "responseId": null,
                 "billable": "No",
                 "description": "Bad Request",
-                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+                "message": "{\n \"success\": false, \n \"message\": \"Invalid request parameters\" \n}"
             },
             {
                 "code": 403,
                 "responseId": null,
                 "billable": "No",
                 "description": "Forbidden",
-                "message": "{\"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\"}"
+                "message": "{\n \"success\": false, \n \"message\": \"Auth key invalid,missing/ you do not have access to this api\" \n}"
             },
             {
                 "code": 402,
                 "responseId": null,
                 "billable": "No",
                 "description": "Payment Required",
-                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+                "message": "{\n \"success\": false, \n\"message\": \"Credit Exahusted\" \n}"
             },
             {
                 "code": 500,
                 "responseId": null,
                 "billable": "No",
                 "description": "Source Down/Internal Server Error",
-                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+                "message": "{\n \"success\": false, \n\"message\": \"Source Down\" \n}"
             }
         ]
     },
     {
         "id": "docs_pan_father_name_lookup_013",
-        "name": "PAN to Father’s Name Lookup API",
-        "overview": "Retrieve father’s name linked to PAN.",
-        "endpoint": "https://dev-api.innowave.solutions/pan/father-name-lookup",
-        "request": "curl --location 'https://dev-api.innowave.solutions/pan/father-name-lookup' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\"}'",
-        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"father_name\": \"RAJESH PATIDAR\",\n    \"panNumber\": \"HCEPP8169Q\"\n  }\n}",
+        "name": "PAN Father Name Lookup API",
+        "overview": "The PAN Father Name Lookup API is used to fetch the father’s name of a PAN holder from official government records. This adds an extra layer of verification for KYC and fraud prevention, ensuring that details provided by the customer are genuine.\n\nThis API is especially useful for:\n\n- **Enhanced KYC Verification** – Validating relational information for compliance.\n- **Fraud Detection** – Preventing misuse of PAN by cross-verifying family details.\n- **Financial Onboarding** – Banks, NBFCs, and fintechs can use father’s name for additional risk checks.\n- **Form Auto-fill & Validation** – Automatically retrieving official father’s name to reduce data-entry errors.",
+        "endpoint": "https://dev-api.innowave.solutions/pan/fname-lookup",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pan/fname-lookup' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\"}'",
+        "request_parameters": [
+            {
+                "id": "panfname_req_001",
+                "name": "PAN Number",
+                "field": "panNumber",
+                "mandatory": "Yes",
+                "type": "String",
+                "description": "Valid PAN number of the individual."
+            }
+        ],
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"father_name\": \"SURESHCHANDR PATIDAR\",\n    \"panNumber\": \"HCEPP8169Q\"\n  }\n}",
+        "response_parameters": [
+            {
+                "id": "panfname_res_001",
+                "name": "Response Message",
+                "field": "message",
+                "type": "String",
+                "description": "Response message (e.g., Success, Invalid PAN, Valid PAN)."
+            },
+            {
+                "id": "panfname_res_002",
+                "name": "Response ID",
+                "field": "responseId",
+                "type": "Number",
+                "description": "Response identifier code."
+            },
+            {
+                "id": "panfname_res_003",
+                "name": "Father Name",
+                "field": "result.father_name",
+                "type": "String",
+                "description": "Father’s full name of PAN holder."
+            },
+            {
+                "id": "panfname_res_004",
+                "name": "PAN Number",
+                "field": "result.panNumber",
+                "type": "String",
+                "description": "PAN number."
+            }
+        ],
         "statusCodes": [
             {
                 "code": 200,
                 "responseId": 1001,
                 "billable": "Yes",
                 "description": "Success",
-                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+                "message": "{\n \"message\": \"Success\", \n \"responseId\": 1001 \n}"
             },
             {
                 "code": 200,
                 "responseId": 1002,
                 "billable": "Yes",
                 "description": "Invalid PAN",
-                "message": "{\"message\": \"Invalid PAN\", \"responseId\": 1002}"
+                "message": "{\n \"message\": \"Invalid PAN\", \n \"responseId\": 1002 \n}"
             },
             {
                 "code": 200,
                 "responseId": 1003,
                 "billable": "No",
                 "description": "Inactive PAN",
-                "message": "{\"message\": \"Inactive PAN\", \"responseId\": 1003}"
+                "message": "{\n \"message\": \"Inactive PAN\", \n \"responseId\": 1003 \n}"
             },
             {
                 "code": 400,
                 "responseId": null,
                 "billable": "No",
                 "description": "Bad Request",
-                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+                "message": "{\n \"success\": false, \n \"message\": \"Invalid request parameters\" \n}"
             },
             {
                 "code": 403,
                 "responseId": null,
                 "billable": "No",
                 "description": "Forbidden",
-                "message": "{\"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\"}"
+                "message": "{\n \"success\": false, \n \"message\": \"Auth key invalid,missing/ you do not have access to this api\" \n}"
             },
             {
                 "code": 402,
                 "responseId": null,
                 "billable": "No",
                 "description": "Payment Required",
-                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+                "message": "{\n \"success\": false, \n\"message\": \"Credit Exahusted\" \n}"
             },
             {
                 "code": 500,
                 "responseId": null,
                 "billable": "No",
                 "description": "Source Down/Internal Server Error",
-                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+                "message": "{\n \"success\": false, \n\"message\": \"Source Down\" \n}"
             }
         ]
     },
     {
         "id": "docs_pan_name_dob_lookup_014",
-        "name": "PAN to Name & DOB Lookup API",
-        "overview": "Fetches PAN holder’s name and date of birth.",
+        "name": "PAN Name & DOB Lookup API",
+        "overview": "The PAN Name & DOB Lookup API is used to fetch the official name and date of birth of a PAN holder. It breaks down the PAN holder’s name into first name, middle name, and last name while also returning the date of birth and PAN category.\n\nThis API is especially useful for:\n\n- **Identity Verification** – Retrieving official details for KYC and onboarding.\n- **Form Auto-fill** – Populating name and DOB fields automatically in digital applications.\n- **Fraud Detection** – Ensuring that user-submitted details match government records.\n- **Regulatory Compliance** – Helps institutions meet mandatory PAN validation norms.",
         "endpoint": "https://dev-api.innowave.solutions/pan/name-and-dob-lookup",
         "request": "curl --location 'https://dev-api.innowave.solutions/pan/name-and-dob-lookup' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\"}'",
+        "request_parameters": [
+            {
+                "id": "panname_req_001",
+                "name": "PAN Number",
+                "field": "panNumber",
+                "mandatory": "Yes",
+                "type": "String",
+                "description": "Valid PAN number of the individual."
+            }
+        ],
         "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"full_name\": \"MANOJ PATIDAR\",\n    \"panholder_firstName\": \"MANOJ\",\n    \"panholder_midName\": \"\",\n    \"panholder_lastName\": \"PATIDAR\",\n    \"panNumber\": \"HCEPP8169Q\",\n    \"dob\": \"15-08-2000\",\n    \"category\": \"person\"\n  }\n}",
+        "response_parameters": [
+            {
+                "id": "panname_res_001",
+                "name": "Response Message",
+                "field": "message",
+                "type": "String",
+                "description": "Response message (e.g., Success, Invalid PAN, Valid PAN)."
+            },
+            {
+                "id": "panname_res_002",
+                "name": "Response ID",
+                "field": "responseId",
+                "type": "Number",
+                "description": "Response identifier code."
+            },
+            {
+                "id": "panname_res_003",
+                "name": "Full Name",
+                "field": "result.full_name",
+                "type": "String",
+                "description": "PAN holder’s complete name."
+            },
+            {
+                "id": "panname_res_004",
+                "name": "First Name",
+                "field": "result.panholder_firstName",
+                "type": "String",
+                "description": "First name of PAN holder."
+            },
+            {
+                "id": "panname_res_005",
+                "name": "Middle Name",
+                "field": "result.panholder_midName",
+                "type": "String",
+                "description": "Middle name of PAN holder (may be empty)."
+            },
+            {
+                "id": "panname_res_006",
+                "name": "Last Name",
+                "field": "result.panholder_lastName",
+                "type": "String",
+                "description": "Last name of PAN holder."
+            },
+            {
+                "id": "panname_res_007",
+                "name": "PAN Number",
+                "field": "result.panNumber",
+                "type": "String",
+                "description": "PAN number."
+            },
+            {
+                "id": "panname_res_008",
+                "name": "Date of Birth",
+                "field": "result.dob",
+                "type": "String",
+                "description": "Date of birth (DD-MM-YYYY)."
+            },
+            {
+                "id": "panname_res_009",
+                "name": "PAN Category",
+                "field": "result.category",
+                "type": "String",
+                "description": "PAN category (Person, Company, etc.)."
+            }
+        ],
         "statusCodes": [
             {
                 "code": 200,
                 "responseId": 1001,
                 "billable": "Yes",
                 "description": "Success",
-                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+                "message": "{\n \"message\": \"Success\", \n \"responseId\": 1001 \n}"
             },
             {
                 "code": 200,
                 "responseId": 1002,
                 "billable": "Yes",
                 "description": "Invalid PAN",
-                "message": "{\"message\": \"Invalid PAN\", \"responseId\": 1002}"
+                "message": "{\n \"message\": \"Invalid PAN\", \n \"responseId\": 1002 \n}"
             },
             {
                 "code": 200,
                 "responseId": 1003,
                 "billable": "No",
                 "description": "Inactive PAN",
-                "message": "{\"message\": \"Inactive PAN\", \"responseId\": 1003}"
+                "message": "{\n \"message\": \"Inactive PAN\", \n \"responseId\": 1003 \n}"
             },
             {
                 "code": 400,
                 "responseId": null,
                 "billable": "No",
                 "description": "Bad Request",
-                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+                "message": "{\n \"success\": false, \n \"message\": \"Invalid request parameters\" \n}"
             },
             {
                 "code": 403,
                 "responseId": null,
                 "billable": "No",
                 "description": "Forbidden",
-                "message": "{\"success\": false, \"message\": \"Auth key invalid,missing/ you do not have access to this api\"}"
+                "message": "{\n \"success\": false, \n \"message\": \"Auth key invalid,missing/ you do not have access to this api\" \n}"
             },
             {
                 "code": 402,
                 "responseId": null,
                 "billable": "No",
                 "description": "Payment Required",
-                "message": "{\"success\": false, \"message\": \"Credit Exahusted\"}"
+                "message": "{\n \"success\": false, \n\"message\": \"Credit Exahusted\" \n}"
             },
             {
                 "code": 500,
                 "responseId": null,
                 "billable": "No",
                 "description": "Source Down/Internal Server Error",
-                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+                "message": "{\n \"success\": false, \n\"message\": \"Source Down\" \n}"
             }
         ]
     },
