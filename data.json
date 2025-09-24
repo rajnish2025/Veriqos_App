@@ -336,8 +336,8 @@
                     },
                     "code": [
                         {
-                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan-account-linkage/v1' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"account_number\": \"<accountnumber>\",\n  \"ifsc_code\": \"<ifsccode>\",\n  \"pan_number\": \"<pannumber>\"\n}'",
-                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/pan-account-linkage/v1', {\n  bank_account_number: '<accountnumber>',\n  ifsc_code: '<ifsccode>',\n  pan_number: '<pannumber>'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan-account-linkage/v1' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"account_number\": \"<accountnumber>\",\n  \"ifsc\": \"<ifsccode>\",\n  \"pan\": \"<pannumber>\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/pan-account-linkage/v1', {\n  bank_account_number: '<accountnumber>',\n  ifsc: '<ifsccode>',\n  pan: '<pannumber>'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
                         }
                     ]
                 },
