@@ -331,8 +331,8 @@
                     },
                     "body": {
                         "account_number": "text",
-                        "ifsc": "<ifsccode>",
-                        "pan": "<pannumber>"
+                        "ifsc": "text",
+                        "pan": "text"
                     },
                     "code": [
                         {
