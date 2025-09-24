@@ -2,59 +2,113 @@
     {
         "id": "docs234sfs321",
         "name": "Occupation API",
-        "overview": "Fetch occupation-related details (employment, director, sole proprietor status) of a PAN holder.",
+        "overview": "The Occupation API allows organizations to verify occupation-related attributes of a PAN holder.\n\nIt checks whether the individual is employed, a company director, or a sole proprietor. This helps businesses, banks, and financial institutions in:\n\n- **Credit risk assessment** (verifying if a person is employed/self-employed)\n- **KYC/AML compliance** (cross-verifying employment or directorship status)\n- **Business validation** (checking proprietorships for GST/loan applications)\n\nThe API returns employment status flags (**Y/N**) for **employment, directorship, and sole proprietorship**, enabling automated decision-making during onboarding or financial assessments.",
         "endpoint": "https://dev-api.innowave.solutions/pan/occupation-status",
-        "request": "curl --location 'https://dev-api.innowave.solutions/pan/occupation-status' \\\n--header 'x-api-key: <apikey>' \\\n--header 'Content-Type: application/json' \\\n--data '{\"panNumber\":\"HCEPP8169Q\"}'",
-        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"pan\": \"HCEPP8169Q\",\n    \"employment_status\": \"Y\",\n    \"director_status\": \"N\",\n    \"sole_proprietor_status\": \"\"\n  }\n}",
+        "request": "curl --location 'https://dev-api.innowave.solutions/pan/occupation-status' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\"panNumber\":\"HCEPP8169Q\"}'",
+        "request_parameters": [
+            {
+                "id": "occ_req_001",
+                "name": "PAN Number",
+                "field": "panNumber",
+                "mandatory": "Yes",
+                "type": "String",
+                "description": "PAN number of the individual/entity."
+            }
+        ],
+        "response": "{\n  \"message\": \"Success\",\n  \"responseId\": 1001,\n  \"result\": {\n    \"pan\": \"HCEPP8169Q\",\n    \"employement_status\": \"Y\",\n    \"director_status\": \"N\",\n    \"sole_proprietor_status\": \"\"\n  }\n}",
+        "response_parameters": [
+            {
+                "id": "occ_res_001",
+                "name": "Response Message",
+                "field": "message",
+                "type": "String",
+                "description": "Response message (Success/Invalid PAN/etc.)"
+            },
+            {
+                "id": "occ_res_002",
+                "name": "Response ID",
+                "field": "responseId",
+                "type": "Number",
+                "description": "Response code identifier"
+            },
+            {
+                "id": "occ_res_003",
+                "name": "PAN",
+                "field": "result.pan",
+                "type": "String",
+                "description": "PAN number"
+            },
+            {
+                "id": "occ_res_004",
+                "name": "Employment Status",
+                "field": "result.employement_status",
+                "type": "String",
+                "description": "Employment status (Y/N)"
+            },
+            {
+                "id": "occ_res_005",
+                "name": "Director Status",
+                "field": "result.director_status",
+                "type": "String",
+                "description": "Director status (Y/N)"
+            },
+            {
+                "id": "occ_res_006",
+                "name": "Sole Proprietor Status",
+                "field": "result.sole_proprietor_status",
+                "type": "String",
+                "description": "Sole proprietor status (Blank/Y)"
+            }
+        ],
         "statusCodes": [
             {
                 "code": 200,
                 "responseId": 1001,
                 "billable": "Yes",
                 "description": "Success",
-                "message": "{\"message\": \"Success\", \"responseId\": 1001}"
+                "message": "{\n \"message\": \"Success\", \n \"responseId\": 1001 \n}"
             },
             {
                 "code": 200,
                 "responseId": 1002,
                 "billable": "Yes",
                 "description": "Invalid PAN",
-                "message": "{\"message\": \"Invalid PAN\", \"responseId\": 1002}"
+                "message": "{\n \"message\": \"Invalid PAN\", \n \"responseId\": 1002 \n}"
             },
             {
                 "code": 200,
                 "responseId": 1003,
                 "billable": "No",
                 "description": "Inactive PAN",
-                "message": "{\"message\": \"Inactive PAN\", \"responseId\": 1003}"
+                "message": "{\n \"message\": \"Inactive PAN\", \n \"responseId\": 1003 \n}"
             },
             {
                 "code": 400,
                 "responseId": null,
                 "billable": "No",
                 "description": "Bad Request",
-                "message": "{\"success\": false, \"message\": \"Invalid request parameters\"}"
+                "message": "{\n \"success\": false, \n \"message\": \"Invalid request parameters\" \n}"
             },
             {
                 "code": 403,
                 "responseId": null,
                 "billable": "No",
                 "description": "Forbidden",
-                "message": "{\"success\": false, \"message\": \"Auth key invalid, missing / you do not have access to this api\"}"
+                "message": "{\n \"success\": false, \n \"message\": \"Auth key invalid, missing/ you do \n not have access to this api\" \n}"
             },
             {
                 "code": 402,
                 "responseId": null,
                 "billable": "No",
                 "description": "Payment Required",
-                "message": "{\"success\": false, \"message\": \"Credit Exhausted\"}"
+                "message": "{\n \"success\": false, \n\"message\": \"Credit Exahusted\" \n}"
             },
             {
                 "code": 500,
                 "responseId": null,
                 "billable": "No",
                 "description": "Source Down/Internal Server Error",
-                "message": "{\"success\": false, \"message\": \"Source Down\"}"
+                "message": "{\n \"success\": false, \n\"message\": \"Source Down\" \n}"
             }
         ]
     },
