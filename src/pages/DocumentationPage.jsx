@@ -278,7 +278,7 @@ const DocumentationPage = () => {
           </ul>
         </aside>
 
-        <main className="flex-1 px-4 md:px-8 py-10 max-w-4xl mx-auto w-full">
+        <main className="flex-1 px-4 md:px-8 py-10 max-w-5xl mx-auto w-full">
           <button
             onClick={() => navigate("/devdocs")}
             className="flex items-center mb-6 text-sm text-gray-600 hover:text-gray-800"
@@ -290,7 +290,7 @@ const DocumentationPage = () => {
             {docsData.name}
           </h1>
           <hr className="pb-5 mt-5" />
-          <div id="overview" className="scroll-mt-40">
+          <div id="overview" className="scroll-mt-40 occupation-wrapper">
             <h2 className="text-xl font-semibold text-[#043758] mb-2">
               Overview
             </h2>

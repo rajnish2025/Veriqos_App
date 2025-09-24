@@ -52,7 +52,7 @@
                     },
                     "code": [
                         {
-                            "Curl": "curl --location 'https://dev-api.innowave.solutions/voterid/v1' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"voter_id\": \"<VoterID>\"\n}'",
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/voterid/v1' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"voter\": \"<VoterID>\"\n}'",
                             "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/voterid/v1\",\n  {\n    voter_id: \"<VoterID>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
                         }
                     ]
@@ -330,14 +330,14 @@
                         "x-api-key": "<apikey>"
                     },
                     "body": {
-                        "bank_account_number": "text",
-                        "ifsc_code": "text",
-                        "pan_number": "text"
+                        "account_number": "text",
+                        "ifsc": "<ifsccode>",
+                        "pan": "<pannumber>"
                     },
                     "code": [
                         {
-                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan-account-linkage/v1' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"bank_account_number\": \"12345670098765\",\n  \"ifsc_code\": \"AZXS0MQASW\",\n  \"pan_number\": \"ABCPD1234E\"\n}'",
-                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/pan-account-linkage/v1', {\n  bank_account_number: '12345670098765',\n  ifsc_code: 'AZXS0MQASW',\n  pan_number: 'ABCPD1234E'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan-account-linkage/v1' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"account_number\": \"<accountnumber>\",\n  \"ifsc_code\": \"<ifsccode>\",\n  \"pan_number\": \"<pannumber>\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/pan-account-linkage/v1', {\n  bank_account_number: '<accountnumber>',\n  ifsc_code: '<ifsccode>',\n  pan_number: '<pannumber>'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
                         }
                     ]
                 },
