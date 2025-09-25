@@ -11,6 +11,8 @@ import DevDocs from "../pages/DevDocs";
 import ProtectedRoutes from "./ProtectedRoutes";
 import PageNotFound from "@/pages/PageNotFound";
 import DocumentationPage from "@/pages/DocumentationPage";
+import Login from "@/pages/Login";
+import Signup from "@/pages/Signup";
 
 const Routing = () => {
   return (
@@ -103,6 +105,22 @@ const Routing = () => {
                 <Navbar />
                 <Home />
               </ProtectedRoutes>
+            </>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <>
+              <Login />
+            </>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <>
+              <Signup />
             </>
           }
         />

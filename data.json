@@ -48,11 +48,11 @@
                         "x-api-key": "<api_key>"
                     },
                     "body": {
-                        "voter": "text"
+                        "voter_id": "text"
                     },
                     "code": [
                         {
-                            "Curl": "curl --location 'https://dev-api.innowave.solutions/voterid/v1' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"voter\": \"<VoterID>\"\n}'",
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/voterid/v1' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"voter_id\": \"<VoterID>\"\n}'",
                             "JavaScript": "import axios from \"axios\";\nconst response = await axios.post(\"https://dev-api.innowave.solutions/voterid/v1\",\n  {\n    voter_id: \"<VoterID>\"\n  },\n  {\n    headers: {\n      \"x-api-key\": \"<apikey>\",\n      \"Content-Type\": \"application/json\"\n    }\n  }\n);"
                         }
                     ]
@@ -62,8 +62,8 @@
                     "id": "pan_to_aadhaar",
                     "label": "Check PAN-Aadhaar Link Status",
                     "overview": "This API checks whether a given PAN is linked to a specific Aadhaar number. Useful for compliance verification, KYC processes, and identity validation.",
-                    "url": "/pan/pan-to-aadhaar",
-                    "serverUrl": "/pan/pan-to-aadhaar",
+                    "url": "/pan/aadhaar/link-status",
+                    "serverUrl": "/pan/aadhaar/link-status",
                     "method": "POST",
                     "headers": {
                         "Content-Type": "application/json",
@@ -75,8 +75,8 @@
                     },
                     "code": [
                         {
-                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan/pan-to-aadhaar' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n    \"pan\": \"AAAAP0267H\",\n    \"aadhaar\": \"596754462773\"\n}'",
-                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/pan/pan-to-aadhaar', {\n  pan: 'AAAAP0267H',\n  aadhaar: '596754462773'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pan/aadhaar/link-status' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n    \"pan\": \"AAAAP0267H\",\n    \"aadhaar\": \"596754462773\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/pan/aadhaar/link-status', {\n  pan: 'AAAAP0267H',\n  aadhaar: '596754462773'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
                         }
                     ]
                 },
@@ -520,12 +520,12 @@
                         "x-api-key": "<apikey>"
                     },
                     "body": {
-                        "cin_number": "text"
+                        "cin": "text"
                     },
                     "code": [
                         {
-                            "Curl": "curl --location 'https://dev-api.innowave.solutions/company-cin-lookup/v1' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"cin_number\": \"U32100UP2022PTC123456\"\n}'",
-                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/company-cin-lookup/v1', {\n  cin_number: 'U32100UP2022PTC123456'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/company-cin-lookup/v1' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"cin\": \"U32100UP2022PTC123456\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/company-cin-lookup/v1', {\n  cin: 'U32100UP2022PTC123456'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
                         }
                     ]
                 },
@@ -543,12 +543,12 @@
                         "x-api-key": "<apikey>"
                     },
                     "body": {
-                        "cin_number": "text"
+                        "cin": "text"
                     },
                     "code": [
                         {
-                            "Curl": "curl --location 'https://dev-api.innowave.solutions/cin-lookup-advanced' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"cin_number\": \"U32100UP2022PTC1234\"\n}'",
-                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/cin-lookup-advanced', {\n  cin_number: 'U32100UP2022PTC1234'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/cin-lookup-advanced' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"cin\": \"U32100UP2022PTC1234\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/cin-lookup-advanced', {\n  cin: 'U32100UP2022PTC1234'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
                         }
                     ]
                 },
@@ -566,12 +566,12 @@
                         "x-api-key": "<apikey>"
                     },
                     "body": {
-                        "pan_number": "text"
+                        "pan": "text"
                     },
                     "code": [
                         {
-                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pantocin/v1' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"pan_number\": \"ABCPD1234D\"\n}'",
-                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/pantocin/v1', {\n  pan_number: 'ABCPD1234D'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
+                            "Curl": "curl --location 'https://dev-api.innowave.solutions/pantocin/v1' \\\n--header 'Content-Type: application/json' \\\n--header 'x-api-key: <apikey>' \\\n--data '{\n  \"pan\": \"ABCPD1234D\"\n}'",
+                            "JavaScript": "import axios from 'axios';\n\nconst response = await axios.post('https://dev-api.innowave.solutions/pantocin/v1', {\n  pan: 'ABCPD1234D'\n}, {\n  headers: {\n    'Content-Type': 'application/json',\n    'x-api-key': '<apikey>'\n  }\n});"
                         }
                     ]
                 },
