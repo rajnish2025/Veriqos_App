@@ -6,7 +6,10 @@ import { Link } from "react-router-dom";
 
 export function LoginForm({ className, ...props }) {
   return (
-    <form className={cn("flex flex-col gap-6", className)} {...props}>
+    <form
+      className={cn("flex flex-col gap-6", className)}
+      onSubmit={props.submit(props.onSubmit)}
+    >
       <div className="flex flex-col items-center gap-2 text-center">
         <h1 className="text-2xl font-bold bg-gradient-to-r from-[#00538C] to-[#00859D] bg-clip-text text-transparent">
           Login to your account
@@ -18,7 +21,14 @@ export function LoginForm({ className, ...props }) {
       <div className="grid gap-6">
         <div className="grid gap-2">
           <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" placeholder="m@example.com" required />
+          <Input
+            id="email"
+            type="email"
+            name="email"
+            {...props.register("email")}
+            placeholder="m@example.com"
+            required
+          />
         </div>
         <div className="grid gap-2">
           <div className="flex items-center">
@@ -30,7 +40,13 @@ export function LoginForm({ className, ...props }) {
               Forgot your password?
             </Link>
           </div>
-          <Input id="password" type="password" required />
+          <Input
+            id="password"
+            type="password"
+            name="password"
+            {...props.register("password")}
+            required
+          />
         </div>
         <Button
           type="submit"

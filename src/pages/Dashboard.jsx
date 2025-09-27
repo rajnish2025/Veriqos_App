@@ -260,10 +260,16 @@ const DashBoard = () => {
               key={idx}
               className="overflow-x-auto mb-4 border border-slate-200 rounded-xl shadow-md bg-gradient-to-br from-white to-slate-50"
             >
-              <div className="px-4 py-2 bg-blue-50 border-b font-semibold text-blue-700">
-                Item {idx + 1}
-              </div>
-              <div className="p-2">{renderTable(item, level + 1)}</div>
+              {typeof item !== "string" ? (
+                <>
+                  {/* <div className="px-4 py-2 bg-blue-50 border-b font-semibold text-blue-700">
+                    No. [{idx + 1}]
+                  </div> */}
+                  <div className="p-2">{renderTable(item, level + 1)}</div>
+                </>
+              ) : (
+                <li className="pl-5 py-4">{item}</li>
+              )}
             </div>
           ))}
         </div>
